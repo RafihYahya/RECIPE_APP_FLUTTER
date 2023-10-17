@@ -38,10 +38,9 @@ class _HomePageState extends State<HomePage> {
                 _scrollController.animateTo(
                   //Animating The Custom Scroll,
                   targetOffset,
-                  duration: const Duration(milliseconds: 750),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.easeOut,
                 );
-                lastScrollOffset = scrollInfo.metrics.pixels;
               } else if (scrollInfo.metrics.pixels < lastScrollOffset) {
                 double targetOffset = lastScrollOffset -
                     MediaQuery.of(context).size.height *
@@ -51,18 +50,17 @@ class _HomePageState extends State<HomePage> {
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeOut,
                 );
-                lastScrollOffset = scrollInfo.metrics.pixels;
-                print(lastScrollOffset);
               } else {
                 return true;
               }
+              lastScrollOffset = scrollInfo.metrics.pixels;
             }
             return true;
           },
           child: ListView.builder(
             controller: _scrollController,
             primary: false,
-            itemCount: 4,
+            itemCount: 15,
             itemBuilder: (context, index) => ViewHorz(),
           ),
         ));
