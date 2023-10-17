@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/pages/home_page.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class RecipeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: GoogleFonts.inter().fontFamily,
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
