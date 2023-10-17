@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ViewHorz extends StatefulWidget {
@@ -12,12 +14,17 @@ class _ViewHorzState extends State<ViewHorz> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        color: Colors.transparent.withOpacity(0.5),
-        child: Text(
-          'Test',
-          style: TextStyle(fontSize: 68.0),
+      child: ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            color: Colors.transparent.withOpacity(0.5),
+            child: const Text(
+              'Test',
+              style: TextStyle(fontSize: 68.0),
+            ),
+          ),
         ),
       ),
     );

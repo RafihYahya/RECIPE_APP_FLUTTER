@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(
+          title: const Center(
               child: Text(
             'RECIPIA',
             style: TextStyle(fontWeight: FontWeight.w500),
