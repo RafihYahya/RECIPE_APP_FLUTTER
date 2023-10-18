@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
             )
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         ),
         drawer: Drawer(),
         body: PageView.builder(
-          physics: PageScrollPhysics(),
+          physics: const PageScrollPhysics(),
           scrollDirection: Axis.vertical,
           itemCount: 20,
           itemBuilder: (context, index) => Padding(
