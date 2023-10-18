@@ -13,7 +13,7 @@ class _ViewHorzState extends State<ViewHorz> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
