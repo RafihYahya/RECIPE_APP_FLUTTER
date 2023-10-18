@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: const Center(
             child: Text(
-              'Recipa',
+              'Home Screen',
             ),
           ),
           backgroundColor: Color.fromARGB(255, 40, 185, 21),
