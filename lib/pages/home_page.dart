@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
               'Recipa',
             ),
           ),
-          backgroundColor: const Color.fromARGB(255, 62, 153, 65),
+          backgroundColor: Color.fromARGB(255, 40, 185, 21),
           actions: [
             IconButton(
               onPressed: () {},

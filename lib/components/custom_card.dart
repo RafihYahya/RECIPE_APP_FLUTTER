@@ -9,7 +9,7 @@ class CustomCardMainP extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black38,
+        color: Colors.black87,
         borderRadius: BorderRadius.circular(12.0),
       ),
     );
