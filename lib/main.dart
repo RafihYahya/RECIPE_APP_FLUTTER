@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
 
 void main() {
-  runApp(const RecipeApp());
+  runApp(RecipeApp());
 }
 
 class RecipeApp extends StatelessWidget {
-  const RecipeApp({Key? key}) : super(key: key);
+  RecipeApp({Key? key}) : super(key: key);
+
+  final List<Widget> routes = [
+    HomePage(),
+    BookMarkPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class RecipeApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: routes[0],
     );
   }
 }
