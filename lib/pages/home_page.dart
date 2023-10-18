@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/components/viewbuilder_horz.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final bool? dark;
+  final Function() callback2;
+  const HomePage({Key? key, this.dark, required this.callback2})
+      : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,20 +15,36 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: widget.dark!
+            ? Color.fromARGB(255, 39, 39, 39)
+            : Color.fromARGB(255, 221, 221, 221),
         appBar: AppBar(
-          title: const Center(
+          title: Center(
             child: Text(
               'Home Screen',
+              style: widget.dark! == true
+                  ? TextStyle(color: Colors.white)
+                  : TextStyle(color: Colors.black),
             ),
           ),
-          backgroundColor: Color.fromARGB(255, 40, 185, 21),
+          backgroundColor: widget.dark!
+              ? Color.fromARGB(255, 0, 116, 10)
+              : Color.fromARGB(255, 40, 185, 21),
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
-            )
+            ),
+            IconButton(
+              onPressed: () {
+                widget.callback2();
+              },
+              icon: const Icon(Icons.dark_mode),
+              color: Colors.black,
+              iconSize: 28.0,
+            ),
           ],
         ),
         drawer: Drawer(),

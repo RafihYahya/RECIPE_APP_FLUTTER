@@ -7,21 +7,40 @@ void main() {
   runApp(RecipeApp());
 }
 
-class RecipeApp extends StatelessWidget {
-  RecipeApp({Key? key}) : super(key: key);
+class RecipeApp extends StatefulWidget {
+  const RecipeApp({Key? key}) : super(key: key);
 
-  final List<Widget> routes = [
-    HomePage(),
-    BookMarkPage(),
-  ];
+  @override
+  State<RecipeApp> createState() => _RecipeAppState();
+}
+
+class _RecipeAppState extends State<RecipeApp> {
+  bool dark = false;
+  void themeswitcher() {
+    setState(() {
+      dark = !dark;
+    });
+    print(dark);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> routes = [
+      HomePage(
+        dark: dark,
+        callback2: themeswitcher,
+      ),
+      BookMarkPage(),
+    ];
+
     return MaterialApp(
       theme: ThemeData(
         fontFamily: GoogleFonts.inter().fontFamily,
         useMaterial3: true,
       ),
+      darkTheme: dark
+          ? ThemeData.dark(useMaterial3: true)
+          : ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       home: routes[0],
     );
