@@ -18,13 +18,42 @@ class _HomePageState extends State<HomePage> {
               'Recipa',
             ),
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: const Color.fromARGB(255, 62, 153, 65),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add),
+              color: Colors.black,
+              iconSize: 28.0,
+            )
+          ],
         ),
+        drawer: Drawer(),
         body: PageView.builder(
           physics: PageScrollPhysics(),
           scrollDirection: Axis.vertical,
           itemCount: 20,
-          itemBuilder: (context, index) => ViewHorz(),
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
+                    child: Text(
+                      'American',
+                      style: const TextStyle(fontSize: 32.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(flex: 7, child: ViewHorz())
+              ],
+            ),
+          ),
         ));
   }
 }
