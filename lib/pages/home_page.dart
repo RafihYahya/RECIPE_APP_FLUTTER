@@ -16,20 +16,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: widget.dark!
-            ? Color.fromARGB(255, 39, 39, 39)
-            : Color.fromARGB(255, 221, 221, 221),
+            ? const Color.fromARGB(255, 39, 39, 39)
+            : const Color.fromARGB(255, 221, 221, 221),
         appBar: AppBar(
           title: Center(
             child: Text(
               'Home Screen',
               style: widget.dark! == true
-                  ? TextStyle(color: Colors.white)
-                  : TextStyle(color: Colors.black),
+                  ? const TextStyle(color: Colors.white, fontSize: 18.0)
+                  : const TextStyle(color: Colors.black, fontSize: 18.0),
             ),
           ),
           backgroundColor: widget.dark!
-              ? Color.fromARGB(255, 0, 116, 10)
-              : Color.fromARGB(255, 40, 185, 21),
+              ? const Color.fromARGB(255, 0, 116, 10)
+              : Color(0xFF04B400),
           actions: [
             IconButton(
               onPressed: () {},
@@ -64,12 +64,16 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
                     child: Text(
                       'American',
-                      style: const TextStyle(fontSize: 32.0),
+                      style: const TextStyle(fontSize: 36.0),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                Expanded(flex: 7, child: ViewHorz())
+                Expanded(
+                    flex: 7,
+                    child: ViewHorz(
+                      dark: widget.dark,
+                    ))
               ],
             ),
           ),

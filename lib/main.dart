@@ -4,7 +4,7 @@ import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
 
 void main() {
-  runApp(RecipeApp());
+  runApp(const RecipeApp());
 }
 
 class RecipeApp extends StatefulWidget {
@@ -20,7 +20,6 @@ class _RecipeAppState extends State<RecipeApp> {
     setState(() {
       dark = !dark;
     });
-    print(dark);
   }
 
   @override
