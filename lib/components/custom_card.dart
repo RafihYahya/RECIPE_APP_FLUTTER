@@ -15,6 +15,8 @@ class CustomCardMainP extends StatelessWidget {
         Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.55), BlendMode.darken),
                     image: NetworkImage(
                         'https://miro.medium.com/v2/resize:fit:720/format:webp/1*7nGWHF6Zvtw_Y2zSDhXrLg.jpeg'),
                     fit: BoxFit.cover),
