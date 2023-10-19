@@ -41,7 +41,9 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 widget.callback2();
               },
-              icon: const Icon(Icons.dark_mode),
+              icon: !widget.dark!
+                  ? const Icon(Icons.dark_mode)
+                  : const Icon(Icons.light_mode),
               color: Colors.black,
               iconSize: 28.0,
             ),
