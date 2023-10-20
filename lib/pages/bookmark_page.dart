@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
 
 class BookMarkPage extends StatefulWidget {
+  // callback and variable for dark mode
   final bool? dark;
   final Function() callback2;
   const BookMarkPage({Key? key, required this.dark, required this.callback2})
@@ -58,6 +59,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //So that the  title wont repeat for each tile.
                       index == 0
                           ? Container(
                               margin: EdgeInsets.only(top: 8.0),
@@ -65,6 +67,8 @@ class _BookMarkPageState extends State<BookMarkPage> {
                               child: const Text('BOOKMARKS',
                                   style: TextStyle(fontSize: 36.0)))
                           : SizedBox(),
+
+                      // Our Custom Card
                       BKCard(),
                     ],
                   )),

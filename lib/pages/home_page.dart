@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
         ),
         drawer: Drawer(),
         body: PageView.builder(
+          //for page scroll
           physics: const PageScrollPhysics(),
           scrollDirection: Axis.vertical,
           itemCount: 20,
