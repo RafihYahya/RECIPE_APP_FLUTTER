@@ -29,7 +29,10 @@ class _RecipeAppState extends State<RecipeApp> {
         dark: dark,
         callback2: themeswitcher,
       ),
-      BookMarkPage(),
+      BookMarkPage(
+        dark: dark,
+        callback2: themeswitcher,
+      ),
     ];
 
     return MaterialApp(
@@ -41,7 +44,7 @@ class _RecipeAppState extends State<RecipeApp> {
           ? ThemeData.dark(useMaterial3: true)
           : ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: routes[0],
+      home: routes[1],
     );
   }
 }
