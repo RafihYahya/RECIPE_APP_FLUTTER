@@ -65,11 +65,14 @@ class _BookMarkPageState extends State<BookMarkPage> {
                               margin: EdgeInsets.only(top: 8.0),
                               height: 65,
                               child: const Text('BOOKMARKS',
-                                  style: TextStyle(fontSize: 36.0)))
+                                  style: TextStyle(fontSize: 32.0)))
                           : SizedBox(),
 
                       // Our Custom Card
-                      BKCard(),
+                      BKCard(
+                        dark: widget.dark,
+                        callback2: widget.callback2,
+                      ),
                     ],
                   )),
         ));
