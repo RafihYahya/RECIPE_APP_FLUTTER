@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/components/bookmark_card.dart';
 
 class BookMarkPage extends StatefulWidget {
   final bool? dark;
@@ -50,28 +51,23 @@ class _BookMarkPageState extends State<BookMarkPage> {
         ),
         drawer: Drawer(),
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 14.0, horizontal: 4.0),
-                  height: 100,
-                  child: Text('BOOKMARKS', style: TextStyle(fontSize: 36.0))),
-              Expanded(
-                child: ListView.builder(
-                    itemCount: 15,
-                    itemBuilder: (context, index) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(child: Center(child: Text('Placeholder'))),
-                            Expanded(child: Center(child: Text('Placeholder')))
-                          ],
-                        )),
-              ),
-            ],
-          ),
+          padding: const EdgeInsets.all(16.0),
+          child: ListView.builder(
+              itemCount: 15,
+              itemBuilder: (context, index) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      index == 0
+                          ? Container(
+                              margin: EdgeInsets.only(top: 8.0),
+                              height: 65,
+                              child: const Text('BOOKMARKS',
+                                  style: TextStyle(fontSize: 36.0)))
+                          : SizedBox(),
+                      BKCard(),
+                    ],
+                  )),
         ));
   }
 }

@@ -5,6 +5,13 @@ class BKCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(color: Colors.red),
+      height: 300,
+      width: 300,
+      child: Text('MIIIIIIIIAW'),
+    );
   }
 }
