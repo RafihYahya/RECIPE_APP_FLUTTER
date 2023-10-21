@@ -63,20 +63,25 @@ class _BookMarkPageState extends State<BookMarkPage> {
                       //So that the  title wont repeat for each tile.
                       index == 0
                           ? Container(
-                              margin: EdgeInsets.only(top: 8.0),
+                              margin: EdgeInsets.only(top: 16.0, left: 12.0),
                               height: 65,
                               child: const Text('BOOKMARKS',
-                                  style: TextStyle(fontSize: 32.0)))
+                                  style: TextStyle(
+                                      fontSize: 35.0,
+                                      fontWeight: FontWeight.bold)))
                           : SizedBox(),
 
                       // Our Custom Card
-                      BKCard(
-                        dark: widget.dark,
-                        callback2: widget.callback2,
-                        bkdata: Bkdata(
-                            MediaQuery.of(context).size.width,
-                            40 + MediaQuery.of(context).size.height * 0.1,
-                            false),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: BKCard(
+                          dark: widget.dark,
+                          callback2: widget.callback2,
+                          bkdata: Bkdata(
+                              MediaQuery.of(context).size.width,
+                              45 + MediaQuery.of(context).size.height * 0.1,
+                              false),
+                        ),
                       ),
                     ],
                   )),
