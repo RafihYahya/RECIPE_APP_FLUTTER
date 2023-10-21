@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
           ),
           backgroundColor: widget.dark!
               ? const Color.fromARGB(255, 0, 116, 10)
-              : Color(0xFF04B400),
+              : const Color(0xFF04B400),
           actions: [
             IconButton(
               onPressed: () {},

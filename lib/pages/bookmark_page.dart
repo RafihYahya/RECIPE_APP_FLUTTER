@@ -69,7 +69,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
                                   style: TextStyle(
                                       fontSize: 35.0,
                                       fontWeight: FontWeight.bold)))
-                          : SizedBox(),
+                          : const SizedBox(),
 
                       // Our Custom Card
                       Padding(
