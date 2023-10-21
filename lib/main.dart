@@ -36,7 +36,9 @@ class _RecipeAppState extends State<RecipeApp> {
         dark: dark,
         callback2: themeswitcher,
       ),
-      DescPage()
+      DescPage(
+        dark: dark,
+      )
     ];
 
     return MaterialApp(

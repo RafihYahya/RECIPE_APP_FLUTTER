@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 
 class DescPage extends StatelessWidget {
-  const DescPage({Key? key}) : super(key: key);
+  final bool? dark;
+  const DescPage({Key? key, required this.dark}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFDDDDDD),
+      backgroundColor: !dark! ? Color(0xFFDDDDDD) : Color(0xFF252525),
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                        Colors.green.withOpacity(0.15), BlendMode.darken))),
-            height: 250,
-            width: MediaQuery.of(context).size.width,
-            child: null,
+          Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                            Colors.green.withOpacity(0.15), BlendMode.darken))),
+                height: 250,
+                width: MediaQuery.of(context).size.width,
+                child: null,
+              ),
+              Container(
+                height: 50,
+                color: Colors.black54,
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 32,
+                ),
+              ),
+            ],
           ),
           Padding(
             padding:
