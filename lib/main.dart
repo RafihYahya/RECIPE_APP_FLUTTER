@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/desc_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
+import 'package:recipe_app/pages/howtomake_page.dart';
 import 'package:recipe_app/pages/loading_page.dart';
 
 void main() {
@@ -36,7 +37,7 @@ class _RecipeAppState extends State<RecipeApp> {
         dark: dark,
         callback2: themeswitcher,
       ),
-      DescPage(
+      HowToPage(
         dark: dark,
       )
     ];
