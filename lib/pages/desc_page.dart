@@ -6,6 +6,7 @@ class DescPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFDDDDDD),
       body: Column(
         children: [
           Container(
@@ -13,7 +14,9 @@ class DescPage extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(
                         'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'),
-                    fit: BoxFit.cover)),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                        Colors.green.withOpacity(0.15), BlendMode.darken))),
             height: 250,
             width: MediaQuery.of(context).size.width,
             child: null,
@@ -25,19 +28,20 @@ class DescPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'TITLE',
+                        'MOMBALA',
                         style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.w600,
                             height: 0.85),
                       ),
                       Text(
-                        'categories',
+                        'American',
                         style: TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w600,
@@ -49,6 +53,7 @@ class DescPage extends StatelessWidget {
                 Icon(
                   Icons.favorite,
                   color: Colors.red,
+                  size: 42,
                 ),
               ],
             ),
@@ -57,7 +62,7 @@ class DescPage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
             child: Text(
-                'lorem ipsum dolor sit amet, consect et nisl, sed do eiusmod tempor incididunt ut lab'),
+                'lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl sed do eiusmod tempor incididunt ut lab'),
           ),
         ],
       ),
