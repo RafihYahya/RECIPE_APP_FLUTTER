@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
-import 'package:recipe_app/pages/desc_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 import 'package:recipe_app/pages/loading_page.dart';
