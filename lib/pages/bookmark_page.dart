@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
+import 'package:recipe_app/data/bk_data.dart';
 
 class BookMarkPage extends StatefulWidget {
   // callback and variable for dark mode
@@ -72,6 +73,10 @@ class _BookMarkPageState extends State<BookMarkPage> {
                       BKCard(
                         dark: widget.dark,
                         callback2: widget.callback2,
+                        bkdata: Bkdata(
+                            MediaQuery.of(context).size.width,
+                            40 + MediaQuery.of(context).size.height * 0.1,
+                            false),
                       ),
                     ],
                   )),
