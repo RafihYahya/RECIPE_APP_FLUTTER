@@ -7,7 +7,8 @@ class DescPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: !dark! ? Color(0xFFDDDDDD) : Color(0xFF252525),
+      backgroundColor:
+          !dark! ? const Color(0xFFDDDDDD) : const Color(0xFF252525),
       body: Column(
         children: [
           Stack(
@@ -19,8 +20,9 @@ class DescPage extends StatelessWidget {
                             'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D'),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                            Colors.green.withOpacity(0.15), BlendMode.darken))),
-                height: 250,
+                            Color(0xFF04B400).withOpacity(0.15),
+                            BlendMode.darken))),
+                height: 230 + MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width,
                 child: null,
               ),
@@ -53,20 +55,21 @@ class DescPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.w600,
-                            height: 0.85),
+                            height: 0.85,
+                            color: dark! ? Colors.white : Colors.black),
                       ),
                       Text(
                         'American',
                         style: TextStyle(
-                            fontSize: 14.0,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.w600,
-                            color: Colors.green),
+                            color: Color(0xFF04B400)),
                       )
                     ],
                   ),
                 ),
                 Icon(
-                  Icons.favorite,
+                  Icons.favorite_border,
                   color: Colors.red,
                   size: 42,
                 ),
@@ -77,8 +80,30 @@ class DescPage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
             child: Text(
-                'lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl sed do eiusmod tempor incididunt ut lab'),
+                'lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl,lorem ipsum dolor sit amet, consect et nisl sed do eiusmod tempor incididunt ut lab',
+                style: TextStyle(color: dark! ? Colors.white : Colors.black)),
           ),
+          Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.065,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Color(0xFF04B400),
+                    borderRadius: BorderRadius.circular(40.0)),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 65,
+                child: Center(
+                  child: Text(
+                    'How To Make',
+                    style:
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
