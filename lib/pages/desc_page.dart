@@ -5,8 +5,12 @@ class DescPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: null,
+    return Column(
+      children: [
+        Container(),
+        Text('data'),
+        Text('Desc'),
+      ],
     );
   }
 }
