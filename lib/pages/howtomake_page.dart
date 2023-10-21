@@ -45,13 +45,19 @@ class HowToPage extends StatelessWidget {
                               child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    color: Color(0xFFC7C7C7),
+                                    color: !dark!
+                                        ? Color(0xFFC7C7C7)
+                                        : Color.fromARGB(255, 54, 54, 54),
                                   ),
                                   height: 100,
                                   child: Center(
                                       child: Text(
                                     '10 EGG',
-                                    style: TextStyle(fontSize: 18.0),
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: dark!
+                                            ? Colors.white
+                                            : Colors.black),
                                   ))),
                             ),
                             SizedBox(
@@ -61,12 +67,18 @@ class HowToPage extends StatelessWidget {
                               child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    color: const Color(0xFFC7C7C7),
+                                    color: !dark!
+                                        ? Color(0xFFC7C7C7)
+                                        : Color.fromARGB(255, 54, 54, 54),
                                   ),
                                   height: 100,
                                   child: Center(
                                       child: Text('10 EGG',
-                                          style: TextStyle(fontSize: 18.0)))),
+                                          style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: dark!
+                                                  ? Colors.white
+                                                  : Colors.black)))),
                             ),
                           ],
                         ),
@@ -80,12 +92,18 @@ class HowToPage extends StatelessWidget {
                               child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    color: Color(0xFFC7C7C7),
+                                    color: !dark!
+                                        ? Color(0xFFC7C7C7)
+                                        : Color.fromARGB(255, 54, 54, 54),
                                   ),
                                   height: 100,
                                   child: Center(
                                       child: Text('10 EGG',
-                                          style: TextStyle(fontSize: 18.0)))),
+                                          style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: dark!
+                                                  ? Colors.white
+                                                  : Colors.black)))),
                             ),
                             SizedBox(
                               width: 28.0,
@@ -94,12 +112,18 @@ class HowToPage extends StatelessWidget {
                               child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    color: Color(0xFFC7C7C7),
+                                    color: !dark!
+                                        ? Color(0xFFC7C7C7)
+                                        : Color.fromARGB(255, 54, 54, 54),
                                   ),
                                   height: 100,
                                   child: Center(
                                       child: Text('10 EGG',
-                                          style: TextStyle(fontSize: 18.0)))),
+                                          style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: dark!
+                                                  ? Colors.white
+                                                  : Colors.black)))),
                             ),
                           ],
                         ),
@@ -125,11 +149,14 @@ class HowToPage extends StatelessWidget {
         ),
         Container(
           height: 45,
-          color: Colors.black45,
+          decoration: BoxDecoration(
+            color: !dark! ? Colors.black45 : Colors.white38,
+            borderRadius: BorderRadius.only(bottomRight: Radius.circular(15.0)),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: const Icon(
+          child: Icon(
             Icons.close,
-            color: Colors.white,
+            color: !dark! ? Colors.white : Colors.black,
             size: 32,
           ),
         ),
