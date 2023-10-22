@@ -35,7 +35,7 @@ class HowToPage extends StatelessWidget {
                   child: PageView.builder(
                     physics: PageScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 15,
+                    itemCount: 12,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Column(
@@ -147,9 +147,9 @@ class HowToPage extends StatelessWidget {
                   ),
                 ),
                 ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 20,
+                    itemCount: 12,
                     itemBuilder: ((context, index) => Padding(
                           padding: const EdgeInsets.symmetric(vertical: 18.0),
                           child: Column(
@@ -172,17 +172,24 @@ class HowToPage extends StatelessWidget {
                                                     fontSize: 24,
                                                     fontWeight: FontWeight.w900,
                                                     color: Color.fromRGBO(
-                                                        0,
-                                                        0 + index * 20,
-                                                        index,
+                                                        !dark! ? 0 : 255,
+                                                        !dark!
+                                                            ? 0 + index * 20
+                                                            : 255,
+                                                        !dark!
+                                                            ? index
+                                                            : 255 - index * 10,
                                                         1))),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                     Container(
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          color: Color(0xFFB5B5B5)),
+                                          color: !dark!
+                                              ? const Color(0xFFB5B5B5)
+                                              : Color.fromARGB(
+                                                  255, 56, 56, 56)),
                                       height: 130,
                                       width: 215,
                                       child: Center(
@@ -200,13 +207,17 @@ class HowToPage extends StatelessWidget {
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.w900,
                                                   color: Color.fromRGBO(
-                                                      0,
-                                                      0 + index * 20,
-                                                      index,
+                                                      !dark! ? 0 : 255,
+                                                      !dark!
+                                                          ? 0 + index * 20
+                                                          : 255,
+                                                      !dark!
+                                                          ? index
+                                                          : 255 - index * 10,
                                                       1)),
                                             ),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                   ],
                                 ),
                               )
