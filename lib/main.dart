@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/data/recipe_lists.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/ecoking_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
 import 'package:recipe_app/pages/loading_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -39,7 +41,6 @@ class _RecipeAppState extends State<RecipeApp> {
       ),
       EcokingPage(),
     ];
-
     return MaterialApp(
       theme: ThemeData(
         fontFamily: GoogleFonts.inter().fontFamily,
@@ -49,7 +50,8 @@ class _RecipeAppState extends State<RecipeApp> {
           ? ThemeData.dark(useMaterial3: true)
           : ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: routes[indexOfPages],
+      home: ChangeNotifierProvider(
+          create: (context) => RecipeList(), child: routes[indexOfPages]),
     );
   }
 }

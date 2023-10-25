@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 
 //FOR Local Storage
 class EnvironementSettings {
-  final Color maincolor;
-  final double mainwidth;
-  final double mainheight;
-  final double maintextsize;
-  final Color maintextcolor;
-  final bool firstTime;
+  Color maincolor;
+  double mainwidth;
+  double mainheight;
+  double maintextsize;
+  Color maintextcolor;
+  bool firstTime;
+  double mainiconsize;
+  int maxNumberOfRequests;
+  int maxNumberOfDisplayedRequests;
 
-  final double mainiconsize;
-
-  final int maxNumberOfRequests;
-  final int maxNumberOfDisplayedRequests;
-
-  const EnvironementSettings(
+  EnvironementSettings(
       this.maincolor,
       this.mainwidth,
       this.mainheight,
@@ -24,4 +22,6 @@ class EnvironementSettings {
       this.mainiconsize,
       this.maxNumberOfDisplayedRequests,
       this.maxNumberOfRequests);
+
+  void setToDefaults() {}
 }

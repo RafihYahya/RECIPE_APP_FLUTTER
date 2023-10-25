@@ -4,11 +4,11 @@ class RecipeData {
   final String title;
   final String? shortDescription;
   final String? imageUrl;
-  final bool isBookmarked;
+  bool isBookmarked;
   final RecipeDataDescription recipeDescription;
-  final bool isAlreadyread;
+  bool isAlreadyread;
 
-  const RecipeData(
+  RecipeData(
       {required this.title,
       this.shortDescription,
       this.imageUrl,

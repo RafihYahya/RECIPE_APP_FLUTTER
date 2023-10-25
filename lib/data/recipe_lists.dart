@@ -1,17 +1,20 @@
+import 'package:flutter/widgets.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 
-class RecipeList {
-  final List<RecipeData>? recipeDataList;
-  final int? fetchRangeIndicator;
+class RecipeList extends ChangeNotifier {
+  List<RecipeData>? recipeDataList;
+  int? fetchRangeIndicator;
   //IF YOU UPDATE SETTINGS DONT FORGET TO UPDATE THIS ONE WITH IT .
-  const RecipeList({this.recipeDataList, this.fetchRangeIndicator});
+  RecipeList({this.recipeDataList, this.fetchRangeIndicator});
 
   void addRecipe(RecipeData data) {
     recipeDataList!.add(data);
+    notifyListeners();
   }
 
   void removeRecipe(int index) {
     recipeDataList!.removeAt(index);
+    notifyListeners();
   }
 
   int stringOfByOneCharDetector(String value1, String value2) {
