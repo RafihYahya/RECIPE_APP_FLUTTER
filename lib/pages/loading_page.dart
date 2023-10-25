@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
+import 'package:recipe_app/globals.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF04B400),
+      backgroundColor: ourSettings(context, false).maincolor,
       body: Container(
         child: Center(
           child: Text(

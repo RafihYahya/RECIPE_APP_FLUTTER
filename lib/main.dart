@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
+import 'package:recipe_app/data/settings.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/ecoking_page.dart';
@@ -20,6 +21,11 @@ class RecipeApp extends StatefulWidget {
 }
 
 class _RecipeAppState extends State<RecipeApp> {
+  EnvironementSettings mySettings = EnvironementSettings(
+      maincolor: const Color(0xFF04B400),
+      firstTime: true,
+      maxNumberOfRequests: 100,
+      maxNumberOfDisplayedRequests: 25);
   bool dark = false;
   void themeswitcher() {
     setState(() {
@@ -50,8 +56,17 @@ class _RecipeAppState extends State<RecipeApp> {
           ? ThemeData.dark(useMaterial3: true)
           : ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider(
-          create: (context) => RecipeList(), child: routes[indexOfPages]),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => RecipeList(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => mySettings,
+          ),
+        ],
+        child: routes[indexOfPages],
+      ),
     );
   }
 }
