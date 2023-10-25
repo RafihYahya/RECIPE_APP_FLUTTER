@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
+import 'package:recipe_app/pages/ecoking_page.dart';
 import 'package:recipe_app/pages/home_page.dart';
-import 'package:recipe_app/pages/howtomake_page.dart';
 import 'package:recipe_app/pages/loading_page.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class _RecipeAppState extends State<RecipeApp> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> routes = [
-      const LoadingPage(),
+      LoadingPage(),
       HomePage(
         dark: dark,
         callback2: themeswitcher,
@@ -36,9 +37,7 @@ class _RecipeAppState extends State<RecipeApp> {
         dark: dark,
         callback2: themeswitcher,
       ),
-      HowToPage(
-        dark: dark,
-      )
+      EcokingPage(),
     ];
 
     return MaterialApp(
@@ -50,7 +49,7 @@ class _RecipeAppState extends State<RecipeApp> {
           ? ThemeData.dark(useMaterial3: true)
           : ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: routes[3],
+      home: routes[indexOfPages],
     );
   }
 }
