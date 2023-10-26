@@ -15,6 +15,7 @@ Future<void> fetchRecipeData(BuildContext context) async {
   final data = jsonDecode(response.body);
 
   if (response.statusCode == 200) {
+    // ignore: use_build_context_synchronously
     orderRecipeData(data, context);
     // return RecipeData.fromjson(data['recipes'][0]);
   } else {
