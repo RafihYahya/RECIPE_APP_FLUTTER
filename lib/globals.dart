@@ -16,3 +16,15 @@ const String spoonacularUrlRecipe = 'https://api.spoonacular.com/recipes/';
 
 const String ingredBaseUrl =
     'https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg';
+
+List<String> constCategory = [
+  "vegetarian",
+  "vegan",
+  "glutenFree",
+  "dairyFree",
+  "veryHealthy",
+  "cheap",
+  "veryPopular",
+  "sustainable",
+  "lowFodmap",
+];
