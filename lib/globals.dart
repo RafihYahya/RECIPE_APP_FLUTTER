@@ -52,3 +52,25 @@ List<String> constCategory = [
   'sustainable',
   'lowFodmap',
 ];
+List<String> constCategoryBetterFormatting = [
+  'Random',
+  'vegetarian',
+  'vegan',
+  'gluten Free',
+  'dairy Free',
+  'very Healthy',
+  'cheap',
+  'very Popular',
+  'sustainable',
+  'low Food map',
+];
+
+////////////////////////////////////////////////////////////////
+/// Functions Utils
+////////////////////////////////////////////////////////////////
+///
+String titleParser(String title) =>
+    '${title.split(' ')[0]} + ${title.split(' ')[1]}';
+
+String htmlRegExMiniParser(String desc) =>
+    desc.replaceAll(RegExp(r'<(.*?)>'), '');

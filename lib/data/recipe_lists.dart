@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:recipe_app/data/recipe_data.dart';
-import 'package:recipe_app/globals.dart';
 
 class RecipeList extends ChangeNotifier {
   List<List<RecipeData>>? recipeDataList;

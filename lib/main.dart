@@ -25,10 +25,18 @@ class _RecipeAppState extends State<RecipeApp> {
     });
   }
 
+  void routesSwitcher(int index) {
+    setState(() {
+      indexOfPages = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> routes = [
-      LoadingPage(),
+      LoadingPage(
+        callbackindex: routesSwitcher,
+      ),
       HomePage(
         dark: dark,
         callback2: themeswitcher,

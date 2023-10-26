@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:recipe_app/components/viewbuilder_horz.dart';
+import 'package:recipe_app/data/recipe_lists.dart';
+import 'package:recipe_app/globals.dart';
 
 class HomePage extends StatefulWidget {
   final bool? dark;
@@ -50,34 +53,36 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         drawer: Drawer(),
-        body: PageView.builder(
-          //for page scroll
-          physics: const PageScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          itemCount: 20,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
-                    child: Text(
-                      'American',
-                      style: const TextStyle(fontSize: 36.0),
-                      textAlign: TextAlign.center,
+        body: Consumer<RecipeList>(
+          builder: (context, value, child) => PageView.builder(
+            //for page scroll
+            physics: const PageScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: 10,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
+                      child: Text(
+                        constCategoryBetterFormatting[index].toUpperCase(),
+                        style: const TextStyle(fontSize: 36.0),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                    flex: 7,
-                    child: ViewHorz(
-                      dark: widget.dark,
-                    ))
-              ],
+                  Expanded(
+                      flex: 7,
+                      child: ViewHorz(
+                        dark: widget.dark,
+                      ))
+                ],
+              ),
             ),
           ),
         ));

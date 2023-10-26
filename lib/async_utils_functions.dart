@@ -26,17 +26,36 @@ void orderRecipeData(dynamic data) {
   for (var i = 0; i < dataLength; i++) {
     bool oneIsChecked = false;
     for (var j = 0; j < constCategory.length; j++) {
+      // ignore: unnecessary_string_interpolations
       if (data['recipes'][i]['${constCategory[j]}'] == true) {
         oneIsChecked = true;
         myRecipeList.recipeDataList![j]
             .add(RecipeData.fromjson(data['recipes'][i]));
-        print('succ');
+        //print('succ');
       }
     }
     if (oneIsChecked == false) {
+      myRecipeList.recipeDataList![8]
+          .add(RecipeData.fromjson(data['recipes'][i]));
       // .recipeDataList[totalCategoriesNum]
       //.add(RecipeData.fromjson(data['recipes'][i]));
     }
   }
-  print(myRecipeList.recipeDataList![0][0].title);
+  //print(myRecipeList.recipeDataList![0][0].title);
 }
+
+
+////////////////////////////////////////////////////////////////
+//----------------------------------------------------------------
+// FireBase Utils Here
+//----------------------------------------------------------------
+////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////
+//----------------------------------------------------------------
+//Local Storage Utils Here
+//----------------------------------------------------------------
+////////////////////////////////////////////////////////////////
