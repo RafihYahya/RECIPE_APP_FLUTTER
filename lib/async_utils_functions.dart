@@ -27,7 +27,7 @@ void orderRecipeData(dynamic data, BuildContext context) {
   int dataLength = data.length;
   for (var i = 0; i < dataLength; i++) {
     bool oneIsChecked = false;
-    for (var j = 0; j < constCategory.length; j++) {
+    for (var j = 0; j <= constCategory.length; j++) {
       if (data[i][constCategory[j]] == true) {
         oneIsChecked = true;
         accessRList(context, false)
@@ -37,7 +37,7 @@ void orderRecipeData(dynamic data, BuildContext context) {
     }
     if (oneIsChecked == false) {
       accessRList(context, false)
-          .recipeDataList[9]
+          .recipeDataList[totalCategoriesNum]
           .add(RecipeData.fromjson(data['recipes'][i]));
     }
   }
