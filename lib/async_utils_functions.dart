@@ -3,11 +3,10 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/data/recipe_data.dart';
-import 'package:flutter/material.dart';
 
-Future<void> fetchRecipeData(BuildContext context) async {
+Future<void> fetchRecipeData() async {
   final response = await http.get(
-    Uri.parse('$spoonacularUrlRecipe/random'),
+    Uri.parse('$spoonacularUrlRecipe/random?number=10'),
     headers: {
       'x-api-key': apiKey,
     },
@@ -15,30 +14,29 @@ Future<void> fetchRecipeData(BuildContext context) async {
   final data = jsonDecode(response.body);
 
   if (response.statusCode == 200) {
-    // ignore: use_build_context_synchronously
-    orderRecipeData(data, context);
+    orderRecipeData(data);
     // return RecipeData.fromjson(data['recipes'][0]);
   } else {
     throw Exception('Failed to load Data');
   }
 }
 
-void orderRecipeData(dynamic data, BuildContext context) {
+void orderRecipeData(dynamic data) {
   int dataLength = data.length;
   for (var i = 0; i < dataLength; i++) {
     bool oneIsChecked = false;
-    for (var j = 0; j <= constCategory.length; j++) {
-      if (data[i][constCategory[j]] == true) {
+    for (var j = 0; j < constCategory.length; j++) {
+      if (data['recipes'][i]['${constCategory[j]}'] == true) {
         oneIsChecked = true;
-        accessRList(context, false)
-            .recipeDataList[j]
+        myRecipeList.recipeDataList![j]
             .add(RecipeData.fromjson(data['recipes'][i]));
+        print('succ');
       }
     }
     if (oneIsChecked == false) {
-      accessRList(context, false)
-          .recipeDataList[totalCategoriesNum]
-          .add(RecipeData.fromjson(data['recipes'][i]));
+      // .recipeDataList[totalCategoriesNum]
+      //.add(RecipeData.fromjson(data['recipes'][i]));
     }
   }
+  print(myRecipeList.recipeDataList![0][0].title);
 }

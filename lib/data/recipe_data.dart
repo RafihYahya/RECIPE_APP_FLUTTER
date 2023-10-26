@@ -17,7 +17,7 @@ class RecipeData {
       required this.recipeDescription,
       required this.isAlreadyread});
 
-  factory RecipeData.fromjson(Map<dynamic, dynamic> json) {
+  factory RecipeData.fromjson(dynamic json) {
     return RecipeData(
         title: json['title'],
         imageUrl: json['image'],

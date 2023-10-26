@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/async_utils_functions.dart';
-import 'package:recipe_app/data/recipe_lists.dart';
 import 'package:recipe_app/globals.dart';
 
 class LoadingPage extends StatefulWidget {
@@ -15,7 +14,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    fetchRecipeData(context);
+    fetchRecipeData();
   }
 
   @override
