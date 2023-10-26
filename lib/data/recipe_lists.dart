@@ -2,18 +2,18 @@ import 'package:flutter/widgets.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 
 class RecipeList extends ChangeNotifier {
-  List<RecipeData>? recipeDataList;
+  List<List<RecipeData>>? recipeDataList;
   int? fetchRangeIndicator;
   //IF YOU UPDATE SETTINGS DONT FORGET TO UPDATE THIS ONE WITH IT .
   RecipeList({this.recipeDataList, this.fetchRangeIndicator});
 
-  void addRecipe(RecipeData data) {
-    recipeDataList!.add(data);
+  void addRecipe(RecipeData data, int index) {
+    recipeDataList![index].add(data);
     notifyListeners();
   }
 
-  void removeRecipe(int index) {
-    recipeDataList!.removeAt(index);
+  void removeRecipe(int index, int index2) {
+    recipeDataList![index].removeAt(index2);
     notifyListeners();
   }
 
@@ -32,13 +32,13 @@ class RecipeList extends ChangeNotifier {
     return total;
   }
 
-  RecipeData? findRecipe(String title) {
-    return recipeDataList!.firstWhere(
+  RecipeData? findRecipe(String title, int index) {
+    return recipeDataList![index].firstWhere(
         (data) => stringOfByOneCharDetector(data.title, title) <= 1);
   }
 
-  Iterable<RecipeData>? findListRecipe(String title) {
-    return recipeDataList!
+  Iterable<RecipeData>? findListRecipe(String title, int index) {
+    return recipeDataList![index]
         .where((data) => stringOfByOneCharDetector(data.title, title) <= 1);
   }
 }

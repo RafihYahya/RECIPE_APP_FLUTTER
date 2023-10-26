@@ -13,3 +13,6 @@ dynamic ourSettings(BuildContext context, bool listen) =>
 // RELEVANT API INFO
 const String apiKey = '95621be83aca4fdbb584f2a7759e9509';
 const String spoonacularUrlRecipe = 'https://api.spoonacular.com/recipes/';
+
+const String ingredBaseUrl =
+    'https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg';

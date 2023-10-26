@@ -1,6 +1,8 @@
+import 'package:recipe_app/data/recipe_ingred.dart';
+
 class RecipeDataDescription {
   final String? fullDescription;
-  final List<String> ingredients;
+  final List<RecipeIngredient> ingredients;
   final List<String> instructions;
   final String? readMoreUrl;
 
