@@ -81,7 +81,7 @@ String titleParserAndSafety(String title) {
       ? temp0[0] +
           temp0[1] +
           (temp0[3] == 'and' || temp0[3] == 'with' ? temp0[3] : '')
-      : titleParser(title);
+      : (temp0.length <= 1 ? temp0[0] : temp0[0] + temp0[1]);
   return temp1;
 }
 

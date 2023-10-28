@@ -7,7 +7,7 @@ class RecipeData {
   final String fullTitle;
   final String? shortDescription;
   final String? imageUrl;
-  bool isBookmarked;
+  bool isNotBookmarked;
   final RecipeDataDescription recipeDescription;
   bool isAlreadyread;
 
@@ -16,19 +16,21 @@ class RecipeData {
     required this.fullTitle,
     this.shortDescription,
     this.imageUrl,
-    required this.isBookmarked,
+    required this.isNotBookmarked,
     required this.recipeDescription,
     required this.isAlreadyread,
   });
+
+  static int checkSize(String jsonString) => jsonString.length >= 50 ? 50 : 5;
 
   factory RecipeData.fromjson(dynamic json) {
     return RecipeData(
         title: titleParserAndSafety(json['title']),
         fullTitle: json['title'],
         shortDescription:
-            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, 100)}...',
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, (RecipeData.checkSize(json['summary'])))}...',
         imageUrl: json['image'],
-        isBookmarked: false,
+        isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(
             fullDescription: htmlRegExMiniParser(json['summary']),
             ingredients: [RecipeIngredient(number: 1, type: 'miaw')],
