@@ -83,11 +83,12 @@ class _DescPageState extends State<DescPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        widget.data.isBookmarked = !widget.data.isBookmarked;
+                        widget.data.isNotBookmarked =
+                            !widget.data.isNotBookmarked;
                       });
                     },
                     child: Icon(
-                      widget.data.isBookmarked
+                      widget.data.isNotBookmarked
                           ? Icons.favorite_border
                           : Icons.favorite,
                       color: Colors.red,
