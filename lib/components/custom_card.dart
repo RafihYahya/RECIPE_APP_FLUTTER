@@ -27,7 +27,7 @@ class CustomCardMainP extends StatelessWidget {
             child: null),
         Column(
           children: [
-            const Expanded(flex: 6, child: SizedBox()),
+            const Expanded(flex: 7, child: SizedBox()),
             Expanded(
                 flex: 8,
                 child: Padding(
@@ -40,7 +40,7 @@ class CustomCardMainP extends StatelessWidget {
                         const SizedBox(height: 8.0),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 14.0),
-                          child: Text(data.title,
+                          child: Text((data.title),
                               textAlign: TextAlign.start,
                               style: const TextStyle(
                                   fontSize: 42.0,

@@ -58,37 +58,68 @@ class _HomePageState extends State<HomePage> {
             //for page scroll
             physics: const PageScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemCount: 10,
+            itemCount: 8,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
-                      child: Text(
-                        constCategoryBetterFormatting[index].toUpperCase(),
-                        style: const TextStyle(fontSize: 36.0),
-                        textAlign: TextAlign.center,
-                      ),
+              child: value.recipeDataList![index].isNotEmpty
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
+                            child: Text(
+                              constCategoryBetterFormatting2[index]
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 36.0),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                            flex: 7,
+                            child: ViewHorz(
+                              dark: widget.dark,
+                              // api sequence in different order
+                              //so had to use custom ternary for manually
+                              //changing the order
+                              recipeListValue: index == 0
+                                  ? value.recipeDataList![9]
+                                  : value.recipeDataList![index - 1],
+                            ))
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
+                            child: Text(
+                              constCategoryBetterFormatting[index]
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 36.0),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                            flex: 7,
+                            child: ViewHorz(
+                              dark: widget.dark,
+                              // api sequence in different order
+                              //so had to use custom ternary for manually
+                              //changing the order
+                              recipeListValue: index == 0
+                                  ? value.recipeDataList![9]
+                                  : value.recipeDataList![index - 1],
+                            ))
+                      ],
                     ),
-                  ),
-                  Expanded(
-                      flex: 7,
-                      child: ViewHorz(
-                        dark: widget.dark,
-                        // api sequence in different order
-                        //so had to use custom ternary for manually
-                        //changing the order
-                        recipeListValue: index == 0
-                            ? value.recipeDataList![9]
-                            : value.recipeDataList![index - 1],
-                      ))
-                ],
-              ),
             ),
           ),
         ));

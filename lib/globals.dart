@@ -51,6 +51,15 @@ List<String> constCategory = [
   'glutenFree',
   'dairyFree',
   'veryHealthy',
+  'veryPopular',
+  'lowFodmap',
+];
+List<String> constCategory2 = [
+  'vegetarian',
+  'vegan',
+  'glutenFree',
+  'dairyFree',
+  'veryHealthy',
   'cheap',
   'veryPopular',
   'sustainable',
@@ -68,6 +77,16 @@ List<String> constCategoryBetterFormatting = [
   'sustainable',
   'low Food map',
 ];
+List<String> constCategoryBetterFormatting2 = [
+  'Random',
+  'vegetarian',
+  'vegan',
+  'gluten Free',
+  'dairy Free',
+  'very Healthy',
+  'very Popular',
+  'low Food map',
+];
 
 ////////////////////////////////////////////////////////////////
 /// Functions Utils
@@ -80,8 +99,8 @@ String titleParserAndSafety(String title) {
   String temp1 = temp0.length > 4
       ? temp0[0] +
           temp0[1] +
-          (temp0[3] == 'and' || temp0[3] == 'with' ? temp0[3] : '')
-      : (temp0.length <= 1 ? temp0[0] : temp0[0] + temp0[1]);
+          (temp0[3] == 'and' || temp0[3] == 'with' ? '\n${temp0[3]}' : '')
+      : (temp0.length <= 1 ? temp0[0] : '${temp0[0]}\n${temp0[1]}');
   return temp1;
 }
 
