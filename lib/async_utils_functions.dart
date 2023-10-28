@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/data/recipe_data.dart';
