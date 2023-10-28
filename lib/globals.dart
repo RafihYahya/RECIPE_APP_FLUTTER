@@ -9,7 +9,8 @@ import 'package:recipe_app/data/settings.dart';
 //----------------------------------------------------------------
 RecipeList myRecipeList = RecipeList(
     fetchRangeIndicator: 5,
-    recipeDataList: List.filled(totalCategoriesNum, []));
+    recipeDataList:
+        List.generate(constCategoryBetterFormatting.length, (i) => []));
 EnvironementSettings mySettings = EnvironementSettings(
     maincolor: const Color(0xFF04B400),
     firstTime: true,
@@ -41,6 +42,9 @@ const String ingredBaseUrl =
 
 const int totalCategoriesNum = 8;
 
+const String defaultImageUrl =
+    'https://th.bing.com/th/id/R.e23184eb927ff24d2539e5dad7ad7b67?rik=%2b0ECfK%2f23Wg%2bLg&pid=ImgRaw&r=0';
+
 List<String> constCategory = [
   'vegetarian',
   'vegan',
@@ -69,8 +73,25 @@ List<String> constCategoryBetterFormatting = [
 /// Functions Utils
 ////////////////////////////////////////////////////////////////
 ///
-String titleParser(String title) =>
-    '${title.split(' ')[0]} + ${title.split(' ')[1]}';
+String titleParser(String title) => title.split(' ')[0] + title.split(' ')[1];
+
+String titleParserAndSafety(String title) {
+  List<String> temp0 = title.split(' ');
+  String temp1 = temp0.length > 4
+      ? temp0[0] +
+          temp0[1] +
+          (temp0[3] == 'and' || temp0[3] == 'with' ? temp0[3] : '')
+      : titleParser(title);
+  return temp1;
+}
+
+String bigParagrapheCutter(String desc) {
+  List<String> descList = desc.split('.');
+  String descListToString = (descList[0] + descList[1]).length > 10
+      ? (descList[0] + descList[1])
+      : (descList[0] + descList[1] + descList[2]);
+  return descListToString;
+}
 
 String htmlRegExMiniParser(String desc) =>
     desc.replaceAll(RegExp(r'<(.*?)>'), '');

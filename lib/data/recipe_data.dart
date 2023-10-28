@@ -11,19 +11,22 @@ class RecipeData {
   final RecipeDataDescription recipeDescription;
   bool isAlreadyread;
 
-  RecipeData(
-      {required this.title,
-      required this.fullTitle,
-      this.shortDescription,
-      this.imageUrl,
-      required this.isBookmarked,
-      required this.recipeDescription,
-      required this.isAlreadyread});
+  RecipeData({
+    required this.title,
+    required this.fullTitle,
+    this.shortDescription,
+    this.imageUrl,
+    required this.isBookmarked,
+    required this.recipeDescription,
+    required this.isAlreadyread,
+  });
 
   factory RecipeData.fromjson(dynamic json) {
     return RecipeData(
-        title: titleParser(json['title']),
+        title: titleParserAndSafety(json['title']),
         fullTitle: json['title'],
+        shortDescription:
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, 100)}...',
         imageUrl: json['image'],
         isBookmarked: false,
         recipeDescription: RecipeDataDescription(

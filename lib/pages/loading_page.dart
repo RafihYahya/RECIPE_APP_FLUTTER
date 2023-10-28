@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/globals.dart';
 
@@ -38,7 +37,7 @@ class _LoadingPageState extends State<LoadingPage> {
                     widget.callbackindex(1);
                   });
                 },
-                child: Text('Click ME'))
+                child: Text('Click ME')),
           ],
         ),
       ),

@@ -80,6 +80,12 @@ class _HomePageState extends State<HomePage> {
                       flex: 7,
                       child: ViewHorz(
                         dark: widget.dark,
+                        // api sequence in different order
+                        //so had to use custom ternary for manually
+                        //changing the order
+                        recipeListValue: index == 0
+                            ? value.recipeDataList![9]
+                            : value.recipeDataList![index - 1],
                       ))
                 ],
               ),
