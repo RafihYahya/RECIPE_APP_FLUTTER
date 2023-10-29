@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
                             child: Text(
-                              constCategoryBetterFormatting[index]
+                              constCategoryBetterFormatting2[index]
                                   .toUpperCase(),
                               style: const TextStyle(fontSize: 36.0),
                               textAlign: TextAlign.center,

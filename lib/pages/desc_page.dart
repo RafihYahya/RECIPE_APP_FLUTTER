@@ -25,7 +25,8 @@ class _DescPageState extends State<DescPage> {
               Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(widget.data.imageUrl!),
+                        image: NetworkImage(
+                            widget.data.imageUrl ?? widget.data.imageUrl!),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
                             const Color(0xFF04B400).withOpacity(0.15),
