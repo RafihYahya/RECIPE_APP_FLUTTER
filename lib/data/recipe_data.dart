@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/data/recipe_ingred.dart';
 import 'package:recipe_app/globals.dart';
 
 class RecipeData {
-  final String title;
-  final String fullTitle;
+  final String? title;
+  final String? fullTitle;
   final String? shortDescription;
   final String? imageUrl;
   bool isNotBookmarked;
@@ -12,8 +14,8 @@ class RecipeData {
   bool isAlreadyread;
 
   RecipeData({
-    required this.title,
-    required this.fullTitle,
+    this.title,
+    this.fullTitle,
     this.shortDescription,
     this.imageUrl,
     required this.isNotBookmarked,
@@ -21,20 +23,45 @@ class RecipeData {
     required this.isAlreadyread,
   });
 
-  static int checkSize(String jsonString) => jsonString.length >= 50 ? 50 : 5;
+  static int checkSize(String jsonString) =>
+      htmlRegExMiniParser(jsonString).length > 75 ? 65 : jsonString.length;
+
+  static List<RecipeIngredient> getIngredient(dynamic json) {
+    List<RecipeIngredient> myIngd = [];
+    for (var ingd in json['extendedIngredients']) {
+      myIngd.add(RecipeIngredient(
+          number: ingd['amount'],
+          type: ingd['name'],
+          imageUrl: ingredBaseUrl + (ingd['image'] ?? defaultImageUrl)));
+    }
+    return myIngd;
+  }
+
+  static List<String> getInstruct(dynamic json) {
+    List<String> myInst = [];
+    if (json['analyzedInstructions'].length >= 1) {
+      for (var instr in json['analyzedInstructions'][0]['steps']) {
+        myInst.add(instr['step']);
+      }
+      return myInst;
+    } else {
+      myInst.add('No Instructions');
+      return myInst;
+    }
+  }
 
   factory RecipeData.fromjson(dynamic json) {
     return RecipeData(
-        title: titleParserAndSafety(json['title']),
+        title: titleParserAndSafety(json['title']).replaceAll(',', ' '),
         fullTitle: json['title'],
         shortDescription:
-            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, (RecipeData.checkSize(json['summary'])))}...',
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, RecipeData.checkSize(json['summary']))}...',
         imageUrl: json['image'],
         isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(
             fullDescription: htmlRegExMiniParser(json['summary']),
-            ingredients: [RecipeIngredient(number: 1, type: 'miaw')],
-            instructions: ['hello']),
+            ingredients: RecipeData.getIngredient(json),
+            instructions: RecipeData.getInstruct(json)),
         isAlreadyread: false);
   }
 }

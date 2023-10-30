@@ -34,11 +34,11 @@ class RecipeList extends ChangeNotifier {
 
   RecipeData? findRecipe(String title, int index) {
     return recipeDataList![index].firstWhere(
-        (data) => stringOfByOneCharDetector(data.title, title) <= 1);
+        (data) => stringOfByOneCharDetector(data.title!, title) <= 1);
   }
 
   Iterable<RecipeData>? findListRecipe(String title, int index) {
     return recipeDataList![index]
-        .where((data) => stringOfByOneCharDetector(data.title, title) <= 1);
+        .where((data) => stringOfByOneCharDetector(data.title!, title) <= 1);
   }
 }

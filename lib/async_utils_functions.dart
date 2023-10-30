@@ -6,7 +6,8 @@ import 'package:recipe_app/data/recipe_data.dart';
 
 Future<void> fetchRecipeData() async {
   final response = await http.get(
-    Uri.parse('$spoonacularUrlRecipe/random?number=100'),
+    Uri.parse(
+        '$spoonacularUrlRecipe/random?number=${mySettings.maxNumberOfRequests}'),
     headers: {
       'x-api-key': apiKey,
     },

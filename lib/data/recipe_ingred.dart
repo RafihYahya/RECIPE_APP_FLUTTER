@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class RecipeIngredient {
-  int number;
+  double? id;
+  double number;
   String type;
   Image? image;
+  String? imageUrl;
 
-  RecipeIngredient({required this.number, required this.type});
+  RecipeIngredient(
+      {this.id,
+      required this.number,
+      required this.type,
+      this.image,
+      this.imageUrl});
 }

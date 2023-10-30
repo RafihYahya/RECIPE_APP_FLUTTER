@@ -40,7 +40,7 @@ class CustomCardMainP extends StatelessWidget {
                         const SizedBox(height: 8.0),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 12.0),
-                          child: Text((data.title),
+                          child: Text((data.title ?? 'No Title'),
                               textAlign: TextAlign.start,
                               style: const TextStyle(
                                   fontSize: 38.0,

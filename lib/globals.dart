@@ -14,7 +14,7 @@ RecipeList myRecipeList = RecipeList(
 EnvironementSettings mySettings = EnvironementSettings(
     maincolor: const Color(0xFF04B400),
     firstTime: true,
-    maxNumberOfRequests: 100,
+    maxNumberOfRequests: 20,
     maxNumberOfDisplayedRequests: 25);
 
 int indexOfPages = 0;
@@ -37,8 +37,7 @@ dynamic ourSettings(BuildContext context, bool listen) =>
 const String apiKey = '95621be83aca4fdbb584f2a7759e9509';
 const String spoonacularUrlRecipe = 'https://api.spoonacular.com/recipes/';
 
-const String ingredBaseUrl =
-    'https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg';
+const String ingredBaseUrl = 'https://spoonacular.com/cdn/ingredients_100x100/';
 
 const int totalCategoriesNum = 8;
 
@@ -97,7 +96,7 @@ String titleParser(String title) => title.split(' ')[0] + title.split(' ')[1];
 String titleParserAndSafety(String title) {
   List<String> temp0 = title.split(' ');
   String temp1 = temp0.length > 3
-      ? '${temp0[0]} ${temp0[1]} ${temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'with' ? '\n${temp0[2]}' : ''}'
+      ? '${temp0[0]} ${temp0[1]} ${temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with' ? '\n${temp0[2]}' : ''}'
       : (temp0.length <= 1 ? temp0[0] : '${temp0[0]}\n${temp0[1]}');
   return temp1.toUpperCase();
 }

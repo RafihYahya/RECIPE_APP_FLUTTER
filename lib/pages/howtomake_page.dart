@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/data/recipe_descrip.dart';
+import 'package:recipe_app/globals.dart';
 
 class HowToPage extends StatelessWidget {
+  final RecipeDataDescription description;
   final bool? dark;
-  const HowToPage({Key? key, required this.dark}) : super(key: key);
+  const HowToPage({Key? key, required this.dark, required this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          !dark! ? const Color(0xFFDDDDDD) : const Color(0xFF252525),
+      backgroundColor: !dark! ? Colors.white : const Color(0xFF252525),
       body: Stack(children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18.0),
           child: SingleChildScrollView(
-            physics: ScrollPhysics(),
+            physics: const ScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 32.0, horizontal: 12.0),
+                const Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 32.0, horizontal: 12.0),
                   child: Text(
                     'INGREDIENTS',
                     textAlign: TextAlign.start,
@@ -30,12 +33,12 @@ class HowToPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 250,
+                  height: 350,
                   width: MediaQuery.of(context).size.width,
                   child: PageView.builder(
                     physics: PageScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 12,
+                    itemCount: (description.ingredients.length) ~/ 4,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Column(
@@ -45,43 +48,78 @@ class HowToPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Expanded(
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      color: !dark!
-                                          ? Color(0xFFC7C7C7)
-                                          : Color.fromARGB(255, 54, 54, 54),
-                                    ),
-                                    height: 100,
-                                    child: Center(
-                                        child: Text(
-                                      '10 EGG',
-                                      style: TextStyle(
-                                          fontSize: 18.0,
-                                          color: dark!
-                                              ? Colors.white
-                                              : Colors.black),
-                                    ))),
+                                child: description.ingredients.length - 1 >
+                                        4 * index
+                                    ? Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      description
+                                                              .ingredients[
+                                                                  4 * index]
+                                                              .imageUrl ??
+                                                          defaultImageUrl)),
+                                              //    color: !dark!
+                                              //        ? Color(0xFFC7C7C7)
+                                              //         : Color.fromARGB(255, 54, 54, 54),
+                                            ),
+                                            height: 125,
+                                          ),
+                                          SizedBox(
+                                            height: 2.0,
+                                          ),
+                                          Text(
+                                            description
+                                                .ingredients[4 * index].type,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18.0),
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 28.0,
                               ),
                               Expanded(
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      color: !dark!
-                                          ? Color(0xFFC7C7C7)
-                                          : Color.fromARGB(255, 54, 54, 54),
-                                    ),
-                                    height: 100,
-                                    child: Center(
-                                        child: Text('10 EGG',
+                                child: description.ingredients.length - 1 >
+                                        4 * index + 1
+                                    ? Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      description
+                                                              .ingredients[
+                                                                  4 * index + 1]
+                                                              .imageUrl ??
+                                                          defaultImageUrl)),
+                                              //    color: !dark!
+                                              //        ? Color(0xFFC7C7C7)
+                                              //         : Color.fromARGB(255, 54, 54, 54),
+                                            ),
+                                            height: 125,
+                                          ),
+                                          SizedBox(
+                                            height: 2.0,
+                                          ),
+                                          Text(
+                                            description
+                                                .ingredients[4 * index + 1]
+                                                .type,
                                             style: TextStyle(
-                                                fontSize: 18.0,
-                                                color: dark!
-                                                    ? Colors.white
-                                                    : Colors.black)))),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18.0),
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
                               ),
                             ],
                           ),
@@ -92,41 +130,81 @@ class HowToPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Expanded(
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      color: !dark!
-                                          ? Color(0xFFC7C7C7)
-                                          : Color.fromARGB(255, 54, 54, 54),
-                                    ),
-                                    height: 100,
-                                    child: Center(
-                                        child: Text('10 EGG',
+                                child: description.ingredients.length - 1 >
+                                        4 * index + 2
+                                    ? Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      description
+                                                              .ingredients[
+                                                                  4 * index + 2]
+                                                              .imageUrl ??
+                                                          defaultImageUrl)),
+                                              //    color: !dark!
+                                              //        ? Color(0xFFC7C7C7)
+                                              //         : Color.fromARGB(255, 54, 54, 54),
+                                            ),
+                                            height: 125,
+                                          ),
+                                          SizedBox(
+                                            height: 2.0,
+                                          ),
+                                          Text(
+                                            description
+                                                .ingredients[4 * index + 2]
+                                                .type,
                                             style: TextStyle(
-                                                fontSize: 18.0,
-                                                color: dark!
-                                                    ? Colors.white
-                                                    : Colors.black)))),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18.0),
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 28.0,
                               ),
                               Expanded(
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      color: !dark!
-                                          ? Color(0xFFC7C7C7)
-                                          : Color.fromARGB(255, 54, 54, 54),
-                                    ),
-                                    height: 100,
-                                    child: Center(
-                                        child: Text('10 EGG',
+                                child: description.ingredients.length - 1 >
+                                        4 * index + 3
+                                    ? Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      description
+                                                              .ingredients[
+                                                                  4 * index + 3]
+                                                              .imageUrl ??
+                                                          defaultImageUrl)),
+                                              //    color: !dark!
+                                              //        ? Color(0xFFC7C7C7)
+                                              //         : Color.fromARGB(255, 54, 54, 54),
+                                            ),
+                                            height: 125,
+                                          ),
+                                          SizedBox(
+                                            height: 2.0,
+                                          ),
+                                          Text(
+                                            description
+                                                .ingredients[4 * index + 3]
+                                                .type,
                                             style: TextStyle(
-                                                fontSize: 18.0,
-                                                color: dark!
-                                                    ? Colors.white
-                                                    : Colors.black)))),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18.0),
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
                               ),
                             ],
                           ),
@@ -135,8 +213,8 @@ class HowToPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(12.0, 45.0, 12.0, 36),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(12.0, 36.0, 12.0, 36),
                   child: Text(
                     'INSTRUCTIONS',
                     textAlign: TextAlign.start,
@@ -149,36 +227,36 @@ class HowToPage extends StatelessWidget {
                 ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 12,
-                    itemBuilder: ((context, index) => Padding(
+                    itemCount: description.instructions.length,
+                    itemBuilder: ((context, index2) => Padding(
                           padding: const EdgeInsets.symmetric(vertical: 18.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: index % 2 == 0
-                                    ? const EdgeInsets.only(right: 75.0)
-                                    : EdgeInsets.only(left: 80.0),
+                                padding: index2 % 2 == 0
+                                    ? const EdgeInsets.only(right: 52.0)
+                                    : EdgeInsets.only(left: 48.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    index % 2 == 0
+                                    index2 % 2 == 0
                                         ? Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 8.0),
-                                            child: Text(index.toString(),
+                                            child: Text(index2.toString(),
                                                 style: TextStyle(
                                                     fontSize: 24,
                                                     fontWeight: FontWeight.w900,
                                                     color: Color.fromRGBO(
                                                         !dark! ? 0 : 255,
                                                         !dark!
-                                                            ? 0 + index * 20
+                                                            ? 0 + index2 * 20
                                                             : 255,
                                                         !dark!
-                                                            ? index
-                                                            : 255 - index * 10,
+                                                            ? index2
+                                                            : 255 - index2 * 10,
                                                         1))),
                                           )
                                         : const SizedBox(),
@@ -187,33 +265,42 @@ class HowToPage extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           color: !dark!
-                                              ? const Color(0xFFB5B5B5)
+                                              ? Color.fromARGB(
+                                                  255, 199, 199, 199)
                                               : Color.fromARGB(
                                                   255, 56, 56, 56)),
-                                      height: 130,
-                                      width: 215,
-                                      child: Center(
+                                      width: 250,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 16.0),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
                                           child: Text(
-                                        '',
-                                      )),
+                                            description.instructions[index2],
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    index % 2 == 1
+                                    index2 % 2 == 1
                                         ? Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 12.0),
                                             child: Text(
-                                              index.toString(),
+                                              index2.toString(),
                                               style: TextStyle(
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.w900,
                                                   color: Color.fromRGBO(
                                                       !dark! ? 0 : 255,
                                                       !dark!
-                                                          ? 0 + index * 20
+                                                          ? 0 + index2 * 20
                                                           : 255,
                                                       !dark!
-                                                          ? index
-                                                          : 255 - index * 10,
+                                                          ? index2
+                                                          : 255 - index2 * 10,
                                                       1)),
                                             ),
                                           )

@@ -61,7 +61,7 @@ class _DescPageState extends State<DescPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.data.fullTitle,
+                          widget.data.fullTitle ?? 'No Title',
                           style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
@@ -69,8 +69,8 @@ class _DescPageState extends State<DescPage> {
                               color:
                                   widget.dark! ? Colors.white : Colors.black),
                         ),
-                        Text(
-                          'American',
+                        const Text(
+                          'Pending',
                           style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w600,
@@ -123,7 +123,9 @@ class _DescPageState extends State<DescPage> {
                 height: 65,
                 child: GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => HowToPage(dark: widget.dark))),
+                      builder: (context) => HowToPage(
+                          description: widget.data.recipeDescription,
+                          dark: widget.dark))),
                   child: const Center(
                     child: Text(
                       'How To Make',
