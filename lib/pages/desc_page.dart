@@ -104,9 +104,8 @@ class _DescPageState extends State<DescPage> {
             padding:
                 const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
             child: Text(
-                widget.data.recipeDescription.fullDescription != null
-                    ? widget.data.recipeDescription.fullDescription!
-                    : "No Available Description, Please Fill An Issue",
+                widget.data.recipeDescription.fullDescription ??
+                    "No Available Description, Please Fill An Issue",
                 style: TextStyle(
                     color: widget.dark! ? Colors.white : Colors.black)),
           ),

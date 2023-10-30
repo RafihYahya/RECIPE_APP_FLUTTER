@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RecipeIngredient {
   double? id;
   double number;
-  String type;
+  String? type;
   Image? image;
   String? imageUrl;
 

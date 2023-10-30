@@ -71,8 +71,9 @@ class HowToPage extends StatelessWidget {
                                             height: 2.0,
                                           ),
                                           Text(
-                                            description
-                                                .ingredients[4 * index].type,
+                                            description.ingredients[4 * index]
+                                                    .type ??
+                                                'Nothing',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
@@ -111,9 +112,10 @@ class HowToPage extends StatelessWidget {
                                           ),
                                           Text(
                                             description
-                                                .ingredients[4 * index + 1]
-                                                .type,
-                                            style: TextStyle(
+                                                    .ingredients[4 * index + 1]
+                                                    .type ??
+                                                'Nothing',
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
                                           ),
@@ -156,8 +158,9 @@ class HowToPage extends StatelessWidget {
                                           ),
                                           Text(
                                             description
-                                                .ingredients[4 * index + 2]
-                                                .type,
+                                                    .ingredients[4 * index + 2]
+                                                    .type ??
+                                                'Nothing',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
@@ -196,8 +199,9 @@ class HowToPage extends StatelessWidget {
                                           ),
                                           Text(
                                             description
-                                                .ingredients[4 * index + 3]
-                                                .type,
+                                                    .ingredients[4 * index + 3]
+                                                    .type ??
+                                                'Nothing',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),

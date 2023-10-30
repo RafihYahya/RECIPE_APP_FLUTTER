@@ -18,9 +18,7 @@ class CustomCardMainP extends StatelessWidget {
                 image: DecorationImage(
                     colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.55), BlendMode.darken),
-                    image: NetworkImage(data.imageUrl != null
-                        ? data.imageUrl!
-                        : defaultImageUrl),
+                    image: NetworkImage(data.imageUrl ?? defaultImageUrl),
                     fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(10.0),
                 color: Colors.black38),
@@ -47,10 +45,7 @@ class CustomCardMainP extends StatelessWidget {
                                   color: Colors.white,
                                   height: 1.0)),
                         ),
-                        Text(
-                            data.shortDescription != null
-                                ? data.shortDescription!
-                                : 'No Descirption Found',
+                        Text(data.shortDescription ?? 'No Descirption Found',
                             textAlign: TextAlign.start,
                             style: const TextStyle(
                                 fontSize: 14.0, color: Colors.white)),
@@ -71,7 +66,7 @@ class CustomCardMainP extends StatelessWidget {
                                           dark: dark,
                                           data: data,
                                         ))),
-                            child: Center(
+                            child: const Center(
                                 child: Text(
                               'READ MORE',
                               style: TextStyle(

@@ -28,13 +28,17 @@ class RecipeData {
 
   static List<RecipeIngredient> getIngredient(dynamic json) {
     List<RecipeIngredient> myIngd = [];
-    for (var ingd in json['extendedIngredients']) {
-      myIngd.add(RecipeIngredient(
-          number: ingd['amount'],
-          type: ingd['name'],
-          imageUrl: ingredBaseUrl + (ingd['image'] ?? defaultImageUrl)));
+    if (json['extendedIngredients'] != null) {
+      for (var ingd in json['extendedIngredients']) {
+        myIngd.add(RecipeIngredient(
+            number: ingd['amount'] ?? '0',
+            type: ingd['name'] ?? 'Nothing',
+            imageUrl: ingredBaseUrl + (ingd['image'] ?? defaultImageUrl)));
+      }
+      return myIngd;
+    } else {
+      return myIngd;
     }
-    return myIngd;
   }
 
   static List<String> getInstruct(dynamic json) {
