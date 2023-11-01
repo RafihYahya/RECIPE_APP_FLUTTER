@@ -113,8 +113,8 @@ class RecipeData {
         imageUrl: json['image'] ?? defaultImageUrl,
         isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(
-            fullDescription:
-                htmlRegExMiniParser(json['summary'] ?? 'No Full Description'),
+            fullDescription: htmlRegExMiniParser(json['summary'] ??
+                "No Available Description, Please Fill An Issue"),
             ingredients: RecipeData.getIngredient(json),
             instructions: RecipeData.getInstruct(json)),
         isAlreadyread: false);

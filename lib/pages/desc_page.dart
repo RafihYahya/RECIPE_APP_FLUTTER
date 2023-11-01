@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/async_utils_functions.dart';
-import 'package:recipe_app/data/bookmarked_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
-import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 
 class DescPage extends StatefulWidget {
@@ -65,7 +63,7 @@ class _DescPageState extends State<DescPage> {
                         Text(
                           widget.data.fullTitle ?? 'No Title',
                           style: TextStyle(
-                              fontSize: 32,
+                              fontSize: 24,
                               fontWeight: FontWeight.w600,
                               height: 0.85,
                               color:
@@ -111,10 +109,11 @@ class _DescPageState extends State<DescPage> {
             padding:
                 const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
             child: Text(
-                widget.data.recipeDescription.fullDescription ??
-                    "No Available Description, Please Fill An Issue",
-                style: TextStyle(
-                    color: widget.dark! ? Colors.white : Colors.black)),
+              widget.data.recipeDescription.fullDescription!,
+              style:
+                  TextStyle(color: widget.dark! ? Colors.white : Colors.black),
+              textAlign: TextAlign.justify,
+            ),
           ),
           Column(
             children: [
