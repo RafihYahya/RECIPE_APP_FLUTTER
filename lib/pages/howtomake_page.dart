@@ -33,7 +33,7 @@ class HowToPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 350,
+                  height: 400,
                   width: MediaQuery.of(context).size.width,
                   child: PageView.builder(
                     physics: PageScrollPhysics(),
@@ -107,7 +107,7 @@ class HowToPage extends StatelessWidget {
                                             ),
                                             height: 125,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 2.0,
                                           ),
                                           Text(
@@ -121,11 +121,11 @@ class HowToPage extends StatelessWidget {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 28.0,
                           ),
                           Row(

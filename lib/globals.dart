@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/data/bookmarked_data.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
 import 'package:recipe_app/data/settings.dart';
 
@@ -13,6 +15,7 @@ RecipeList myRecipeList = RecipeList(
         List.generate(constCategoryBetterFormatting.length, (i) => []));
 EnvironementSettings mySettings = EnvironementSettings(
     maincolor: const Color(0xFF04B400),
+    loadingColor: const Color.fromARGB(255, 70, 218, 67),
     firstTime: true,
     maxNumberOfRequests: 20,
     maxNumberOfDisplayedRequests: 25);
@@ -87,16 +90,20 @@ List<String> constCategoryBetterFormatting2 = [
   'low Food map',
 ];
 
+BookMarkedRecipesList bkListData =
+    BookMarkedRecipesList(itemcount: 0, bkList: []);
+
 ////////////////////////////////////////////////////////////////
 /// Functions Utils
 ////////////////////////////////////////////////////////////////
 ///
+
 String titleParser(String title) => title.split(' ')[0] + title.split(' ')[1];
 
 String titleParserAndSafety(String title) {
   List<String> temp0 = title.split(' ');
   String temp1 = temp0.length > 3
-      ? '${temp0[0]} ${temp0[1]} ${temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with' ? '\n${temp0[2]}' : ''}'
+      ? '${temp0[0]} ${temp0[1]} ${(temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with') ? '' : '\n${temp0[2]}'}'
       : (temp0.length <= 1 ? temp0[0] : '${temp0[0]}\n${temp0[1]}');
   return temp1.toUpperCase();
 }

@@ -37,7 +37,7 @@ class CustomCardMainPEmpty extends StatelessWidget {
                           child: Text(('LOADING'),
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize: 62.0,
+                                  fontSize: 54.0,
                                   color: Colors.white,
                                   height: 1.0)),
                         ),

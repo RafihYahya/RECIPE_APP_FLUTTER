@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/async_utils_functions.dart';
+import 'package:recipe_app/data/bookmarked_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 
 class DescPage extends StatefulWidget {
   final RecipeData data;
   final bool? dark;
-  const DescPage({Key? key, required this.dark, required this.data})
-      : super(key: key);
+  const DescPage({super.key, required this.dark, required this.data});
 
   @override
   State<DescPage> createState() => _DescPageState();
@@ -88,12 +90,17 @@ class _DescPageState extends State<DescPage> {
                             !widget.data.isNotBookmarked;
                       });
                     },
-                    child: Icon(
-                      widget.data.isNotBookmarked
-                          ? Icons.favorite_border
-                          : Icons.favorite,
-                      color: Colors.red,
-                      size: 42,
+                    child: GestureDetector(
+                      onTap: () {
+                        readFromBoxRecipeDataList();
+                      },
+                      child: Icon(
+                        widget.data.isNotBookmarked
+                            ? Icons.favorite_border
+                            : Icons.favorite,
+                        color: Colors.red,
+                        size: 42,
+                      ),
                     ),
                   ),
                 ),

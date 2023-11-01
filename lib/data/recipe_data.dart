@@ -1,8 +1,10 @@
-import 'dart:convert';
+//import 'dart:convert';
 
+import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/data/recipe_ingred.dart';
 import 'package:recipe_app/globals.dart';
+import 'dart:math';
 
 class RecipeData {
   final String? title;
@@ -23,8 +25,22 @@ class RecipeData {
     required this.isAlreadyread,
   });
 
+  RecipeData.mock()
+      : title = 'PlaceHolder Title',
+        fullTitle = 'BIGGER PLACEHOLDER TITLE',
+        shortDescription =
+            'This is To be filled with Short description about the object',
+        imageUrl = defaultImageUrl,
+        isNotBookmarked = true,
+        isAlreadyread = false,
+        recipeDescription = RecipeDataDescription(
+            ingredients: [RecipeIngredient(number: 10, type: 'mockIngred')],
+            instructions: ['Nothing Nothing AT all']);
+
   static int checkSize(String jsonString) =>
-      htmlRegExMiniParser(jsonString).length > 75 ? 65 : jsonString.length;
+      htmlRegExMiniParser(jsonString).runes.length > 75
+          ? 65
+          : jsonString.length;
 
   static List<RecipeIngredient> getIngredient(dynamic json) {
     List<RecipeIngredient> myIngd = [];
@@ -45,7 +61,7 @@ class RecipeData {
     List<String> myInst = [];
     if (json['analyzedInstructions'].length >= 1) {
       for (var instr in json['analyzedInstructions'][0]['steps']) {
-        myInst.add(instr['step']);
+        myInst.add(instr['step'].toString().replaceAll('.', '.' '\n'));
       }
       return myInst;
     } else {
@@ -54,16 +70,51 @@ class RecipeData {
     }
   }
 
+  BookMarkedRecipeData toBkRecipeDataFromRecipeDataTranformer() {
+    List<String?>? tempList = [];
+    tempList.add(title ?? 'No title');
+    tempList.add(fullTitle ?? 'No title');
+    tempList.add(shortDescription ?? 'No desc');
+    tempList.add(imageUrl ?? 'No Url');
+    tempList.add(recipeDescription.fullDescription ?? 'No Desc');
+    tempList.add(recipeDescription.readMoreUrl ?? 'No Url');
+
+    List<bool> tempListBool = [];
+    tempListBool.add(isNotBookmarked);
+    tempListBool.add(isAlreadyread);
+
+    List<String?>? listTempInstruct = [];
+    listTempInstruct = recipeDescription.instructions;
+
+    List<dynamic>? listTempIngreds = [];
+    for (var e in recipeDescription.ingredients) {
+      listTempIngreds.add(e.id ?? Random());
+      listTempIngreds.add(e.number);
+      listTempIngreds.add(e.type ?? 'No Ingred');
+      listTempIngreds.add(e.image!);
+      listTempIngreds.add(e.imageUrl ?? defaultImageUrl);
+    }
+
+    return BookMarkedRecipeData(
+        recipeMainData: tempList,
+        recipeBoolData: tempListBool,
+        bkInstructsData: listTempInstruct,
+        bkIngredsData: listTempIngreds);
+  }
+
   factory RecipeData.fromjson(dynamic json) {
     return RecipeData(
-        title: titleParserAndSafety(json['title']).replaceAll(',', ' '),
+        title: titleParserAndSafety(json['title'] ?? 'No Title')
+            .replaceAll(',', ' ')
+            .replaceAll('&', ' '),
         fullTitle: json['title'],
         shortDescription:
-            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'])).substring(0, RecipeData.checkSize(json['summary']))}...',
-        imageUrl: json['image'],
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSize(json['summary']))}...',
+        imageUrl: json['image'] ?? defaultImageUrl,
         isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(
-            fullDescription: htmlRegExMiniParser(json['summary']),
+            fullDescription:
+                htmlRegExMiniParser(json['summary'] ?? 'No Full Description'),
             ingredients: RecipeData.getIngredient(json),
             instructions: RecipeData.getInstruct(json)),
         isAlreadyread: false);

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/data/bk_data.dart';
 
 class BKCard extends StatefulWidget {
+  final double margintop;
   final bool? dark;
   final Function() callback2;
   final Bkdata bkdata;
   const BKCard(
       {Key? key,
+      required this.margintop,
       required this.dark,
       required this.callback2,
       required this.bkdata})
@@ -20,7 +22,7 @@ class _BKCardState extends State<BKCard> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      margin: const EdgeInsets.symmetric(vertical: 20.0),
+      margin: EdgeInsets.symmetric(vertical: widget.margintop),
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Colors.redAccent,

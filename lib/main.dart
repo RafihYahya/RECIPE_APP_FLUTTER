@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:recipe_app/async_utils_functions.dart';
+import 'package:recipe_app/data/bookmarked_data.dart';
+import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/ecoking_page.dart';
@@ -7,12 +12,17 @@ import 'package:recipe_app/pages/home_page.dart';
 import 'package:recipe_app/pages/loading_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+import 'package:recipe_app/pages/search_page.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookMarkedRecipesListAdapter());
+  Hive.registerAdapter(BookMarkedRecipeDataAdapter());
   runApp(const RecipeApp());
 }
 
 class RecipeApp extends StatefulWidget {
-  const RecipeApp({Key? key}) : super(key: key);
+  const RecipeApp({super.key});
 
   @override
   State<RecipeApp> createState() => _RecipeAppState();
@@ -45,6 +55,7 @@ class _RecipeAppState extends State<RecipeApp> {
         dark: dark,
         callback2: themeswitcher,
       ),
+      SearchPage(dark: dark, callback2: themeswitcher),
       EcokingPage(),
     ];
     return MaterialApp(

@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:hive_flutter/adapters.dart';
 import 'package:http/http.dart' as http;
+import 'package:recipe_app/data/bookmarked_data.dart';
+import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 
@@ -41,18 +44,39 @@ void orderRecipeData(dynamic data) {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////
 //----------------------------------------------------------------
 // FireBase Utils Here
 //----------------------------------------------------------------
 ////////////////////////////////////////////////////////////////
 
-
-
-
 ////////////////////////////////////////////////////////////////
 //----------------------------------------------------------------
 //Local Storage Utils Here
 //----------------------------------------------------------------
 ////////////////////////////////////////////////////////////////
+
+void addToBoxRecipeDataList() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  bkListData.bkList = List.generate(
+      5,
+      (index) => BookMarkedRecipeData(
+          recipeMainData: ['something', 'somethign else'],
+          recipeBoolData: [false, true]));
+  bkRecipeBox.put(0, bkListData);
+}
+
+void readFromBoxRecipeDataList() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  print(bkRecipeBox.get(0)!.bkList![0].recipeMainData[0]);
+}
+
+void addToBoxRecipeDataList2() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  bkListData.bkList = List.generate(
+      5,
+      (index) => BookMarkedRecipeData(
+          recipeMainData: ['something2', 'somethign else2'],
+          recipeBoolData: [false, true]));
+  bkRecipeBox.put(0, bkListData);
+}
