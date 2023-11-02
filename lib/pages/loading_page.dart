@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/globals.dart';
-import 'package:hive/hive.dart';
 
 class LoadingPage extends StatefulWidget {
   final Function callbackindex;

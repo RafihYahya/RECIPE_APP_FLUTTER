@@ -1,5 +1,6 @@
 //import 'dart:convert';
 
+//import 'package:flutter/material.dart';
 import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/data/recipe_ingred.dart';
@@ -38,9 +39,9 @@ class RecipeData {
             instructions: ['Nothing Nothing AT all']);
 
   static int checkSize(String jsonString) =>
-      htmlRegExMiniParser(jsonString).runes.length > 75
+      htmlRegExMiniParser(jsonString).runes.length > 80
           ? 65
-          : jsonString.length;
+          : (jsonString.length - 10 <= 0 ? jsonString.length : 40);
 
   static List<RecipeIngredient> getIngredient(dynamic json) {
     List<RecipeIngredient> myIngd = [];
@@ -71,7 +72,7 @@ class RecipeData {
   }
 
   BookMarkedRecipeData toBkRecipeDataFromRecipeDataTranformer() {
-    List<String?>? tempList = [];
+    List<String?> tempList = [];
     tempList.add(title ?? 'No title');
     tempList.add(fullTitle ?? 'No title');
     tempList.add(shortDescription ?? 'No desc');
@@ -83,15 +84,16 @@ class RecipeData {
     tempListBool.add(isNotBookmarked);
     tempListBool.add(isAlreadyread);
 
-    List<String?>? listTempInstruct = [];
+    List<String?> listTempInstruct = [];
     listTempInstruct = recipeDescription.instructions;
 
     List<dynamic>? listTempIngreds = [];
+    double idRandom = Random().nextDouble() * 200;
     for (var e in recipeDescription.ingredients) {
-      listTempIngreds.add(e.id ?? Random());
-      listTempIngreds.add(e.number);
+      listTempIngreds.add(e.id ?? idRandom);
+      listTempIngreds.add(e.number ?? 0);
       listTempIngreds.add(e.type ?? 'No Ingred');
-      listTempIngreds.add(e.image!);
+      listTempIngreds.add(e.image ?? defaultImageUrl);
       listTempIngreds.add(e.imageUrl ?? defaultImageUrl);
     }
 

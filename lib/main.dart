@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/bookmarked_data.dart';
@@ -18,6 +17,9 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookMarkedRecipesListAdapter());
   Hive.registerAdapter(BookMarkedRecipeDataAdapter());
+//  addToBoxRecipeDataList();
+  // readFromBoxRecipeDataList3(myLocalData00);
+  readFromBoxRecipeDataList4();
   runApp(const RecipeApp());
 }
 

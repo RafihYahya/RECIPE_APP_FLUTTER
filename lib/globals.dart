@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/data/bookmarked_data.dart';
+import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
 import 'package:recipe_app/data/settings.dart';
 
@@ -89,6 +89,9 @@ List<String> constCategoryBetterFormatting2 = [
   'very Popular',
   'low Food map',
 ];
+//Hive
+
+List<RecipeData?>? myLocalData00 = [];
 
 BookMarkedRecipesList bkListData =
     BookMarkedRecipesList(itemcount: 0, bkList: []);

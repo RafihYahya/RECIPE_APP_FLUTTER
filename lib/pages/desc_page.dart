@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/globals.dart';
+import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 
 class DescPage extends StatefulWidget {
@@ -84,21 +86,28 @@ class _DescPageState extends State<DescPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
+                        if (widget.data.isNotBookmarked = true) {
+                          // bkListData.bkList?.add(widget.data
+                          //    .toBkRecipeDataFromRecipeDataTranformer());
+                          // bkListData.itemcount += 1;
+                          // addToHiveDbBkClass();
+                          myLocalData00!.add(widget.data);
+                          writeFromRecipeDataToLocalStorageDb();
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  BookMarkPage(dark: dark, callback2: () {})));
+                        }
+                        //dont forget to add deletion as well
                         widget.data.isNotBookmarked =
                             !widget.data.isNotBookmarked;
                       });
                     },
-                    child: GestureDetector(
-                      onTap: () {
-                        readFromBoxRecipeDataList();
-                      },
-                      child: Icon(
-                        widget.data.isNotBookmarked
-                            ? Icons.favorite_border
-                            : Icons.favorite,
-                        color: Colors.red,
-                        size: 42,
-                      ),
+                    child: Icon(
+                      widget.data.isNotBookmarked
+                          ? Icons.favorite_border
+                          : Icons.favorite,
+                      color: Colors.red,
+                      size: 42,
                     ),
                   ),
                 ),

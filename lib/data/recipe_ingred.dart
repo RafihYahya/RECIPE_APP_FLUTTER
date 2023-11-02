@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 class RecipeIngredient {
   double? id;
   double number;
   String? type;
-  Image? image;
+  String? image;
   String? imageUrl;
 
   RecipeIngredient(

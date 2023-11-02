@@ -59,16 +59,58 @@ void orderRecipeData(dynamic data) {
 void addToBoxRecipeDataList() async {
   var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
   bkListData.bkList = List.generate(
-      5,
+      1,
       (index) => BookMarkedRecipeData(
-          recipeMainData: ['something', 'somethign else'],
-          recipeBoolData: [false, true]));
+            recipeMainData: ['', '', '', defaultImageUrl, '', ''],
+            recipeBoolData: [false, true],
+            bkInstructsData: ['', '', '', ''],
+          ));
+  bkRecipeBox.put(0, bkListData);
+}
+
+void addToHiveDbBkClass() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
   bkRecipeBox.put(0, bkListData);
 }
 
 void readFromBoxRecipeDataList() async {
   var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
-  print(bkRecipeBox.get(0)!.bkList![0].recipeMainData[0]);
+  bkRecipeBox.get(0);
+}
+
+void readFromBoxRecipeDataList2(RecipeData? data, int index) async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  data = bkRecipeBox.get(0)!.bkList![index].fromBkToRecipeDataTransformer();
+}
+
+void readFromBoxRecipeDataList3(List<RecipeData?>? data) async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  data = bkRecipeBox
+      .get(0)!
+      .bkList!
+      .map((e) => e.fromBkToRecipeDataTransformer())
+      .toList();
+}
+
+void readFromBoxRecipeDataList4() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+
+  if (bkRecipeBox.get(0) == null) {
+    bkListData.bkList = List.generate(
+        1,
+        (index) => BookMarkedRecipeData(
+              recipeMainData: ['', '', '', defaultImageUrl, '', ''],
+              recipeBoolData: [false, true],
+              bkInstructsData: ['', '', '', ''],
+            ));
+    bkRecipeBox.put(0, bkListData);
+  } else {
+    myLocalData00 = bkRecipeBox
+        .get(0)!
+        .bkList!
+        .map((e) => e.fromBkToRecipeDataTransformer())
+        .toList();
+  }
 }
 
 void addToBoxRecipeDataList2() async {
@@ -78,5 +120,14 @@ void addToBoxRecipeDataList2() async {
       (index) => BookMarkedRecipeData(
           recipeMainData: ['something2', 'somethign else2'],
           recipeBoolData: [false, true]));
+  bkRecipeBox.put(0, bkListData);
+}
+
+void writeFromRecipeDataToLocalStorageDb() async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  bkListData.bkList = myLocalData00!
+      .map((e) => e!.toBkRecipeDataFromRecipeDataTranformer())
+      .toList();
+  bkListData.itemcount += 1;
   bkRecipeBox.put(0, bkListData);
 }

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
+import 'package:recipe_app/async_utils_functions.dart';
+
 import 'package:recipe_app/data/bk_data.dart';
+import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/globals.dart';
 
 class BookMarkPage extends StatefulWidget {
   // callback and variable for dark mode
   final bool? dark;
   final Function() callback2;
-  const BookMarkPage({Key? key, required this.dark, required this.callback2})
-      : super(key: key);
+  const BookMarkPage({super.key, required this.dark, required this.callback2});
 
   @override
   State<BookMarkPage> createState() => _BookMarkPageState();
@@ -15,7 +18,15 @@ class BookMarkPage extends StatefulWidget {
 
 class _BookMarkPageState extends State<BookMarkPage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    setState(() {
+      myLocalData00 = myLocalData00;
+    });
     return Scaffold(
         backgroundColor: widget.dark!
             ? const Color.fromARGB(255, 39, 39, 39)
@@ -23,7 +34,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
         appBar: AppBar(
           title: Center(
             child: Text(
-              'Home Screen',
+              'BookMarks',
               style: widget.dark! == true
                   ? const TextStyle(color: Colors.white, fontSize: 18.0)
                   : const TextStyle(color: Colors.black, fontSize: 18.0),
@@ -55,7 +66,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView.builder(
-              itemCount: 15,
+              itemCount: myLocalData00?.length,
               itemBuilder: (context, index) => Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,6 +87,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: BKCard(
+                          myLocalDataInstance: myLocalData00?[index],
                           margintop: 20.0,
                           dark: widget.dark,
                           callback2: widget.callback2,
