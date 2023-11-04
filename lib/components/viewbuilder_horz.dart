@@ -4,13 +4,13 @@ import 'package:recipe_app/components/custom_card.dart';
 import 'package:recipe_app/components/custom_card_empty2.dart';
 import 'package:recipe_app/components/custom_card_for_empty.dart';
 import 'package:recipe_app/data/recipe_data.dart';
-import 'package:recipe_app/globals.dart';
+//import 'package:recipe_app/globals.dart';
 
 class ViewHorz extends StatefulWidget {
   final List<RecipeData> recipeListValue;
   final bool? dark;
-  ViewHorz({Key? key, required this.dark, required this.recipeListValue})
-      : super(key: key);
+  const ViewHorz(
+      {super.key, required this.dark, required this.recipeListValue});
 
   @override
   ViewHorzState createState() => ViewHorzState();
@@ -26,13 +26,13 @@ class ViewHorzState extends State<ViewHorz> {
 */
   void newFetchWhenNoDataisFound(int index) async {
     if (widget.recipeListValue[index].title == 'LOADING') {
-      await fetchRecipeData();
+      await fetchRecipeDataSmoll(); //smoll Fetch 25~
       setState(() {});
     }
   }
 
   void newFetchWhenNoDataisFound2() async {
-    await fetchRecipeData();
+    await fetchRecipeData(); //Big Fetch 100~
     setState(() {});
   }
 

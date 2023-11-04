@@ -7,6 +7,7 @@ class EnvironementSettings extends ChangeNotifier {
   final Color loadingColor;
   bool firstTime;
   int maxNumberOfRequests;
+  int maxNumberOfRequestsSmoll;
   int maxNumberOfDisplayedRequests;
 
   EnvironementSettings(
@@ -15,7 +16,8 @@ class EnvironementSettings extends ChangeNotifier {
       required this.loadingColor,
       required this.firstTime,
       required this.maxNumberOfDisplayedRequests,
-      required this.maxNumberOfRequests});
+      required this.maxNumberOfRequests,
+      required this.maxNumberOfRequestsSmoll});
 
   void setToDefaults() {}
 }

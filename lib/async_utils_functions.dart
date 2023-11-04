@@ -26,10 +26,29 @@ Future<void> fetchRecipeData() async {
   }
 }
 
+Future<void> fetchRecipeDataSmoll() async {
+  final response = await http.get(
+    Uri.parse(
+        '$spoonacularUrlRecipe/random?number=${mySettings.maxNumberOfRequestsSmoll}'),
+    headers: {
+      'x-api-key': apiKey,
+    },
+  );
+
+  final data = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    orderRecipeData(data);
+
+    // return RecipeData.fromjson(data['recipes'][0]);
+  } else {
+    throw Exception('Failed to load Data');
+  }
+}
+
 Future<void> fetchRecipeDataSearch(String name, List data) async {
   final response = await http.get(
     Uri.parse(
-        'https://api.spoonacular.com/recipes/complexSearch?query=$name&number=25'),
+        'https://api.spoonacular.com/recipes/complexSearch?query=$name&number=${mySettings.maxNumberOfDisplayedRequests}'),
     headers: {
       'x-api-key': apiKey,
     },

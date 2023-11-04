@@ -21,7 +21,8 @@ EnvironementSettings mySettings = EnvironementSettings(
     darkMainColor: Color.fromARGB(255, 33, 104, 31),
     loadingColor: const Color.fromARGB(255, 70, 218, 67),
     firstTime: true,
-    maxNumberOfRequests: 10,
+    maxNumberOfRequests: 100,
+    maxNumberOfRequestsSmoll: 25,
     maxNumberOfDisplayedRequests: 25);
 
 int indexOfPages = 0;

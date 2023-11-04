@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/globals.dart';
 
 class CustomCardMainPEmpty extends StatefulWidget {
-  Function fetchupdateCallback;
-  int index;
-  CustomCardMainPEmpty(
+  final Function fetchupdateCallback;
+  final int index;
+  const CustomCardMainPEmpty(
       {super.key, required this.fetchupdateCallback, required this.index});
 
   @override

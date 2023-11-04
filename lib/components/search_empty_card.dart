@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/data/bk_data.dart';
-import 'package:recipe_app/globals.dart';
+//import 'package:recipe_app/globals.dart';
 
 class BKCard3 extends StatefulWidget {
   final double margintop;

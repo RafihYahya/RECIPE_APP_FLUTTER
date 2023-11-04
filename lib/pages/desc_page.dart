@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/globals.dart';
-import 'package:recipe_app/pages/bookmark_page.dart';
+//import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 
 class DescPage extends StatefulWidget {

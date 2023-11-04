@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/async_utils_functions.dart';
+//import 'package:recipe_app/async_utils_functions.dart';
 
 class SearchForm extends StatefulWidget {
   final List dataSearch;
   final Function searchCallback;
-  SearchForm({Key? key, required this.dataSearch, required this.searchCallback})
-      : super(key: key);
+  const SearchForm(
+      {super.key, required this.dataSearch, required this.searchCallback});
 
   @override
   _SearchFormState createState() => _SearchFormState();

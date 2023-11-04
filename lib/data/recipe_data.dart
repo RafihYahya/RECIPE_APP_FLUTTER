@@ -100,7 +100,7 @@ class RecipeData {
     double idRandom = Random().nextDouble() * 200;
     for (var e in recipeDescription.ingredients) {
       listTempIngreds.add(e.id ?? idRandom);
-      listTempIngreds.add(e.number ?? 0);
+      listTempIngreds.add(e.number ?? 00100);
       listTempIngreds.add(e.type ?? 'No Ingred');
       listTempIngreds.add(e.image ?? defaultImageUrl);
       listTempIngreds.add(e.imageUrl ?? defaultImageUrl);
