@@ -14,11 +14,14 @@ RecipeList myRecipeList = RecipeList(
     recipeDataList:
         List.generate(constCategoryBetterFormatting.length, (i) => []));
 EnvironementSettings mySettings = EnvironementSettings(
-    maincolor: const Color(0xFF04B400),
-    darkMainColor: const Color.fromARGB(255, 0, 116, 10),
+    //maincolor: const Color(0xFF04B400),
+    //maincolor: Color.fromARGB(255, 50, 219, 47),
+    maincolor: const Color.fromARGB(255, 70, 218, 67),
+    //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
+    darkMainColor: Color.fromARGB(255, 33, 104, 31),
     loadingColor: const Color.fromARGB(255, 70, 218, 67),
     firstTime: true,
-    maxNumberOfRequests: 20,
+    maxNumberOfRequests: 10,
     maxNumberOfDisplayedRequests: 25);
 
 int indexOfPages = 0;

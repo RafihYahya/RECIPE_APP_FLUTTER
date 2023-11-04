@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/globals.dart';
 
-class CustomCardMainPEmpty extends StatefulWidget {
-  Function fetchupdateCallback;
-  int index;
-  CustomCardMainPEmpty(
-      {super.key, required this.fetchupdateCallback, required this.index});
+class CustomCardMainPEmpty2 extends StatefulWidget {
+  Function fetchupdateCallback2;
+  CustomCardMainPEmpty2({super.key, required this.fetchupdateCallback2});
 
   @override
-  State<CustomCardMainPEmpty> createState() => _CustomCardMainPEmptyState();
+  State<CustomCardMainPEmpty2> createState() => _CustomCardMainPEmptyState();
 }
 
-class _CustomCardMainPEmptyState extends State<CustomCardMainPEmpty> {
+class _CustomCardMainPEmptyState extends State<CustomCardMainPEmpty2> {
   @override
   void initState() {
     super.initState();
-    widget.fetchupdateCallback(widget.index);
+
+    widget.fetchupdateCallback2();
   }
 
   @override
