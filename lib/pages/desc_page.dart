@@ -93,9 +93,6 @@ class _DescPageState extends State<DescPage> {
                           // addToHiveDbBkClass();
                           myLocalData00!.add(widget.data);
                           writeFromRecipeDataToLocalStorageDb();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  BookMarkPage(dark: dark, callback2: () {})));
                         }
                         //dont forget to add deletion as well
                         widget.data.isNotBookmarked =

@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/components/bookmark_card.dart';
+import 'package:recipe_app/async_utils_functions.dart';
+import 'package:recipe_app/components/search_card.dart';
+import 'package:recipe_app/components/search_empty_card.dart';
+import 'package:recipe_app/components/search_textform.dart';
 import 'package:recipe_app/data/bk_data.dart';
+import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/data/recipe_descrip.dart';
+import 'package:recipe_app/globals.dart';
 
 class SearchPage extends StatefulWidget {
   // callback and variable for dark mode
   final bool? dark;
   final Function() callback2;
-  const SearchPage({Key? key, required this.dark, required this.callback2})
-      : super(key: key);
+  const SearchPage({super.key, required this.dark, required this.callback2});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
+  List searchResultData = [];
+  String? searchInput;
+  void fetchAndUpdateFunction(String name) async {
+    searchResultData = [];
+    if (name.isNotEmpty) {
+      await fetchRecipeDataSearch(name, searchResultData);
+      setState(() {
+        searchResultData = searchResultData;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,54 +70,69 @@ class _SearchPageState extends State<SearchPage> {
         ),
         drawer: Drawer(),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView.builder(
-              itemCount: 15,
-              itemBuilder: (context, index) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //So that the  title wont repeat for each tile.
-                      index == 0
-                          ? Padding(
+          padding: const EdgeInsets.fromLTRB(16.0, 28.0, 16, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: AnimatedContainer(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 16.0),
+                  decoration: BoxDecoration(
+                    color: widget.dark == false
+                        ? const Color.fromARGB(255, 211, 211, 211)
+                        : Colors.black38,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: 85,
+                  duration: Duration(seconds: 1),
+                  child: SearchForm(
+                    dataSearch: searchResultData,
+                    searchCallback: fetchAndUpdateFunction,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: searchResultData.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: searchResultData.length ~/ 3,
+                        itemBuilder: (context, index) => Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(0, 18.0, 0, 18.0),
-                              child: Center(
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12.0, vertical: 16.0),
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.8,
-                                  height: 65,
-                                  child: Center(
-                                      child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: TextField(),
-                                  )),
-                                ),
+                                  const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: BKCard2(
+                                myLocalDataInstance: RecipeData(
+                                    title: searchResultData[index * 3 + 1],
+                                    fullTitle: '',
+                                    imageUrl: searchResultData[index * 3 + 2],
+                                    isNotBookmarked: true,
+                                    recipeDescription: RecipeDataDescription(
+                                        ingredients: [], instructions: []),
+                                    isAlreadyread: false),
+                                margintop: 10.0,
+                                dark: widget.dark,
+                                callback2: widget.callback2,
+                                bkdata: Bkdata(
+                                    MediaQuery.of(context).size.width,
+                                    25 +
+                                        MediaQuery.of(context).size.height *
+                                            0.08,
+                                    false),
                               ),
-                            )
-                          : const SizedBox(),
-
-                      // Our Custom Card
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: BKCard(
-                          margintop: 10.0,
-                          dark: widget.dark,
-                          callback2: widget.callback2,
-                          bkdata: Bkdata(
-                              MediaQuery.of(context).size.width,
-                              20 + MediaQuery.of(context).size.height * 0.075,
-                              false),
-                        ),
+                            ))
+                    : BKCard3(
+                        margintop: 10.0,
+                        dark: dark,
+                        callback2: widget.callback2,
+                        bkdata: Bkdata(MediaQuery.of(context).size.width * 0.8,
+                            MediaQuery.of(context).size.height * 0.2, false),
                       ),
-                    ],
-                  )),
+              ),
+            ],
+          ),
         ));
   }
 }

@@ -106,9 +106,28 @@ String titleParser(String title) => title.split(' ')[0] + title.split(' ')[1];
 String titleParserAndSafety(String title) {
   List<String> temp0 = title.split(' ');
   String temp1 = temp0.length > 3
-      ? '${temp0[0]} ${temp0[1]} ${(temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with') ? '' : '\n${temp0[2]}'}'
+      ? '${temp0[0]} ${temp0[1]} ${(temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with' || temp0[2].toLowerCase() == 'on') ? '' : '\n${temp0[2]}'}'
       : (temp0.length <= 1 ? temp0[0] : '${temp0[0]}\n${temp0[1]}');
   return temp1.toUpperCase();
+}
+
+String titleParserAndSafety2(String title) {
+  List<String> temp0 = title.split(' ');
+  String temp1 = temp0.length > 3
+      ? '${temp0[0]} ${temp0[1]} ${(temp0[2].toLowerCase() == 'and' || temp0[2].toLowerCase() == 'of' || temp0[2].toLowerCase() == 'to' || temp0[2].toLowerCase() == 'with' || temp0[2].toLowerCase() == 'on') ? '' : temp0[2]}'
+      : (temp0.length <= 1 ? temp0[0] : '${temp0[0]}\n${temp0[1]}');
+  return temp1.toUpperCase();
+}
+
+String titleParserAndSafetyReworked(String title) {
+  List<String> connectors = ['with', 'on', 'in', 'and', 'of', 'to'];
+
+  return title
+      .split(' ')
+      .take(3)
+      .where((e) => !connectors.any((b) => b == e.toLowerCase()))
+      .join(' ')
+      .toString();
 }
 
 String bigParagrapheCutter(String desc) {

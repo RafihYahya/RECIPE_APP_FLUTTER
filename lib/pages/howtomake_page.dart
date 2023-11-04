@@ -270,7 +270,7 @@ class HowToPage extends StatelessWidget {
                                               BorderRadius.circular(8.0),
                                           color: !dark!
                                               ? Color.fromARGB(
-                                                  255, 199, 199, 199)
+                                                  255, 211, 211, 211)
                                               : Color.fromARGB(
                                                   255, 56, 56, 56)),
                                       width: 250,

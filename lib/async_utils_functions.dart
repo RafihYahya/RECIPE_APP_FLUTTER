@@ -26,6 +26,31 @@ Future<void> fetchRecipeData() async {
   }
 }
 
+Future<void> fetchRecipeDataSearch(String name, List data) async {
+  final response = await http.get(
+    Uri.parse(
+        'https://api.spoonacular.com/recipes/complexSearch?query=$name&number=25'),
+    headers: {
+      'x-api-key': apiKey,
+    },
+  );
+
+  final dataSearch = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    for (var e in dataSearch['results']) {
+      data.add(e['id']);
+      data.add(titleParserAndSafetyReworked(e['title']));
+      data.add(e['image']);
+    }
+    //  data.add(dataSearch['results']['id'] ?? '000000');
+    //data.add(dataSearch['results']['title'] ?? 'No Title');
+    //data.add(dataSearch['results']['image'] ?? 'No ImageUrl');
+    // return RecipeData.fromjson(data['recipes'][0]);
+  } else {
+    throw Exception('Failed to load Search Data');
+  }
+}
+
 void orderRecipeData(dynamic data) {
   int dataLength = mySettings.maxNumberOfRequests;
   for (var i = 0; i < dataLength; i++) {

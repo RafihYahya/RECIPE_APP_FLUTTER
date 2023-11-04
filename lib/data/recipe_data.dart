@@ -43,6 +43,15 @@ class RecipeData {
           ? 65
           : (jsonString.length - 10 <= 0 ? jsonString.length : 40);
 
+  static int checkSizeReworked(String jsonString) {
+    int truelength = htmlRegExMiniParser(jsonString).length;
+    return truelength > 80
+        ? 65
+        : truelength > 65
+            ? 35
+            : (truelength - 10 <= 0 ? jsonString.length : 20);
+  }
+
   static List<RecipeIngredient> getIngredient(dynamic json) {
     List<RecipeIngredient> myIngd = [];
     if (json['extendedIngredients'] != null) {
@@ -111,7 +120,7 @@ class RecipeData {
             .replaceAll('&', ' '),
         fullTitle: json['title'],
         shortDescription:
-            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSize(json['summary']))}...',
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSizeReworked(json['summary']))}...',
         imageUrl: json['image'] ?? defaultImageUrl,
         isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(
