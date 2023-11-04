@@ -56,8 +56,8 @@ class CustomCardMainP extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
                             color: !dark!
-                                ? const Color(0xFF04B400)
-                                : const Color.fromRGBO(0, 116, 10, 1),
+                                ? mySettings.maincolor
+                                : mySettings.darkMainColor,
                           ),
                           child: GestureDetector(
                             onTap: () =>

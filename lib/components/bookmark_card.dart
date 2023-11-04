@@ -27,7 +27,7 @@ class _BKCardState extends State<BKCard> {
       margin: EdgeInsets.symmetric(vertical: widget.margintop),
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.redAccent,
+          color: Color.fromARGB(255, 211, 211, 211),
           borderRadius: BorderRadius.circular(15.0),
           image: DecorationImage(
               colorFilter: ColorFilter.mode(

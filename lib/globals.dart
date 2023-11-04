@@ -15,6 +15,7 @@ RecipeList myRecipeList = RecipeList(
         List.generate(constCategoryBetterFormatting.length, (i) => []));
 EnvironementSettings mySettings = EnvironementSettings(
     maincolor: const Color(0xFF04B400),
+    darkMainColor: const Color.fromARGB(255, 0, 116, 10),
     loadingColor: const Color.fromARGB(255, 70, 218, 67),
     firstTime: true,
     maxNumberOfRequests: 20,

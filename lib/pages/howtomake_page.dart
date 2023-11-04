@@ -217,7 +217,7 @@ class HowToPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.fromLTRB(12.0, 36.0, 12.0, 36),
                   child: Text(
                     'INSTRUCTIONS',
@@ -225,7 +225,7 @@ class HowToPage extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 36.0,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF04B400)),
+                        color: mySettings.maincolor),
                   ),
                 ),
                 ListView.builder(

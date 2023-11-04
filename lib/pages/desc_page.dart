@@ -31,7 +31,7 @@ class _DescPageState extends State<DescPage> {
                             widget.data.imageUrl ?? widget.data.imageUrl!),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                            const Color(0xFF04B400).withOpacity(0.15),
+                            mySettings.maincolor.withOpacity(0.15),
                             BlendMode.darken))),
                 height: 230 + MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width,
@@ -71,12 +71,12 @@ class _DescPageState extends State<DescPage> {
                               color:
                                   widget.dark! ? Colors.white : Colors.black),
                         ),
-                        const Text(
+                        Text(
                           'Pending',
                           style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF04B400)),
+                              color: mySettings.maincolor),
                         )
                       ],
                     ),
