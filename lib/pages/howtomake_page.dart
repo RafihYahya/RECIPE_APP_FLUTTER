@@ -319,17 +319,24 @@ class HowToPage extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          height: 45,
-          decoration: BoxDecoration(
-            color: !dark! ? Colors.black45 : Colors.white38,
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(15.0)),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Icon(
-            Icons.close,
-            color: !dark! ? Colors.white : Colors.black,
-            size: 32,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          child: Container(
+            height: 45,
+            decoration: BoxDecoration(
+              color: !dark! ? Colors.black45 : Colors.white38,
+              borderRadius:
+                  BorderRadius.only(bottomRight: Radius.circular(15.0)),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Icon(
+              Icons.close,
+              color: !dark! ? Colors.white : Colors.black,
+              size: 32,
+            ),
           ),
         ),
       ]),

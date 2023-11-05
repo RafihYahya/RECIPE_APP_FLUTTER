@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 //import 'package:recipe_app/async_utils_functions.dart';
 
 class SearchForm extends StatefulWidget {
-  final List dataSearch;
   final Function searchCallback;
-  const SearchForm(
-      {super.key, required this.dataSearch, required this.searchCallback});
+  const SearchForm({super.key, required this.searchCallback});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchFormState createState() => _SearchFormState();
 }
 
@@ -38,7 +37,7 @@ class _SearchFormState extends State<SearchForm> {
                 widget.searchCallback(myController.text);
               }
             },
-            child: Icon(
+            child: const Icon(
               Icons.search,
               size: 36,
             )),

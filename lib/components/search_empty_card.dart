@@ -41,7 +41,7 @@ class _BKCardState extends State<BKCard3> {
           child: Text(
             'No Search Result',
             style: TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.w600,
                 height: 0.85,
                 color: widget.dark == false ? Colors.black : Colors.white),

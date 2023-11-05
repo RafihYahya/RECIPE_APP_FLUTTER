@@ -37,14 +37,19 @@ class _DescPageState extends State<DescPage> {
                 width: MediaQuery.of(context).size.width,
                 child: null,
               ),
-              Container(
-                height: 50,
-                color: Colors.black54,
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 32,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: 50,
+                  color: Colors.black54,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 32,
+                  ),
                 ),
               ),
             ],

@@ -5,8 +5,9 @@ import 'package:recipe_app/components/search_empty_card.dart';
 import 'package:recipe_app/components/search_textform.dart';
 import 'package:recipe_app/data/bk_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
-import 'package:recipe_app/data/recipe_descrip.dart';
+//import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/globals.dart';
+import 'package:recipe_app/pages/desc_page.dart';
 
 class SearchPage extends StatefulWidget {
   // callback and variable for dark mode
@@ -19,14 +20,13 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  List searchResultData = [];
-  String? searchInput;
+  List<RecipeData> searchResultData = [];
   void fetchAndUpdateFunction(String name) async {
     searchResultData = [];
     if (name.isNotEmpty) {
-      await fetchRecipeDataSearch(name, searchResultData);
+      await fetchRecipeDataSearchToRecipeDataFormat(name, searchResultData);
       setState(() {
-        searchResultData = searchResultData;
+        //    searchResultData = searchResultData;
       });
     }
   }
@@ -84,42 +84,42 @@ class _SearchPageState extends State<SearchPage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: 85,
-                  duration: Duration(seconds: 1),
+                  height: 80,
+                  duration: const Duration(seconds: 1),
                   child: SearchForm(
-                    dataSearch: searchResultData,
                     searchCallback: fetchAndUpdateFunction,
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
+              const SizedBox(
+                height: 25,
               ),
               Expanded(
                 child: searchResultData.isNotEmpty
                     ? ListView.builder(
-                        itemCount: searchResultData.length ~/ 3,
-                        itemBuilder: (context, index) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: BKCard2(
-                                myLocalDataInstance: RecipeData(
-                                    title: searchResultData[index * 3 + 1],
-                                    fullTitle: '',
-                                    imageUrl: searchResultData[index * 3 + 2],
-                                    isNotBookmarked: true,
-                                    recipeDescription: RecipeDataDescription(
-                                        ingredients: [], instructions: []),
-                                    isAlreadyread: false),
-                                margintop: 10.0,
-                                dark: widget.dark,
-                                callback2: widget.callback2,
-                                bkdata: Bkdata(
-                                    MediaQuery.of(context).size.width,
-                                    25 +
-                                        MediaQuery.of(context).size.height *
-                                            0.08,
-                                    false),
+                        itemCount: searchResultData.length,
+                        itemBuilder: (context, index) => GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: ((context) => DescPage(
+                                        dark: widget.dark,
+                                        data: searchResultData[index]))));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0),
+                                child: BKCard2(
+                                  myLocalDataInstance: searchResultData[index],
+                                  margintop: 10.0,
+                                  dark: widget.dark,
+                                  callback2: widget.callback2,
+                                  bkdata: Bkdata(
+                                      MediaQuery.of(context).size.width,
+                                      25 +
+                                          MediaQuery.of(context).size.height *
+                                              0.08,
+                                      false),
+                                ),
                               ),
                             ))
                     : BKCard3(

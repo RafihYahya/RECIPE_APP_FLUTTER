@@ -7,7 +7,7 @@ import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 
-Future<void> fetchRecipeData() async {
+Future<void> globalFetchRecipeData() async {
   final response = await http.get(
     Uri.parse(
         '$spoonacularUrlRecipe/random?number=${mySettings.maxNumberOfRequests}'),
@@ -26,7 +26,7 @@ Future<void> fetchRecipeData() async {
   }
 }
 
-Future<void> fetchRecipeDataSmoll() async {
+Future<void> globalFetchRecipeDataSmoll() async {
   final response = await http.get(
     Uri.parse(
         '$spoonacularUrlRecipe/random?number=${mySettings.maxNumberOfRequestsSmoll}'),
@@ -48,7 +48,7 @@ Future<void> fetchRecipeDataSmoll() async {
 Future<void> fetchRecipeDataSearch(String name, List data) async {
   final response = await http.get(
     Uri.parse(
-        'https://api.spoonacular.com/recipes/complexSearch?query=$name&number=${mySettings.maxNumberOfDisplayedRequests}'),
+        '$spoonacularUrlRecipe/complexSearch?query=$name&number=${mySettings.maxNumberOfDisplayedRequests}'),
     headers: {
       'x-api-key': apiKey,
     },
@@ -67,6 +67,26 @@ Future<void> fetchRecipeDataSearch(String name, List data) async {
     // return RecipeData.fromjson(data['recipes'][0]);
   } else {
     throw Exception('Failed to load Search Data');
+  }
+}
+
+Future<void> fetchRecipeDataSearchToRecipeDataFormat(
+    String name, final List<RecipeData> searchData) async {
+  final response = await http.get(
+    Uri.parse(
+        'https://api.spoonacular.com/recipes/complexSearch?query=$name&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&limitLicense=false&number=${mySettings.maxNumberOfDisplayedRequests}'),
+    headers: {
+      'x-api-key': apiKey,
+    },
+  );
+
+  final dataSearch = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    for (var e in dataSearch['results']) {
+      searchData.add(RecipeData.fromjson2(e));
+    }
+  } else {
+    throw Exception('Failed To Load Search Data');
   }
 }
 

@@ -23,7 +23,7 @@ EnvironementSettings mySettings = EnvironementSettings(
     firstTime: true,
     maxNumberOfRequests: 100,
     maxNumberOfRequestsSmoll: 25,
-    maxNumberOfDisplayedRequests: 25);
+    maxNumberOfDisplayedRequests: 45);
 
 int indexOfPages = 0;
 bool dark = false;

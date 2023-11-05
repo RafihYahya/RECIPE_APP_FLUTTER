@@ -67,6 +67,27 @@ class RecipeData {
     }
   }
 
+  static List<RecipeIngredient> getIngredient2(dynamic json) {
+    List<RecipeIngredient> myIngd = [];
+    if (json['extendedIngredients'] != null) {
+      for (var ingd in json['extendedIngredients']) {
+        myIngd.add(RecipeIngredient(
+            number: ingd['amount'] ?? '0',
+            type: ingd['name'] != null
+                ? ingd['name'].toString().substring(
+                    0,
+                    ingd['name'].toString().length < 25
+                        ? ingd['name'].toString().length
+                        : ingd['name'].toString().length ~/ 1.5)
+                : 'Nothing',
+            imageUrl: ingredBaseUrl + (ingd['image'] ?? defaultImageUrl)));
+      }
+      return myIngd;
+    } else {
+      return myIngd;
+    }
+  }
+
   static List<String> getInstruct(dynamic json) {
     List<String> myInst = [];
     if (json['analyzedInstructions'].length >= 1) {
@@ -100,7 +121,7 @@ class RecipeData {
     double idRandom = Random().nextDouble() * 200;
     for (var e in recipeDescription.ingredients) {
       listTempIngreds.add(e.id ?? idRandom);
-      listTempIngreds.add(e.number ?? 00100);
+      listTempIngreds.add(e.number ?? 404);
       listTempIngreds.add(e.type ?? 'No Ingred');
       listTempIngreds.add(e.image ?? defaultImageUrl);
       listTempIngreds.add(e.imageUrl ?? defaultImageUrl);
@@ -130,6 +151,34 @@ class RecipeData {
             instructions: RecipeData.getInstruct(json)),
         isAlreadyread: false);
   }
+  factory RecipeData.fromjson2(dynamic json) {
+    return RecipeData(
+        title: titleParserAndSafetyReworked(json['title'] ?? 'No Title')
+            .replaceAll(',', ' ')
+            .replaceAll('&', ' '),
+        fullTitle: json['title'],
+        shortDescription:
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSizeReworked(json['summary']))}...',
+        imageUrl: json['image'] ?? defaultImageUrl,
+        isNotBookmarked: true,
+        recipeDescription: RecipeDataDescription(
+            fullDescription: htmlRegExMiniParser(json['summary'] ??
+                "No Available Description, Please Fill An Issue"),
+            ingredients: RecipeData.getIngredient2(json),
+            instructions: RecipeData.getInstruct(json)),
+        isAlreadyread: false);
+  }
+
+//
+/*
+  factory RecipeData.fromjsonForSearchData(final json) {
+    return RecipeData(
+        isNotBookmarked: false,
+        recipeDescription:
+            RecipeDataDescription(ingredients: [], instructions: []),
+        isAlreadyread: false);
+  }
+  */
 }
 
 

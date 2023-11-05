@@ -26,13 +26,13 @@ class ViewHorzState extends State<ViewHorz> {
 */
   void newFetchWhenNoDataisFound(int index) async {
     if (widget.recipeListValue[index].title == 'LOADING') {
-      await fetchRecipeDataSmoll(); //smoll Fetch 25~
+      await globalFetchRecipeDataSmoll(); //smoll Fetch 25~
       setState(() {});
     }
   }
 
   void newFetchWhenNoDataisFound2() async {
-    await fetchRecipeData(); //Big Fetch 100~
+    await globalFetchRecipeData(); //Big Fetch 100~
     setState(() {});
   }
 
