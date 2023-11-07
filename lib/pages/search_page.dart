@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/search_card.dart';
 import 'package:recipe_app/components/search_empty_card.dart';
@@ -119,7 +120,16 @@ class _SearchPageState extends State<SearchPage> {
                                           MediaQuery.of(context).size.height *
                                               0.08,
                                       false),
-                                ),
+                                ).animate().fadeIn(
+                                    delay: Duration(
+                                        milliseconds: index < 5
+                                            ? (index %
+                                                    (searchResultData.length) *
+                                                    100 +
+                                                300)
+                                            : 500),
+                                    duration:
+                                        const Duration(milliseconds: 500)),
                               ),
                             ))
                     : BKCard3(
@@ -132,6 +142,6 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ],
           ),
-        ));
+        )).animate().fadeIn(duration: Duration(milliseconds: 500));
   }
 }

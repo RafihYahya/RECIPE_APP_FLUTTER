@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/components/viewbuilder_horz.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
@@ -121,6 +122,6 @@ class _HomePageState extends State<HomePage> {
                     ),
             ),
           ),
-        ));
+        )).animate().fadeIn(duration: Duration(milliseconds: 750));
   }
 }

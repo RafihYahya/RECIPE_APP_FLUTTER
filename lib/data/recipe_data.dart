@@ -45,11 +45,29 @@ class RecipeData {
 
   static int checkSizeReworked(String jsonString) {
     int truelength = htmlRegExMiniParser(jsonString).length;
-    return truelength > 80
-        ? 65
-        : truelength > 65
+    return truelength > 90
+        ? 60
+        : truelength > 70
             ? 35
             : (truelength - 10 <= 0 ? jsonString.length : 20);
+  }
+
+  static int checkSizeReworkedReverse(String jsonString) {
+    int truelength = htmlRegExMiniParser(jsonString).length;
+    return truelength < 10
+        ? 0
+        : truelength < 40
+            ? 20
+            : (truelength < 90 ? 55 : jsonString.split(' ').take(5).length);
+  }
+
+  static String checkSizeAlternative(String jsonString) {
+    String truelength = htmlRegExMiniParser(jsonString);
+    return truelength.split(' ').length < 5
+        ? truelength.split(' ').length <= 3
+            ? truelength.split(' ').take(1).toString()
+            : truelength.split(' ').take(2).toString()
+        : truelength.split(' ').take(5).toString();
   }
 
   static List<RecipeIngredient> getIngredient(dynamic json) {
@@ -147,7 +165,7 @@ class RecipeData {
         recipeDescription: RecipeDataDescription(
             fullDescription: htmlRegExMiniParser(json['summary'] ??
                 "No Available Description, Please Fill An Issue"),
-            ingredients: RecipeData.getIngredient(json),
+            ingredients: RecipeData.getIngredient2(json),
             instructions: RecipeData.getInstruct(json)),
         isAlreadyread: false);
   }
@@ -158,7 +176,7 @@ class RecipeData {
             .replaceAll('&', ' '),
         fullTitle: json['title'],
         shortDescription:
-            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSizeReworked(json['summary']))}...',
+            '${htmlRegExMiniParser(bigParagrapheCutter(json['summary'] ?? 'No Description')).substring(0, RecipeData.checkSizeReworkedReverse(json['summary']))}...',
         imageUrl: json['image'] ?? defaultImageUrl,
         isNotBookmarked: true,
         recipeDescription: RecipeDataDescription(

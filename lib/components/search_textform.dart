@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/globals.dart';
 //import 'package:recipe_app/async_utils_functions.dart';
 
 class SearchForm extends StatefulWidget {
@@ -12,6 +13,7 @@ class SearchForm extends StatefulWidget {
 
 class _SearchFormState extends State<SearchForm> {
   var myController = TextEditingController();
+  bool toggleLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +34,28 @@ class _SearchFormState extends State<SearchForm> {
             onTap: () {
               //         if (myController.text.isNotEmpty) {
               //          fetchRecipeDataSearch(myController.text, widget.dataSearch);
-              //          }
+              //
+              //        }
+              setState(() {
+                toggleLoading = !toggleLoading;
+              });
               if (myController.text.isNotEmpty) {
                 widget.searchCallback(myController.text);
+                Future.delayed(const Duration(seconds: 5), () {
+                  setState(() {
+                    toggleLoading = !toggleLoading;
+                  });
+                });
               }
             },
-            child: const Icon(
-              Icons.search,
-              size: 36,
-            )),
+            child: !toggleLoading
+                ? const Icon(
+                    Icons.search,
+                    size: 36,
+                  )
+                : CircularProgressIndicator(
+                    color: mySettings.maincolor,
+                  )),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/custom_card.dart';
 import 'package:recipe_app/components/custom_card_empty2.dart';
@@ -50,13 +51,19 @@ class ViewHorzState extends State<ViewHorz> {
                               dark: widget.dark,
                               data: widget.recipeListValue[index],
                             )
+                              .animate()
+                              .fadeIn(duration: Duration(milliseconds: 500))
                           : CustomCardMainPEmpty(
                               fetchupdateCallback: newFetchWhenNoDataisFound,
                               index: index,
                             )
+                              .animate()
+                              .fadeIn(duration: Duration(milliseconds: 500))
                       : CustomCardMainPEmpty2(
                           fetchupdateCallback2: newFetchWhenNoDataisFound2,
-                        ),
+                        )
+                          .animate()
+                          .fadeIn(duration: Duration(milliseconds: 500)),
                 )))
         : Padding(
             padding: EdgeInsets.fromLTRB(12.0, 0, 36.0, 16.0),

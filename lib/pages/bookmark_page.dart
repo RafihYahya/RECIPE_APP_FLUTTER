@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 
@@ -94,10 +95,11 @@ class _BookMarkPageState extends State<BookMarkPage> {
                               MediaQuery.of(context).size.width,
                               45 + MediaQuery.of(context).size.height * 0.1,
                               false),
-                        ),
+                        ).animate().fadeIn(
+                            duration: const Duration(milliseconds: 700)),
                       ),
                     ],
                   )),
-        ));
+        )).animate().fadeIn(duration: Duration(milliseconds: 500));
   }
 }

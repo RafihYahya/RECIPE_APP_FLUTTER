@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/globals.dart';
 
@@ -18,7 +19,7 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     globalFetchRecipeData();
-    waitBeforeChangeIndex(3);
+    waitBeforeChangeIndex(1);
   }
 
   @override
@@ -40,6 +41,8 @@ class _LoadingPageState extends State<LoadingPage> {
           ),
         ],
       )),
-    );
+    )
+        .animate()
+        .fadeOut(delay: Duration(seconds: 3), duration: Duration(seconds: 1));
   }
 }
