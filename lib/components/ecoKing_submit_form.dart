@@ -6,9 +6,13 @@ class EcoKingSubmitForm extends StatefulWidget {
   final bool? dark;
   final Function() callback2;
   final Function() callback3;
+  final Function callback4;
   const EcoKingSubmitForm(
-      {Key? key, this.dark, required this.callback2, required this.callback3})
-      : super(key: key);
+      {super.key,
+      this.dark,
+      required this.callback2,
+      required this.callback3,
+      required this.callback4});
 
   @override
   State<EcoKingSubmitForm> createState() => _EcoKingSubmitFormState();
@@ -17,6 +21,7 @@ class EcoKingSubmitForm extends StatefulWidget {
 class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
   int ingredLength = 1;
   bool titleToggle = false;
+  List<String> tempList = [];
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -86,6 +91,7 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
               GestureDetector(
                 onTap: () {
                   widget.callback3();
+                  widget.callback4(tempList);
                 },
                 child: Container(
                   decoration: BoxDecoration(

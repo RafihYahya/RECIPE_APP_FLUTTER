@@ -90,6 +90,26 @@ Future<void> fetchRecipeDataSearchToRecipeDataFormat(
   }
 }
 
+Future<void> fetchRecipeDataEcoKingSearchToRecipeDataFormat(
+    List<String> ingredList, final List<RecipeData> searchData) async {
+  final response = await http.get(
+    Uri.parse(
+        'https://api.spoonacular.com/recipes/complexSearch?query=$name&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&limitLicense=false&number=${mySettings.maxNumberOfDisplayedRequests}'),
+    headers: {
+      'x-api-key': apiKey,
+    },
+  );
+
+  final dataSearch = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    for (var e in dataSearch['results']) {
+      searchData.add(RecipeData.fromjson2(e));
+    }
+  } else {
+    throw Exception('Failed To Load Search Data');
+  }
+}
+
 void orderRecipeData(dynamic data) {
   int dataLength = mySettings.maxNumberOfRequests;
   for (var i = 0; i < dataLength; i++) {

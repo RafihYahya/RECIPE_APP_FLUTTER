@@ -43,17 +43,14 @@ class _EcoKingPageState extends State<EcoKingPage> {
     });
   }
 
-/*
-  void fetchAndUpdateFunction(String name) async {
-    searchResultData = [];
-    if (name.isNotEmpty) {
-      await fetchRecipeDataSearchToRecipeDataFormat(name, searchResultData);
-      setState(() {
-        //    searchResultData = searchResultData;
-      });
+  void fetchAndUpdateFunction(List<String> ingredList) async {
+    searchResultData2 = [];
+    if (ingredList.isNotEmpty) {
+      await fetchRecipeDataEcoKingSearchToRecipeDataFormat(
+          ingredList, searchResultData2);
+      setState(() {});
     }
   }
-*/
 
   bool ecoSearchToggle = false;
   @override
@@ -115,6 +112,7 @@ class _EcoKingPageState extends State<EcoKingPage> {
                                   dark: widget.dark,
                                   callback2: widget.callback2,
                                   callback3: ecoSearchToggler,
+                                  callback4: fetchAndUpdateFunction,
                                 ),
                               ))
                           .animate()
