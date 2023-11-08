@@ -69,6 +69,8 @@ class ViewHorzState extends State<ViewHorz> {
             padding: EdgeInsets.fromLTRB(12.0, 0, 36.0, 16.0),
             child: CustomCardMainPEmpty2(
               fetchupdateCallback2: newFetchWhenNoDataisFound2,
-            ));
+            ).animate().fadeIn(
+                delay: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 700)));
   }
 }

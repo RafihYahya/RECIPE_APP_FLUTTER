@@ -98,6 +98,9 @@ class _DescPageState extends State<DescPage> {
                           // addToHiveDbBkClass();
                           myLocalData00!.add(widget.data);
                           writeFromRecipeDataToLocalStorageDb();
+                        } else {
+                          removeElementFromLocalStorage(
+                              widget.data.fullTitle ?? 'No Title');
                         }
                         //dont forget to add deletion as well
                         widget.data.isNotBookmarked =

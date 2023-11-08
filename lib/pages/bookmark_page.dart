@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
 import 'package:recipe_app/async_utils_functions.dart';
+import 'package:recipe_app/components/drawer_component.dart';
 
 import 'package:recipe_app/data/bk_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
@@ -11,7 +12,13 @@ class BookMarkPage extends StatefulWidget {
   // callback and variable for dark mode
   final bool? dark;
   final Function() callback2;
-  const BookMarkPage({super.key, required this.dark, required this.callback2});
+  final Function callbackindex;
+
+  const BookMarkPage(
+      {super.key,
+      required this.dark,
+      required this.callback2,
+      required this.callbackindex});
 
   @override
   State<BookMarkPage> createState() => _BookMarkPageState();
@@ -62,7 +69,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
             ),
           ],
         ),
-        drawer: Drawer(),
+        drawer: MyDrawer(callbackindex: widget.callbackindex),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView.builder(
@@ -96,10 +103,11 @@ class _BookMarkPageState extends State<BookMarkPage> {
                               45 + MediaQuery.of(context).size.height * 0.1,
                               false),
                         ).animate().fadeIn(
+                            delay: Duration(milliseconds: 200),
                             duration: const Duration(milliseconds: 700)),
                       ),
                     ],
                   )),
-        )).animate().fadeIn(duration: Duration(milliseconds: 500));
+        )).animate().fadeIn(duration: const Duration(milliseconds: 500));
   }
 }

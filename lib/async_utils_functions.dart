@@ -195,3 +195,15 @@ void writeFromRecipeDataToLocalStorageDb() async {
   bkListData.itemcount += 1;
   bkRecipeBox.put(0, bkListData);
 }
+
+void removeElementFromLocalStorage(String titleName) async {
+  var bkRecipeBox = await Hive.openBox<BookMarkedRecipesList>('myBookMarks');
+  if (myLocalData00 != null) {
+    myLocalData00 =
+        myLocalData00?.where((e) => e!.fullTitle != titleName).toList();
+    bkListData.bkList = myLocalData00!
+        .map((e) => e!.toBkRecipeDataFromRecipeDataTranformer())
+        .toList();
+    bkRecipeBox.put(0, bkListData);
+  }
+}

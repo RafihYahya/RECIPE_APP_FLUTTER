@@ -17,6 +17,8 @@ EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: const Color(0xFF04B400),
     //maincolor: Color.fromARGB(255, 50, 219, 47),
     maincolor: const Color.fromARGB(255, 70, 218, 67),
+    secondaryMaincolor: Color.fromARGB(255, 149, 245, 148),
+    drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
     darkMainColor: Color.fromARGB(255, 33, 104, 31),
     loadingColor: const Color.fromARGB(255, 70, 218, 67),
@@ -27,6 +29,7 @@ EnvironementSettings mySettings = EnvironementSettings(
 
 int indexOfPages = 0;
 bool dark = false;
+int globalIndex = 1;
 
 //----------------------------------------------------------------
 //----------------------------------------------------------------

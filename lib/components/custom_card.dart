@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/globals.dart';
 import 'package:recipe_app/pages/desc_page.dart';
@@ -74,6 +75,8 @@ class CustomCardMainP extends StatelessWidget {
                             )),
                           ),
                         )
+                            .animate()
+                            .fadeIn(duration: Duration(milliseconds: 500))
                       ],
                     ),
                   ),

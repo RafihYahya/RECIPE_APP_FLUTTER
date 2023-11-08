@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/components/drawer_component.dart';
 import 'package:recipe_app/components/viewbuilder_horz.dart';
 import 'package:recipe_app/data/recipe_lists.dart';
 import 'package:recipe_app/globals.dart';
@@ -8,8 +9,13 @@ import 'package:recipe_app/globals.dart';
 class HomePage extends StatefulWidget {
   final bool? dark;
   final Function() callback2;
-  const HomePage({Key? key, this.dark, required this.callback2})
-      : super(key: key);
+  final Function callbackindex;
+
+  const HomePage(
+      {super.key,
+      this.dark,
+      required this.callback2,
+      required this.callbackindex});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -52,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        drawer: Drawer(),
+        drawer: MyDrawer(callbackindex: widget.callbackindex),
         body: Consumer<RecipeList>(
           builder: (context, value, child) => PageView.builder(
             //for page scroll

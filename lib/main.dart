@@ -52,13 +52,23 @@ class _RecipeAppState extends State<RecipeApp> {
       HomePage(
         dark: dark,
         callback2: themeswitcher,
+        callbackindex: routesSwitcher,
       ),
       BookMarkPage(
         dark: dark,
         callback2: themeswitcher,
+        callbackindex: routesSwitcher,
       ),
-      SearchPage(dark: dark, callback2: themeswitcher),
-      EcokingPage(),
+      SearchPage(
+        dark: dark,
+        callback2: themeswitcher,
+        callbackindex: routesSwitcher,
+      ),
+      EcoKingPage(
+        dark: dark,
+        callback2: themeswitcher,
+        callbackindex: routesSwitcher,
+      ),
     ];
     return MaterialApp(
       theme: ThemeData(

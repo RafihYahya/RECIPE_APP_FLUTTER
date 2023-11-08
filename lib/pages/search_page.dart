@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
+import 'package:recipe_app/components/drawer_component.dart';
 import 'package:recipe_app/components/search_card.dart';
 import 'package:recipe_app/components/search_empty_card.dart';
 import 'package:recipe_app/components/search_textform.dart';
@@ -14,7 +15,13 @@ class SearchPage extends StatefulWidget {
   // callback and variable for dark mode
   final bool? dark;
   final Function() callback2;
-  const SearchPage({super.key, required this.dark, required this.callback2});
+  final Function callbackindex;
+
+  const SearchPage(
+      {super.key,
+      required this.dark,
+      required this.callback2,
+      required this.callbackindex});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -22,6 +29,14 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   List<RecipeData> searchResultData = [];
+  bool toggleAnimationDelay = true;
+  int animationToggler() {
+    setState(() {
+      toggleAnimationDelay = false;
+    });
+    return 200;
+  }
+
   void fetchAndUpdateFunction(String name) async {
     searchResultData = [];
     if (name.isNotEmpty) {
@@ -68,7 +83,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ],
         ),
-        drawer: Drawer(),
+        drawer: MyDrawer(callbackindex: widget.callbackindex),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 28.0, 16, 0),
           child: Column(
@@ -122,14 +137,17 @@ class _SearchPageState extends State<SearchPage> {
                                       false),
                                 ).animate().fadeIn(
                                     delay: Duration(
-                                        milliseconds: index < 5
-                                            ? (index %
-                                                    (searchResultData.length) *
-                                                    100 +
-                                                300)
-                                            : 500),
+                                        milliseconds: toggleAnimationDelay
+                                            ? index < 5
+                                                ? (index %
+                                                        (searchResultData
+                                                            .length) *
+                                                        100 +
+                                                    300)
+                                                : animationToggler()
+                                            : 200),
                                     duration:
-                                        const Duration(milliseconds: 500)),
+                                        const Duration(milliseconds: 700)),
                               ),
                             ))
                     : BKCard3(
@@ -138,7 +156,9 @@ class _SearchPageState extends State<SearchPage> {
                         callback2: widget.callback2,
                         bkdata: Bkdata(MediaQuery.of(context).size.width * 0.8,
                             MediaQuery.of(context).size.height * 0.2, false),
-                      ),
+                      ).animate().fadeIn(
+                        delay: Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 700)),
               ),
             ],
           ),

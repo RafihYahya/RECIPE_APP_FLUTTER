@@ -26,7 +26,7 @@ class _BKCardState extends State<BKCard3> {
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: widget.dark == false
-            ? Color.fromARGB(255, 211, 211, 211)
+            ? Color.fromARGB(255, 225, 225, 225)
             : Colors.black38,
         borderRadius: BorderRadius.circular(15.0),
       ),
@@ -39,9 +39,9 @@ class _BKCardState extends State<BKCard3> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Center(
           child: Text(
-            'No Search Result',
+            'Search For A Recipe',
             style: TextStyle(
-                fontSize: 28,
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
                 height: 0.85,
                 color: widget.dark == false ? Colors.black : Colors.white),
