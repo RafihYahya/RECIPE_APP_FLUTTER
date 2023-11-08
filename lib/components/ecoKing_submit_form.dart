@@ -24,7 +24,7 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
       child: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 35,
           ),
           !titleToggle
               ? Padding(
@@ -36,6 +36,9 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                   ).animate().fade(),
                 )
               : SizedBox(),
+          SizedBox(
+            height: 15,
+          ),
           GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 2),
