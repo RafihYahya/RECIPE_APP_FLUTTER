@@ -39,7 +39,7 @@ class _BKCardState extends State<BKCard3> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Center(
           child: Text(
-            'Search For A Recipe',
+            'No Recipe Found',
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,

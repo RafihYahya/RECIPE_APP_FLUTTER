@@ -58,7 +58,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        drawer: MyDrawer(callbackindex: widget.callbackindex),
+        drawer: MyDrawer(
+          callbackindex: widget.callbackindex,
+          dark: widget.dark,
+          callback2: widget.callback2,
+        ),
         body: Consumer<RecipeList>(
           builder: (context, value, child) => PageView.builder(
             //for page scroll

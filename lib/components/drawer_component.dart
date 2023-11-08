@@ -3,8 +3,13 @@ import 'package:recipe_app/globals.dart';
 
 class MyDrawer extends StatefulWidget {
   final Function callbackindex;
-
-  const MyDrawer({super.key, required this.callbackindex});
+  final bool? dark;
+  final Function() callback2;
+  const MyDrawer(
+      {super.key,
+      required this.callbackindex,
+      required this.dark,
+      required this.callback2});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -14,11 +19,14 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: mySettings.drawerColor,
+      backgroundColor: widget.dark!
+          ? Color.fromARGB(255, 29, 29, 29)
+          : const Color.fromARGB(255, 221, 221, 221),
       child: Column(
         children: [
           Container(
-            color: mySettings.maincolor,
+            color:
+                !widget.dark! ? mySettings.maincolor : mySettings.darkMainColor,
             height: 175,
             child: null,
           ),
@@ -30,12 +38,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ListTile(
-                    title: const Text(
+                    title: Text(
                       'Home Page',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: !widget.dark! ? Colors.black : Colors.white),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 4.0),
@@ -45,7 +53,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     selectedTileColor:
                         !dark ? mySettings.maincolor : mySettings.darkMainColor,
                     selected: globalIndex == 1 ? true : false,
-                    hoverColor: mySettings.secondaryMaincolor,
+                    hoverColor: !widget.dark!
+                        ? mySettings.secondaryMaincolor
+                        : mySettings.secondaryDarkMaincolor,
                     onTap: () {
                       widget.callbackindex(1);
                       setState(() {
@@ -58,12 +68,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ListTile(
-                    title: const Text(
+                    title: Text(
                       'BookMark Page',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: !widget.dark! ? Colors.black : Colors.white),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 4.0),
@@ -73,7 +83,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     selectedTileColor:
                         !dark ? mySettings.maincolor : mySettings.darkMainColor,
                     selected: globalIndex == 2 ? true : false,
-                    hoverColor: mySettings.secondaryMaincolor,
+                    hoverColor: !widget.dark!
+                        ? mySettings.secondaryMaincolor
+                        : mySettings.secondaryDarkMaincolor,
                     onTap: () {
                       widget.callbackindex(2);
                       setState(() {
@@ -86,12 +98,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ListTile(
-                    title: const Text(
+                    title: Text(
                       'Search Page',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: !widget.dark! ? Colors.black : Colors.white),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 4.0),
@@ -101,7 +113,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     selectedTileColor:
                         !dark ? mySettings.maincolor : mySettings.darkMainColor,
                     selected: globalIndex == 3 ? true : false,
-                    hoverColor: mySettings.secondaryMaincolor,
+                    hoverColor: !widget.dark!
+                        ? mySettings.secondaryMaincolor
+                        : mySettings.secondaryDarkMaincolor,
                     onTap: () {
                       widget.callbackindex(3);
                       setState(() {
@@ -114,12 +128,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ListTile(
-                    title: const Text(
+                    title: Text(
                       'EcoKing Page',
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black),
+                          color: !widget.dark! ? Colors.black : Colors.white),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 4.0),
@@ -129,7 +143,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     selectedTileColor:
                         !dark ? mySettings.maincolor : mySettings.darkMainColor,
                     selected: globalIndex == 4 ? true : false,
-                    hoverColor: mySettings.secondaryMaincolor,
+                    hoverColor: !widget.dark!
+                        ? mySettings.secondaryMaincolor
+                        : mySettings.secondaryDarkMaincolor,
                     onTap: () {
                       widget.callbackindex(4);
                       setState(() {

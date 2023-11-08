@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class EnvironementSettings extends ChangeNotifier {
   final Color maincolor;
   Color? secondaryMaincolor;
+  Color? secondaryDarkMaincolor;
   Color? drawerColor;
   final Color darkMainColor;
   final Color loadingColor;
@@ -15,6 +16,7 @@ class EnvironementSettings extends ChangeNotifier {
   EnvironementSettings(
       {required this.maincolor,
       this.secondaryMaincolor,
+      this.secondaryDarkMaincolor,
       this.drawerColor,
       required this.darkMainColor,
       required this.loadingColor,

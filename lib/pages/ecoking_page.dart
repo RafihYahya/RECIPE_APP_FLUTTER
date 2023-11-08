@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/drawer_component.dart';
+import 'package:recipe_app/components/ecoKing_submit_form.dart';
 import 'package:recipe_app/components/search_card.dart';
 import 'package:recipe_app/components/search_empty_card.dart';
 import 'package:recipe_app/data/bk_data.dart';
@@ -36,6 +37,12 @@ class _EcoKingPageState extends State<EcoKingPage> {
     return 200;
   }
 
+  void ecoSearchToggler() {
+    setState(() {
+      ecoSearchToggle = !ecoSearchToggle;
+    });
+  }
+
 /*
   void fetchAndUpdateFunction(String name) async {
     searchResultData = [];
@@ -47,6 +54,8 @@ class _EcoKingPageState extends State<EcoKingPage> {
     }
   }
 */
+
+  bool ecoSearchToggle = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,82 +92,135 @@ class _EcoKingPageState extends State<EcoKingPage> {
             ),
           ],
         ),
-        drawer: MyDrawer(callbackindex: widget.callbackindex),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(16.0, 28.0, 16, 0),
+        drawer: MyDrawer(
+          callbackindex: widget.callbackindex,
+          dark: widget.dark,
+          callback2: widget.callback2,
+        ),
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                child: AnimatedContainer(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 16.0),
-                    decoration: BoxDecoration(
-                      color: widget.dark == false
-                          ? const Color.fromARGB(255, 211, 211, 211)
-                          : Colors.black38,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 80,
-                    duration: const Duration(seconds: 1),
-                    child: Container(
-                      child: null,
-                    )),
-              ),
+              !ecoSearchToggle
+                  ? Expanded(
+                      child: AnimatedContainer(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              width: MediaQuery.of(context).size.width * 0.95,
+                              height: 200,
+                              duration: const Duration(seconds: 1),
+                              child: Container(
+                                child: EcoKingSubmitForm(
+                                  dark: widget.dark,
+                                  callback2: widget.callback2,
+                                  callback3: ecoSearchToggler,
+                                ),
+                              ))
+                          .animate()
+                          .fadeIn(duration: Duration(milliseconds: 500)),
+                    )
+                  : SizedBox(),
               const SizedBox(
                 height: 25,
               ),
-              Expanded(
-                child: searchResultData2.isNotEmpty
-                    ? ListView.builder(
-                        itemCount: searchResultData2.length,
-                        itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: ((context) => DescPage(
-                                        dark: widget.dark,
-                                        data: searchResultData2[index]))));
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0),
-                                child: BKCard2(
-                                  myLocalDataInstance: searchResultData2[index],
-                                  margintop: 10.0,
-                                  dark: widget.dark,
-                                  callback2: widget.callback2,
-                                  bkdata: Bkdata(
-                                      MediaQuery.of(context).size.width,
-                                      25 +
-                                          MediaQuery.of(context).size.height *
-                                              0.08,
-                                      false),
-                                ).animate().fadeIn(
-                                    delay: Duration(
-                                        milliseconds: toggleAnimationDelay
-                                            ? index < 5
-                                                ? (index %
-                                                        (searchResultData2
-                                                            .length) *
-                                                        100 +
-                                                    300)
-                                                : animationToggler()
-                                            : 200),
-                                    duration:
-                                        const Duration(milliseconds: 700)),
-                              ),
-                            ))
-                    : BKCard3(
-                        margintop: 10.0,
-                        dark: dark,
-                        callback2: widget.callback2,
-                        bkdata: Bkdata(MediaQuery.of(context).size.width * 0.8,
-                            MediaQuery.of(context).size.height * 0.2, false),
-                      ).animate().fadeIn(
-                        delay: Duration(milliseconds: 200),
-                        duration: const Duration(milliseconds: 700)),
-              ),
+              ecoSearchToggle
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Center(
+                        child: GestureDetector(
+                          onTap: () => ecoSearchToggler(),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: 75,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              color: mySettings.maincolor,
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Try Another One',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w500),
+                            )),
+                          )
+                              .animate()
+                              .fadeIn(duration: Duration(milliseconds: 500)),
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
+              ecoSearchToggle
+                  ? Expanded(
+                      child: searchResultData2.isNotEmpty
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(16.0, 28.0, 16, 0),
+                              child: ListView.builder(
+                                  itemCount: searchResultData2.length,
+                                  itemBuilder: (context, index) =>
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      DescPage(
+                                                          dark: widget.dark,
+                                                          data:
+                                                              searchResultData2[
+                                                                  index]))));
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 12.0),
+                                          child: BKCard2(
+                                            myLocalDataInstance:
+                                                searchResultData2[index],
+                                            margintop: 10.0,
+                                            dark: widget.dark,
+                                            callback2: widget.callback2,
+                                            bkdata: Bkdata(
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                25 +
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .height *
+                                                        0.08,
+                                                false),
+                                          ).animate().fadeIn(
+                                              delay: Duration(
+                                                  milliseconds:
+                                                      toggleAnimationDelay
+                                                          ? index < 5
+                                                              ? (index %
+                                                                      (searchResultData2
+                                                                          .length) *
+                                                                      100 +
+                                                                  300)
+                                                              : animationToggler()
+                                                          : 200),
+                                              duration: const Duration(
+                                                  milliseconds: 700)),
+                                        ),
+                                      )),
+                            )
+                              .animate()
+                              .fadeIn(duration: Duration(milliseconds: 500))
+                          : BKCard3(
+                              margintop: 10.0,
+                              dark: dark,
+                              callback2: widget.callback2,
+                              bkdata: Bkdata(
+                                  MediaQuery.of(context).size.width * 0.8,
+                                  MediaQuery.of(context).size.height * 0.2,
+                                  false),
+                            ).animate().fadeIn(
+                              delay: Duration(milliseconds: 200),
+                              duration: const Duration(milliseconds: 700)),
+                    )
+                  : SizedBox(),
             ],
           ),
         )).animate().fadeIn(duration: Duration(milliseconds: 500));

@@ -83,7 +83,11 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ],
         ),
-        drawer: MyDrawer(callbackindex: widget.callbackindex),
+        drawer: MyDrawer(
+          callbackindex: widget.callbackindex,
+          dark: widget.dark,
+          callback2: widget.callback2,
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 28.0, 16, 0),
           child: Column(

@@ -69,7 +69,11 @@ class _BookMarkPageState extends State<BookMarkPage> {
             ),
           ],
         ),
-        drawer: MyDrawer(callbackindex: widget.callbackindex),
+        drawer: MyDrawer(
+          callbackindex: widget.callbackindex,
+          dark: widget.dark,
+          callback2: widget.callback2,
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView.builder(

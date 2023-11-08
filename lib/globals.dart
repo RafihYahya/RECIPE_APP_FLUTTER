@@ -18,6 +18,7 @@ EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: Color.fromARGB(255, 50, 219, 47),
     maincolor: const Color.fromARGB(255, 70, 218, 67),
     secondaryMaincolor: Color.fromARGB(255, 149, 245, 148),
+    secondaryDarkMaincolor: Color.fromARGB(255, 32, 53, 32),
     drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
     darkMainColor: Color.fromARGB(255, 33, 104, 31),
