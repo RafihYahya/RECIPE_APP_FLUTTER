@@ -31,9 +31,8 @@ class _EcoKingPageState extends State<EcoKingPage> {
   List<RecipeData> searchResultData2 = [];
   bool toggleAnimationDelay = true;
   int animationToggler() {
-    setState(() {
-      toggleAnimationDelay = false;
-    });
+    toggleAnimationDelay = false;
+
     return 200;
   }
 
@@ -50,6 +49,16 @@ class _EcoKingPageState extends State<EcoKingPage> {
           ingredList, searchResultData2);
       setState(() {});
     }
+  }
+
+  void routeMoveTo(RecipeData temp) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: ((context) => DescPage(dark: widget.dark, data: temp))));
+  }
+
+  void fetchAdditionalDataAndUpdateFunction(int id) async {
+    RecipeData temp0 = await fetchAdditionalDataForEcoRecipeSearch(id);
+    routeMoveTo(temp0);
   }
 
   bool ecoSearchToggle = false;
@@ -133,7 +142,9 @@ class _EcoKingPageState extends State<EcoKingPage> {
                             height: 75,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
-                              color: mySettings.maincolor,
+                              color: !dark
+                                  ? mySettings.maincolor
+                                  : mySettings.darkMainColor,
                             ),
                             child: Center(
                                 child: Text(
@@ -143,7 +154,7 @@ class _EcoKingPageState extends State<EcoKingPage> {
                             )),
                           )
                               .animate()
-                              .fadeIn(duration: Duration(milliseconds: 500)),
+                              .fadeIn(duration: Duration(milliseconds: 1200)),
                         ),
                       ),
                     )
@@ -159,19 +170,14 @@ class _EcoKingPageState extends State<EcoKingPage> {
                                   itemBuilder: (context, index) =>
                                       GestureDetector(
                                         onTap: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: ((context) =>
-                                                      DescPage(
-                                                          dark: widget.dark,
-                                                          data:
-                                                              searchResultData2[
-                                                                  index]))));
+                                          fetchAdditionalDataAndUpdateFunction(
+                                              searchResultData2[index].id!);
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 12.0),
                                           child: BKCard2(
+                                            togglebk: false,
                                             myLocalDataInstance:
                                                 searchResultData2[index],
                                             margintop: 10.0,

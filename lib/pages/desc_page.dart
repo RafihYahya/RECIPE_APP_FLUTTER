@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/globals.dart';
@@ -91,7 +92,7 @@ class _DescPageState extends State<DescPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (widget.data.isNotBookmarked = true) {
+                        if (widget.data.isNotBookmarked == true) {
                           // bkListData.bkList?.add(widget.data
                           //    .toBkRecipeDataFromRecipeDataTranformer());
                           // bkListData.itemcount += 1;
@@ -160,7 +161,7 @@ class _DescPageState extends State<DescPage> {
             ],
           )
         ],
-      ),
+      ).animate().fade(),
     );
   }
 }

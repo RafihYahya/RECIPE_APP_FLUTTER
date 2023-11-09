@@ -31,9 +31,8 @@ class _SearchPageState extends State<SearchPage> {
   List<RecipeData> searchResultData = [];
   bool toggleAnimationDelay = true;
   int animationToggler() {
-    setState(() {
-      toggleAnimationDelay = false;
-    });
+    toggleAnimationDelay = false;
+
     return 200;
   }
 
@@ -129,6 +128,7 @@ class _SearchPageState extends State<SearchPage> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12.0),
                                 child: BKCard2(
+                                  togglebk: false,
                                   myLocalDataInstance: searchResultData[index],
                                   margintop: 10.0,
                                   dark: widget.dark,

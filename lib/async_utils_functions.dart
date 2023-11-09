@@ -90,11 +90,23 @@ Future<void> fetchRecipeDataSearchToRecipeDataFormat(
   }
 }
 
+String turnListintoStringFormattedForEcoKing(List<String> tempList) {
+  List<String> temp2 = [];
+  for (var e in tempList) {
+    if (e == tempList[0]) {
+      temp2.add(e);
+    } else {
+      temp2.add(',+$e');
+    }
+  }
+  return temp2.join();
+}
+
 Future<void> fetchRecipeDataEcoKingSearchToRecipeDataFormat(
     List<String> ingredList, final List<RecipeData> searchData) async {
   final response = await http.get(
     Uri.parse(
-        'https://api.spoonacular.com/recipes/complexSearch?query=$name&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&limitLicense=false&number=${mySettings.maxNumberOfDisplayedRequests}'),
+        'https://api.spoonacular.com/recipes/findByIngredients?ingredients=${turnListintoStringFormattedForEcoKing(ingredList)}&number=25'),
     headers: {
       'x-api-key': apiKey,
     },
@@ -102,9 +114,27 @@ Future<void> fetchRecipeDataEcoKingSearchToRecipeDataFormat(
 
   final dataSearch = jsonDecode(response.body);
   if (response.statusCode == 200) {
-    for (var e in dataSearch['results']) {
-      searchData.add(RecipeData.fromjson2(e));
+    for (var e in dataSearch) {
+      searchData.add(RecipeData.fromjson3(e));
     }
+  } else {
+    throw Exception('Failed To Load Search Data');
+  }
+}
+
+Future<RecipeData> fetchAdditionalDataForEcoRecipeSearch(int id) async {
+  final response = await http.get(
+    Uri.parse(
+        'https://api.spoonacular.com/recipes/$id/information?includeNutrition=false'),
+    headers: {
+      'x-api-key': apiKey,
+    },
+  );
+
+  final dataSearch = jsonDecode(response.body);
+  if (response.statusCode == 200) {
+    RecipeData data1 = RecipeData.fromjson2(dataSearch);
+    return data1;
   } else {
     throw Exception('Failed To Load Search Data');
   }

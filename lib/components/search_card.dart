@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/bk_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/globals.dart';
 
 class BKCard2 extends StatefulWidget {
   final RecipeData? myLocalDataInstance;
@@ -8,10 +10,13 @@ class BKCard2 extends StatefulWidget {
   final bool? dark;
   final Function() callback2;
   final Bkdata bkdata;
+  final bool togglebk;
+
   const BKCard2(
       {super.key,
       this.myLocalDataInstance,
       required this.margintop,
+      required this.togglebk,
       required this.dark,
       required this.callback2,
       required this.bkdata});
@@ -60,13 +65,37 @@ class _BKCardState extends State<BKCard2> {
                 ),
               ),
             ),
-            Icon(
-              widget.myLocalDataInstance!.isNotBookmarked
-                  ? Icons.favorite_border
-                  : Icons.favorite,
-              size: 36,
-              color: Colors.red,
-            )
+            widget.togglebk
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (widget.myLocalDataInstance!.isNotBookmarked =
+                            true) {
+                          // bkListData.bkList?.add(widget.data
+                          //    .toBkRecipeDataFromRecipeDataTranformer());
+                          // bkListData.itemcount += 1;
+                          // addToHiveDbBkClass();
+                          myLocalData00!.add(widget.myLocalDataInstance);
+                          writeFromRecipeDataToLocalStorageDb();
+                        } else {
+                          removeElementFromLocalStorage(
+                              widget.myLocalDataInstance!.fullTitle ??
+                                  'No Title');
+                        }
+                        //dont forget to add deletion as well
+                        widget.myLocalDataInstance!.isNotBookmarked =
+                            !widget.myLocalDataInstance!.isNotBookmarked;
+                      });
+                    },
+                    child: Icon(
+                      widget.myLocalDataInstance!.isNotBookmarked
+                          ? Icons.favorite_border
+                          : Icons.favorite,
+                      size: 36,
+                      color: Colors.red,
+                    ),
+                  )
+                : SizedBox()
           ],
         ),
       ),

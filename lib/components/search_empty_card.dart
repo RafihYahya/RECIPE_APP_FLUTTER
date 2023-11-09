@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/data/bk_data.dart';
+import 'package:recipe_app/globals.dart';
 //import 'package:recipe_app/globals.dart';
 
 class BKCard3 extends StatefulWidget {
@@ -19,6 +21,19 @@ class BKCard3 extends StatefulWidget {
 }
 
 class _BKCardState extends State<BKCard3> {
+  bool animaToggler = false;
+
+  bool animaSwap() {
+    Future.delayed(Duration(seconds: 5), () {
+      if (mounted) {
+        setState(() {
+          animaToggler = true;
+        });
+      }
+    });
+    return animaToggler;
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -38,16 +53,21 @@ class _BKCardState extends State<BKCard3> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Center(
-          child: Text(
-            'No Recipe Found',
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                height: 0.85,
-                color: widget.dark == false ? Colors.black : Colors.white),
-          ),
+          child: animaSwap()
+              ? Text(
+                  'No Recipe Found',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      height: 0.85,
+                      color:
+                          widget.dark == false ? Colors.black : Colors.white),
+                )
+              : CircularProgressIndicator(
+                  color: mySettings.maincolor,
+                ),
         ),
       ),
-    );
+    ).animate().fade();
   }
 }

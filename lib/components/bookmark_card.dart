@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/bk_data.dart';
 import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/globals.dart';
 
 class BKCard extends StatefulWidget {
   final RecipeData? myLocalDataInstance;
   final double margintop;
   final bool? dark;
   final Function() callback2;
+  final Function() callback3;
   final Bkdata bkdata;
+  final bool togglebk;
   const BKCard(
       {super.key,
       this.myLocalDataInstance,
       required this.margintop,
       required this.dark,
+      required this.callback3,
       required this.callback2,
+      required this.togglebk,
       required this.bkdata});
 
   @override
@@ -61,7 +67,7 @@ class _BKCardState extends State<BKCard> {
                         color: Colors.white),
                   ),
                   const Text(
-                    'subtitle',
+                    'Saved Locally',
                     style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
@@ -70,13 +76,35 @@ class _BKCardState extends State<BKCard> {
                 ],
               ),
             ),
-            Icon(
-              widget.myLocalDataInstance!.isNotBookmarked
-                  ? Icons.favorite_border
-                  : Icons.favorite,
-              size: 36,
-              color: Colors.red,
-            )
+            widget.togglebk
+                ? GestureDetector(
+                    onTap: () {
+                      if (widget.myLocalDataInstance!.isNotBookmarked == true) {
+                        setState(() {
+                          myLocalData00!.add(widget.myLocalDataInstance);
+                          writeFromRecipeDataToLocalStorageDb();
+                          widget.myLocalDataInstance!.isNotBookmarked = false;
+                        });
+                      } else {
+                        setState(() {
+                          removeElementFromLocalStorage(
+                              widget.myLocalDataInstance!.fullTitle ??
+                                  'No Title');
+                          widget.myLocalDataInstance!.isNotBookmarked = true;
+                          widget.callback3();
+                        });
+                      }
+                      //dont forget to add deletion as well
+                    },
+                    child: Icon(
+                      widget.myLocalDataInstance!.isNotBookmarked
+                          ? Icons.favorite_border
+                          : Icons.favorite,
+                      size: 36,
+                      color: Colors.red,
+                    ),
+                  )
+                : SizedBox()
           ],
         ),
       ),

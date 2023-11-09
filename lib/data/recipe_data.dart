@@ -8,6 +8,7 @@ import 'package:recipe_app/globals.dart';
 import 'dart:math';
 
 class RecipeData {
+  final int? id;
   final String? title;
   final String? fullTitle;
   final String? shortDescription;
@@ -17,6 +18,7 @@ class RecipeData {
   bool isAlreadyread;
 
   RecipeData({
+    this.id,
     this.title,
     this.fullTitle,
     this.shortDescription,
@@ -27,7 +29,8 @@ class RecipeData {
   });
 
   RecipeData.mock()
-      : title = 'PlaceHolder Title',
+      : id = 000000,
+        title = 'PlaceHolder Title',
         fullTitle = 'BIGGER PLACEHOLDER TITLE',
         shortDescription =
             'This is To be filled with Short description about the object',
@@ -184,6 +187,20 @@ class RecipeData {
                 "No Available Description, Please Fill An Issue"),
             ingredients: RecipeData.getIngredient2(json),
             instructions: RecipeData.getInstruct(json)),
+        isAlreadyread: false);
+  }
+  factory RecipeData.fromjson3(dynamic json) {
+    return RecipeData(
+        id: json['id'],
+        title: titleParserAndSafetyReworked(json['title'] ?? 'No Title')
+            .replaceAll(',', ' ')
+            .replaceAll('&', ' '),
+        fullTitle: json['title'],
+        shortDescription: '',
+        imageUrl: json['image'] ?? defaultImageUrl,
+        isNotBookmarked: true,
+        recipeDescription: RecipeDataDescription(
+            fullDescription: '', ingredients: [], instructions: []),
         isAlreadyread: false);
   }
 

@@ -30,6 +30,10 @@ class _BookMarkPageState extends State<BookMarkPage> {
     super.initState();
   }
 
+  void updatestatecallback() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -98,8 +102,10 @@ class _BookMarkPageState extends State<BookMarkPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: BKCard(
+                          togglebk: true,
                           myLocalDataInstance: myLocalData00?[index],
                           margintop: 20.0,
+                          callback3: updatestatecallback,
                           dark: widget.dark,
                           callback2: widget.callback2,
                           bkdata: Bkdata(
