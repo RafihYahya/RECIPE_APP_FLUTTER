@@ -157,7 +157,36 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
               ],
             ),
-          ))
+          )),
+          Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+              child: ListTile(
+                  title: Text(
+                    'About Us',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: !widget.dark! ? Colors.black : Colors.white),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 4.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  selectedTileColor:
+                      !dark ? mySettings.maincolor : mySettings.darkMainColor,
+                  selected: globalIndex == 5 ? true : false,
+                  hoverColor: !widget.dark!
+                      ? mySettings.secondaryMaincolor
+                      : mySettings.secondaryDarkMaincolor,
+                  onTap: () {
+                    widget.callbackindex(5);
+                    setState(() {
+                      globalIndex = 5;
+                    });
+                    Navigator.pop(context);
+                  }))
         ],
       ),
     );

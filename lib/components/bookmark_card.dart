@@ -66,13 +66,16 @@ class _BKCardState extends State<BKCard> {
                         height: 0.85,
                         color: Colors.white),
                   ),
+                  /*
                   const Text(
                     'Saved Locally',
                     style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
                         fontWeight: FontWeight.w300),
+
                   )
+                  */
                 ],
               ),
             ),
