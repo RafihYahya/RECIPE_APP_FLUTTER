@@ -53,8 +53,11 @@ const String ingredBaseUrl = 'https://spoonacular.com/cdn/ingredients_100x100/';
 
 const int totalCategoriesNum = 8;
 
-const String defaultImageUrl =
+const String defaultImageUrl2 =
     'https://th.bing.com/th/id/R.e23184eb927ff24d2539e5dad7ad7b67?rik=%2b0ECfK%2f23Wg%2bLg&pid=ImgRaw&r=0';
+
+const String defaultImageUrl =
+    'https://media.tenor.com/0iK9a1WkT40AAAAC/loading-white.gif';
 
 List<String> constCategory = [
   'vegetarian',
