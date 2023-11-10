@@ -5,8 +5,7 @@ import 'package:recipe_app/globals.dart';
 class HowToPage extends StatelessWidget {
   final RecipeDataDescription description;
   final bool? dark;
-  const HowToPage({Key? key, required this.dark, required this.description})
-      : super(key: key);
+  const HowToPage({super.key, required this.dark, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +31,11 @@ class HowToPage extends StatelessWidget {
                         color: Color(0xFF04B400)),
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 400,
                   width: MediaQuery.of(context).size.width,
                   child: PageView.builder(
-                    physics: PageScrollPhysics(),
+                    physics: const PageScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: (description.ingredients.length) ~/ 4,
                     itemBuilder: (context, index) => Padding(
@@ -67,20 +66,20 @@ class HowToPage extends StatelessWidget {
                                             ),
                                             height: 125,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 2.0,
                                           ),
                                           Text(
                                             description.ingredients[4 * index]
                                                     .type ??
                                                 'Nothing',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                               const SizedBox(
                                 width: 28.0,
@@ -153,7 +152,7 @@ class HowToPage extends StatelessWidget {
                                             ),
                                             height: 125,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 2.0,
                                           ),
                                           Text(
@@ -161,13 +160,13 @@ class HowToPage extends StatelessWidget {
                                                     .ingredients[4 * index + 2]
                                                     .type ??
                                                 'Nothing',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                               const SizedBox(
                                 width: 28.0,
@@ -194,7 +193,7 @@ class HowToPage extends StatelessWidget {
                                             ),
                                             height: 125,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 2.0,
                                           ),
                                           Text(
@@ -202,13 +201,13 @@ class HowToPage extends StatelessWidget {
                                                     .ingredients[4 * index + 3]
                                                     .type ??
                                                 'Nothing',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18.0),
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                             ],
                           ),
@@ -218,7 +217,7 @@ class HowToPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(12.0, 36.0, 12.0, 36),
+                  padding: const EdgeInsets.fromLTRB(12.0, 36.0, 12.0, 36),
                   child: Text(
                     'INSTRUCTIONS',
                     textAlign: TextAlign.start,
@@ -241,7 +240,7 @@ class HowToPage extends StatelessWidget {
                               Padding(
                                 padding: index2 % 2 == 0
                                     ? const EdgeInsets.only(right: 52.0)
-                                    : EdgeInsets.only(left: 48.0),
+                                    : const EdgeInsets.only(left: 48.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -269,9 +268,9 @@ class HowToPage extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           color: !dark!
-                                              ? Color.fromARGB(
+                                              ? const Color.fromARGB(
                                                   255, 211, 211, 211)
-                                              : Color.fromARGB(
+                                              : const Color.fromARGB(
                                                   255, 56, 56, 56)),
                                       width: 250,
                                       child: Padding(
@@ -281,7 +280,7 @@ class HowToPage extends StatelessWidget {
                                           padding: const EdgeInsets.all(20.0),
                                           child: Text(
                                             description.instructions[index2],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18.0,
                                             ),
                                           ),
@@ -329,7 +328,7 @@ class HowToPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: !dark! ? Colors.black45 : Colors.white38,
               borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(15.0)),
+                  const BorderRadius.only(bottomRight: Radius.circular(15.0)),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Icon(

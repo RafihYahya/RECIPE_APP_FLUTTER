@@ -7,11 +7,10 @@ class AboutMePage extends StatelessWidget {
   final Function() callback2;
   final Function callbackindex;
   const AboutMePage(
-      {Key? key,
+      {super.key,
       required this.callback2,
       required this.callbackindex,
-      required this.dark})
-      : super(key: key);
+      required this.dark});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +48,7 @@ class AboutMePage extends StatelessWidget {
       drawer: MyDrawer(
           callbackindex: callbackindex, dark: dark, callback2: callback2),
       body: Container(
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -65,24 +65,24 @@ class AboutMePage extends StatelessWidget {
                   : mySettings.secondaryDarkMaincolor!,
             ])),
         child: const Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'My Name is RafihYahya',
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 24,
               ),
               Text(
-                'My Github:',
-                style: TextStyle(fontSize: 14),
+                'Thats It',
+                style: TextStyle(fontSize: 18),
               ),
               Text(
-                'CheckOut My Other Stuffs',
-                style: TextStyle(fontSize: 14),
-              ),
-              Text(
-                'So Far All My Works Is OpenSource With GNU License',
-                style: TextStyle(fontSize: 14),
+                'Thats All You Need To Know',
+                style: TextStyle(fontSize: 18),
               ),
             ],
           ),

@@ -95,7 +95,7 @@ class _BKCardState extends State<BKCard2> {
                       color: Colors.red,
                     ),
                   )
-                : SizedBox()
+                : const SizedBox()
           ],
         ),
       ),

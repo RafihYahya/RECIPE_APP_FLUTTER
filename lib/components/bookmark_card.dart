@@ -33,7 +33,7 @@ class _BKCardState extends State<BKCard> {
       margin: EdgeInsets.symmetric(vertical: widget.margintop),
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 211, 211, 211),
+          color: const Color.fromARGB(255, 211, 211, 211),
           borderRadius: BorderRadius.circular(15.0),
           image: DecorationImage(
               colorFilter: ColorFilter.mode(
@@ -61,7 +61,7 @@ class _BKCardState extends State<BKCard> {
                   Text(
                     widget.myLocalDataInstance?.title ?? 'No Title',
                     style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                         height: 0.85,
                         color: Colors.white),
@@ -107,7 +107,7 @@ class _BKCardState extends State<BKCard> {
                       color: Colors.red,
                     ),
                   )
-                : SizedBox()
+                : const SizedBox()
           ],
         ),
       ),

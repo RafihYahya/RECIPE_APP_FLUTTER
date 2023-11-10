@@ -199,7 +199,7 @@ class RecipeData {
         shortDescription: '',
         imageUrl: json['image'] ?? defaultImageUrl,
         isNotBookmarked: true,
-        recipeDescription: RecipeDataDescription(
+        recipeDescription: const RecipeDataDescription(
             fullDescription: '', ingredients: [], instructions: []),
         isAlreadyread: false);
   }

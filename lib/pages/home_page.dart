@@ -132,6 +132,6 @@ class _HomePageState extends State<HomePage> {
                     ),
             ),
           ),
-        )).animate().fadeIn(duration: Duration(milliseconds: 750));
+        )).animate().fade(duration: const Duration(milliseconds: 750));
   }
 }

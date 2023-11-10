@@ -42,7 +42,7 @@ class CustomCardMainP extends StatelessWidget {
                           child: Text((data.title ?? 'No Title'),
                               textAlign: TextAlign.start,
                               style: const TextStyle(
-                                  fontSize: 38.0,
+                                  fontSize: 28.0,
                                   color: Colors.white,
                                   height: 1.0)),
                         ),
@@ -76,7 +76,7 @@ class CustomCardMainP extends StatelessWidget {
                           ),
                         )
                             .animate()
-                            .fadeIn(duration: Duration(milliseconds: 500))
+                            .fadeIn(duration: const Duration(milliseconds: 500))
                       ],
                     ),
                   ),

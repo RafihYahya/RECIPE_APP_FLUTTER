@@ -24,7 +24,7 @@ class _BKCardState extends State<BKCard3> {
   bool animaToggler = false;
 
   bool animaSwap() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
         setState(() {
           animaToggler = true;
@@ -41,7 +41,7 @@ class _BKCardState extends State<BKCard3> {
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: widget.dark == false
-            ? Color.fromARGB(255, 225, 225, 225)
+            ? const Color.fromARGB(255, 225, 225, 225)
             : Colors.black38,
         borderRadius: BorderRadius.circular(15.0),
       ),

@@ -111,11 +111,11 @@ class _BookMarkPageState extends State<BookMarkPage> {
                               45 + MediaQuery.of(context).size.height * 0.1,
                               false),
                         ).animate().fadeIn(
-                            delay: Duration(milliseconds: 200),
+                            delay: const Duration(milliseconds: 200),
                             duration: const Duration(milliseconds: 700)),
                       ),
                     ],
                   )),
-        )).animate().fadeIn(duration: const Duration(milliseconds: 500));
+        )).animate().fade(duration: const Duration(milliseconds: 500));
   }
 }

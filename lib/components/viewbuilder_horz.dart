@@ -34,7 +34,7 @@ class ViewHorzState extends State<ViewHorz> {
 
   void newFetchWhenNoDataisFound2() async {
     await globalFetchRecipeData(); //Big Fetch 100~
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   @override
@@ -50,27 +50,25 @@ class ViewHorzState extends State<ViewHorz> {
                           ? CustomCardMainP(
                               dark: widget.dark,
                               data: widget.recipeListValue[index],
-                            )
-                              .animate()
-                              .fadeIn(duration: Duration(milliseconds: 500))
+                            ).animate().fadeIn(
+                              duration: const Duration(milliseconds: 500))
                           : CustomCardMainPEmpty(
                               fetchupdateCallback: newFetchWhenNoDataisFound,
                               index: index,
-                            )
-                              .animate()
-                              .fadeIn(duration: Duration(milliseconds: 500))
+                            ).animate().fadeIn(
+                              duration: const Duration(milliseconds: 500))
                       : CustomCardMainPEmpty2(
                           fetchupdateCallback2: newFetchWhenNoDataisFound2,
                         )
                           .animate()
-                          .fadeIn(duration: Duration(milliseconds: 500)),
+                          .fadeIn(duration: const Duration(milliseconds: 500)),
                 )))
         : Padding(
-            padding: EdgeInsets.fromLTRB(12.0, 0, 36.0, 16.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 0, 36.0, 16.0),
             child: CustomCardMainPEmpty2(
               fetchupdateCallback2: newFetchWhenNoDataisFound2,
             ).animate().fadeIn(
-                delay: Duration(milliseconds: 200),
+                delay: const Duration(milliseconds: 200),
                 duration: const Duration(milliseconds: 700)));
   }
 }

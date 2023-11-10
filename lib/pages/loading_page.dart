@@ -13,7 +13,7 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   Future<void> waitBeforeChangeIndex(int index) async => await Future.delayed(
-      const Duration(seconds: 5), () => widget.callbackindex(index));
+      const Duration(seconds: 6), () => widget.callbackindex(index));
 
   @override
   void initState() {
@@ -25,7 +25,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ourSettings(context, false).loadingColor,
+      backgroundColor: mySettings.secondaryMaincolor,
       body: const Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,8 +41,8 @@ class _LoadingPageState extends State<LoadingPage> {
           ),
         ],
       )),
-    )
-        .animate()
-        .fadeOut(delay: Duration(seconds: 3), duration: Duration(seconds: 1));
+    ).animate().fade(
+        delay: const Duration(seconds: 3),
+        duration: const Duration(seconds: 1));
   }
 }

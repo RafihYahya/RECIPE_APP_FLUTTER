@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/drawer_component.dart';
-import 'package:recipe_app/components/ecoKing_submit_form.dart';
+import 'package:recipe_app/components/ecoking_submit_form.dart';
 import 'package:recipe_app/components/search_card.dart';
 import 'package:recipe_app/components/search_empty_card.dart';
 import 'package:recipe_app/data/bk_data.dart';
@@ -116,18 +116,16 @@ class _EcoKingPageState extends State<EcoKingPage> {
                               width: MediaQuery.of(context).size.width * 0.95,
                               height: 200,
                               duration: const Duration(seconds: 1),
-                              child: Container(
-                                child: EcoKingSubmitForm(
-                                  dark: widget.dark,
-                                  callback2: widget.callback2,
-                                  callback3: ecoSearchToggler,
-                                  callback4: fetchAndUpdateFunction,
-                                ),
+                              child: EcoKingSubmitForm(
+                                dark: widget.dark,
+                                callback2: widget.callback2,
+                                callback3: ecoSearchToggler,
+                                callback4: fetchAndUpdateFunction,
                               ))
                           .animate()
-                          .fadeIn(duration: Duration(milliseconds: 500)),
+                          .fadeIn(duration: const Duration(milliseconds: 500)),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               const SizedBox(
                 height: 25,
               ),
@@ -146,19 +144,18 @@ class _EcoKingPageState extends State<EcoKingPage> {
                                   ? mySettings.maincolor
                                   : mySettings.darkMainColor,
                             ),
-                            child: Center(
+                            child: const Center(
                                 child: Text(
                               'Try Another One',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w500),
                             )),
-                          )
-                              .animate()
-                              .fadeIn(duration: Duration(milliseconds: 1200)),
+                          ).animate().fadeIn(
+                              duration: const Duration(milliseconds: 1200)),
                         ),
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               ecoSearchToggle
                   ? Expanded(
                       child: searchResultData2.isNotEmpty
@@ -209,9 +206,8 @@ class _EcoKingPageState extends State<EcoKingPage> {
                                                   milliseconds: 700)),
                                         ),
                                       )),
-                            )
-                              .animate()
-                              .fadeIn(duration: Duration(milliseconds: 500))
+                            ).animate().fadeIn(
+                              duration: const Duration(milliseconds: 500))
                           : BKCard3(
                               margintop: 10.0,
                               dark: dark,
@@ -221,12 +217,12 @@ class _EcoKingPageState extends State<EcoKingPage> {
                                   MediaQuery.of(context).size.height * 0.2,
                                   false),
                             ).animate().fadeIn(
-                              delay: Duration(milliseconds: 200),
+                              delay: const Duration(milliseconds: 200),
                               duration: const Duration(milliseconds: 700)),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
-        )).animate().fadeIn(duration: Duration(milliseconds: 500));
+        )).animate().fade(duration: const Duration(milliseconds: 500));
   }
 }

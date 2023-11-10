@@ -16,13 +16,13 @@ RecipeList myRecipeList = RecipeList(
 EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: const Color(0xFF04B400),
     //maincolor: Color.fromARGB(255, 50, 219, 47),
-    maincolor: const Color.fromARGB(255, 70, 218, 67),
-    secondaryMaincolor: Color.fromARGB(255, 149, 245, 148),
-    secondaryDarkMaincolor: Color.fromARGB(255, 32, 53, 32),
+    maincolor: const Color.fromARGB(255, 56, 177, 54),
+    secondaryMaincolor: const Color.fromARGB(255, 127, 207, 126),
+    secondaryDarkMaincolor: const Color.fromARGB(255, 32, 53, 32),
     drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
-    darkMainColor: Color.fromARGB(255, 33, 104, 31),
-    loadingColor: const Color.fromARGB(255, 70, 218, 67),
+    darkMainColor: const Color.fromARGB(255, 33, 104, 31),
+    loadingColor: const Color.fromARGB(255, 59, 185, 57),
     firstTime: true,
     maxNumberOfRequests: 100,
     maxNumberOfRequestsSmoll: 25,
@@ -57,7 +57,7 @@ const String defaultImageUrl2 =
     'https://th.bing.com/th/id/R.e23184eb927ff24d2539e5dad7ad7b67?rik=%2b0ECfK%2f23Wg%2bLg&pid=ImgRaw&r=0';
 
 const String defaultImageUrl =
-    'https://media.tenor.com/0iK9a1WkT40AAAAC/loading-white.gif';
+    'https://th.bing.com/th/id/OIP.z6VfcLvFzlRe7YBPphqdJgAAAA?pid=ImgDet&rs=1';
 
 List<String> constCategory = [
   'vegetarian',

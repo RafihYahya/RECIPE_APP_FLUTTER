@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/globals.dart';
@@ -43,36 +44,36 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: ScrollPhysics(),
+      physics: const ScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
           !titleToggle
               ? Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 20.0, horizontal: 12.0),
-                  child: Text(
+                  child: const Text(
                     'PICK YOUR INGREDIENTS',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   ).animate().fade(),
                 )
-              : SizedBox(),
-          SizedBox(
+              : const SizedBox(),
+          const SizedBox(
             height: 15,
           ),
           GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 2),
               itemCount: ingredLength,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: index != ingredLength - 1
                       ? AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           decoration: BoxDecoration(
                               color: !widget.dark!
                                   ? mySettings.secondaryMaincolor
@@ -85,7 +86,7 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                               child: SizedBox(
                                 width: 100,
                                 child: TextField(
-                                  decoration: InputDecoration(),
+                                  decoration: const InputDecoration(),
                                   controller: controllerList[index],
                                 ),
                               ),
@@ -101,19 +102,19 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                             });
                           },
                           child: AnimatedContainer(
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             decoration: BoxDecoration(
                                 color: !widget.dark!
                                     ? mySettings.maincolor
                                     : mySettings.darkMainColor,
                                 borderRadius: BorderRadius.circular(10.0)),
-                            child: Icon(
+                            child: const Icon(
                               Icons.add,
                               size: 40,
                             ),
                           ).animate().fadeIn(),
                         ))),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
           Row(
@@ -131,7 +132,7 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                       color: !dark
                           ? mySettings.maincolor
                           : mySettings.darkMainColor),
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   width: MediaQuery.of(context).size.width * 0.43,
                   height: 70,
                   child: Center(
@@ -142,7 +143,7 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                               color: dark ? Colors.white : Colors.black))),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               GestureDetector(
@@ -156,8 +157,8 @@ class _EcoKingSubmitFormState extends State<EcoKingSubmitForm> {
                       borderRadius: BorderRadius.circular(8.0),
                       color: !dark
                           ? Colors.red
-                          : Color.fromARGB(255, 153, 41, 33)),
-                  padding: EdgeInsets.all(8.0),
+                          : const Color.fromARGB(255, 153, 41, 33)),
+                  padding: const EdgeInsets.all(8.0),
                   width: MediaQuery.of(context).size.width * 0.43,
                   height: 70,
                   child: Center(

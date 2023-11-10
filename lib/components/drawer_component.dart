@@ -20,13 +20,17 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: widget.dark!
-          ? Color.fromARGB(255, 29, 29, 29)
+          ? const Color.fromARGB(255, 29, 29, 29)
           : const Color.fromARGB(255, 221, 221, 221),
       child: Column(
         children: [
           Container(
-            color:
-                !widget.dark! ? mySettings.maincolor : mySettings.darkMainColor,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  alignment: Alignment.centerLeft,
+                  image: AssetImage('lib/assets/02.png'),
+                  fit: BoxFit.cover),
+            ),
             height: 175,
             child: null,
           ),
@@ -36,7 +40,7 @@ class _MyDrawerState extends State<MyDrawer> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 6.0),
                   child: ListTile(
                     title: Text(
                       'Home Page',
@@ -66,7 +70,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 6.0),
                   child: ListTile(
                     title: Text(
                       'BookMark Page',
@@ -96,7 +100,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 6.0),
                   child: ListTile(
                     title: Text(
                       'Search Page',
@@ -126,7 +130,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 6.0),
                   child: ListTile(
                     title: Text(
                       'EcoKing Page',
