@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/bookmark_card.dart';
-import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/drawer_component.dart';
 
 import 'package:recipe_app/data/bk_data.dart';
-import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/globals.dart';
 
 class BookMarkPage extends StatefulWidget {

@@ -64,6 +64,29 @@ class AboutMePage extends StatelessWidget {
                   ? mySettings.secondaryMaincolor!
                   : mySettings.secondaryDarkMaincolor!,
             ])),
+        child: const Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Text(
+                'My Name is RafihYahya',
+                style: TextStyle(fontSize: 14),
+              ),
+              Text(
+                'My Github:',
+                style: TextStyle(fontSize: 14),
+              ),
+              Text(
+                'CheckOut My Other Stuffs',
+                style: TextStyle(fontSize: 14),
+              ),
+              Text(
+                'So Far All My Works Is OpenSource With GNU License',
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
