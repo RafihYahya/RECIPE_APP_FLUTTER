@@ -18,7 +18,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    globalFetchRecipeData();
+    //globalFetchRecipeData();
     waitBeforeChangeIndex(1);
   }
 
