@@ -25,7 +25,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mySettings.secondaryMaincolor,
+      backgroundColor: mySettings.loadingColor,
       body: const Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,11 +33,17 @@ class _LoadingPageState extends State<LoadingPage> {
         children: [
           Text(
             'WELCOME TO RECIPA',
-            style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Text(
             'Please Wait Few Seconds...',
-            style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       )),

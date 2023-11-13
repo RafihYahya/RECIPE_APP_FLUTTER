@@ -5,6 +5,7 @@ import 'package:recipe_app/components/drawer_component.dart';
 
 import 'package:recipe_app/data/bk_data.dart';
 import 'package:recipe_app/globals.dart';
+import 'package:recipe_app/pages/desc_page.dart';
 
 class BookMarkPage extends StatefulWidget {
   // callback and variable for dark mode
@@ -99,20 +100,28 @@ class _BookMarkPageState extends State<BookMarkPage> {
                       // Our Custom Card
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: BKCard(
-                          togglebk: true,
-                          myLocalDataInstance: myLocalData00?[index],
-                          margintop: 20.0,
-                          callback3: updatestatecallback,
-                          dark: widget.dark,
-                          callback2: widget.callback2,
-                          bkdata: Bkdata(
-                              MediaQuery.of(context).size.width,
-                              45 + MediaQuery.of(context).size.height * 0.1,
-                              false),
-                        ).animate().fadeIn(
-                            delay: const Duration(milliseconds: 200),
-                            duration: const Duration(milliseconds: 700)),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => DescPage(
+                                    dark: widget.dark,
+                                    data: myLocalData00![index]!)));
+                          },
+                          child: BKCard(
+                            togglebk: true,
+                            myLocalDataInstance: myLocalData00?[index],
+                            margintop: 20.0,
+                            callback3: updatestatecallback,
+                            dark: widget.dark,
+                            callback2: widget.callback2,
+                            bkdata: Bkdata(
+                                MediaQuery.of(context).size.width,
+                                45 + MediaQuery.of(context).size.height * 0.1,
+                                false),
+                          ).animate().fadeIn(
+                              delay: const Duration(milliseconds: 200),
+                              duration: const Duration(milliseconds: 700)),
+                        ),
                       ),
                     ],
                   )),

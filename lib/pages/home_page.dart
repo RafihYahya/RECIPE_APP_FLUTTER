@@ -79,11 +79,13 @@ class _HomePageState extends State<HomePage> {
                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(12.0, 8.0, 0, 0),
+                            padding:
+                                const EdgeInsets.fromLTRB(12.0, 10.0, 0, 0),
                             child: Text(
                               constCategoryBetterFormatting2[index]
                                   .toUpperCase(),
-                              style: const TextStyle(fontSize: 36.0),
+                              style: const TextStyle(
+                                  fontSize: 28.0, fontWeight: FontWeight.w600),
                               textAlign: TextAlign.center,
                             ),
                           ),

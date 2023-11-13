@@ -13,16 +13,23 @@ RecipeList myRecipeList = RecipeList(
     fetchRangeIndicator: 5,
     recipeDataList:
         List.generate(constCategoryBetterFormatting.length, (i) => []));
+Map<String, Color> shadeColors = {
+  'green': const Color.fromARGB(255, 56, 177, 54),
+  'lightGreen': const Color.fromARGB(255, 59, 185, 57),
+  'alternativeGreen': const Color(0xFF23A036),
+  'alternativeNewGreen': const Color(0xFF4CAF50),
+  'alternativeLightGreen': const Color(0xFF80FF84),
+};
 EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: const Color(0xFF04B400),
     //maincolor: Color.fromARGB(255, 50, 219, 47),
-    maincolor: const Color.fromARGB(255, 56, 177, 54),
+    maincolor: shadeColors['alternativeNewGreen']!,
     secondaryMaincolor: const Color.fromARGB(255, 127, 207, 126),
     secondaryDarkMaincolor: const Color.fromARGB(255, 32, 53, 32),
     drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
     darkMainColor: const Color.fromARGB(255, 33, 104, 31),
-    loadingColor: const Color.fromARGB(255, 59, 185, 57),
+    loadingColor: shadeColors['alternativeNewGreen']!,
     firstTime: true,
     maxNumberOfRequests: 100,
     maxNumberOfRequestsSmoll: 25,
