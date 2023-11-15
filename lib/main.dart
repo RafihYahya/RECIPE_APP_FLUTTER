@@ -73,7 +73,7 @@ class _RecipeAppState extends State<RecipeApp> {
       ),
       AboutMePage(
           callback2: themeswitcher, callbackindex: routesSwitcher, dark: dark),
-      TestPage(),
+      RandomTestPage(),
     ];
     return MaterialApp(
       theme: ThemeData(
