@@ -13,13 +13,13 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   Future<void> waitBeforeChangeIndex(int index) async => await Future.delayed(
-      const Duration(seconds: 5), () => widget.callbackindex(index));
+      const Duration(seconds: 1), () => widget.callbackindex(index));
 
   @override
   void initState() {
     super.initState();
     //globalFetchRecipeData();
-    waitBeforeChangeIndex(1);
+    waitBeforeChangeIndex(6);
   }
 
   @override
