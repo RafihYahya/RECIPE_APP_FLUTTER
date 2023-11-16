@@ -6,7 +6,7 @@ import 'package:recipe_app/youtube_scraper.dart';
 class ListYtComp extends StatefulWidget {
   final double height;
   final String? title;
-  ListYtComp({Key? key, required this.height, this.title}) : super(key: key);
+  const ListYtComp({super.key, required this.height, this.title});
 
   @override
   _ListYtCompState createState() => _ListYtCompState();
@@ -20,7 +20,7 @@ class _ListYtCompState extends State<ListYtComp> {
         builder: (context, AsyncSnapshot<List<String?>> snapshot) {
           if (snapshot.hasData) {
             return PageView.builder(
-                physics: PageScrollPhysics(),
+                physics: const PageScrollPhysics(),
                 itemCount: snapshot.data?.length ?? 0,
                 itemBuilder: (context, index) => YtPlayerComp(
                       width: MediaQuery.of(context).size.width,

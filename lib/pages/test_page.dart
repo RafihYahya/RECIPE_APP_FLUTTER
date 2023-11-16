@@ -19,20 +19,20 @@ class _TestPageState extends State<RandomTestPage> {
     return Scaffold(
         backgroundColor: Colors.black38,
         body: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => HowToPage(
+                        builder: (context) => const HowToPage(
                             dark: false,
                             title: '_lU1WqStAHk',
                             description: RecipeDataDescription(
                                 ingredients: [], instructions: []))));
                   },
-                  child: Text('Random Make Page')),
+                  child: const Text('Random Make Page')),
               TextButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -40,11 +40,11 @@ class _TestPageState extends State<RandomTestPage> {
                             dark: false,
                             data: RecipeData(
                                 isNotBookmarked: false,
-                                recipeDescription: RecipeDataDescription(
+                                recipeDescription: const RecipeDataDescription(
                                     ingredients: [], instructions: []),
                                 isAlreadyread: false))));
                   },
-                  child: Text('Random Desc Page'))
+                  child: const Text('Random Desc Page'))
             ],
           ),
         ));

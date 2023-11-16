@@ -160,7 +160,7 @@ class _DescPageState extends State<DescPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
