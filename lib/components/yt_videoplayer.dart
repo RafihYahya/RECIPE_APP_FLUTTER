@@ -28,11 +28,14 @@ class _YtPlayerCompState extends State<YtPlayerComp> {
       params: const YoutubePlayerParams(showFullscreenButton: true),
     );
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: YoutubePlayer(
-        controller: controller,
-      ),
-    );
+        width: widget.width,
+        height: widget.height,
+        child: YoutubePlayerScaffold(
+            builder: (context, player) => const Column(
+                  children: [
+                    Text('Youtube Player'),
+                  ],
+                ),
+            controller: controller));
   }
 }

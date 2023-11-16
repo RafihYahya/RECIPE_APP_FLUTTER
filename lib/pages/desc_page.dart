@@ -170,8 +170,10 @@ class _DescPageState extends State<DescPage> {
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 65,
                   child: GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CaloriePage())),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CaloriePage(
+                              dark: widget.dark ?? false,
+                            ))),
                     child: const Center(
                       child: Text(
                         'CALORIES',
