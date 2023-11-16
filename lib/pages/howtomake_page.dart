@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/yt_listview_comp.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/globals.dart';
@@ -242,11 +243,11 @@ class HowToPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.3,
                     child: ListYtComp(
                         title: title,
-                        height: MediaQuery.of(context).size.height * 0.25),
-                  ),
+                        height: MediaQuery.of(context).size.height * 0.3),
+                  ).animate().fade(),
                   const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/yt_videoplayer.dart';
 import 'package:recipe_app/youtube_scraper.dart';
 
@@ -25,21 +26,21 @@ class _ListYtCompState extends State<ListYtComp> {
                       width: MediaQuery.of(context).size.width,
                       height: widget.height,
                       idListItem: snapshot.data?[index] ?? '',
-                    ));
+                    ).animate().fade());
           } else if (snapshot.hasError) {
             return SizedBox(
               height: widget.height,
               child: const Center(
                 child: Text('Something Gone Wrong'),
               ),
-            );
+            ).animate().fade();
           } else {
             return SizedBox(
               height: widget.height,
               child: const Center(
                 child: CircularProgressIndicator(),
               ),
-            );
+            ).animate().fade();
           }
         });
   }
