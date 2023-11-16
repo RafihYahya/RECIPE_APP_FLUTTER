@@ -13,19 +13,25 @@ class YtPlayerComp extends StatefulWidget {
 }
 
 class _YtPlayerCompState extends State<YtPlayerComp> {
+  /*
   late final _controller = YoutubePlayerController.fromVideoId(
     videoId: widget.idListItem ?? 'a0X0YA6ZfW4',
     autoPlay: false,
     params: const YoutubePlayerParams(showFullscreenButton: true),
   );
-
+*/
   @override
   Widget build(BuildContext context) {
+    final controller = YoutubePlayerController.fromVideoId(
+      videoId: widget.idListItem ?? 'a0X0YA6ZfW4',
+      autoPlay: false,
+      params: const YoutubePlayerParams(showFullscreenButton: true),
+    );
     return SizedBox(
       width: widget.width,
       height: widget.height,
       child: YoutubePlayer(
-        controller: _controller,
+        controller: controller,
       ),
     );
   }

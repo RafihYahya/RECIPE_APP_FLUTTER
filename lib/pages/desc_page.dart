@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/globals.dart';
+import 'package:recipe_app/pages/calories_page.dart';
 //import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
 
@@ -29,7 +30,7 @@ class _DescPageState extends State<DescPage> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            widget.data.imageUrl ?? widget.data.imageUrl!),
+                            widget.data.imageUrl ?? defaultImageUrl),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
                             mySettings.maincolor.withOpacity(0.15),
@@ -124,7 +125,7 @@ class _DescPageState extends State<DescPage> {
             padding:
                 const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
             child: Text(
-              widget.data.recipeDescription.fullDescription!,
+              widget.data.recipeDescription.fullDescription ?? 'No Description',
               style:
                   TextStyle(color: widget.dark! ? Colors.white : Colors.black),
               textAlign: TextAlign.justify,
@@ -138,19 +139,44 @@ class _DescPageState extends State<DescPage> {
               Container(
                 decoration: BoxDecoration(
                     color: const Color(0xFF04B400),
-                    borderRadius: BorderRadius.circular(40.0)),
+                    borderRadius: BorderRadius.circular(8.0)),
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: 65,
                 child: GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => HowToPage(
-                          description: widget.data.recipeDescription,
-                          dark: widget.dark))),
+                            description: widget.data.recipeDescription,
+                            dark: widget.dark,
+                            title: widget.data.fullTitle,
+                          ))),
                   child: const Center(
                     child: Text(
-                      'How To Make',
+                      'HOW TO MAKE',
                       style: TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(8.0)),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 65,
+                child: GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => CaloriePage())),
+                  child: const Center(
+                    child: Text(
+                      'CALORIES',
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
                     ),
                   ),
                 ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/data/recipe_data.dart';
+import 'package:recipe_app/data/recipe_descrip.dart';
+import 'package:recipe_app/pages/desc_page.dart';
+import 'package:recipe_app/pages/howtomake_page.dart';
 
 class RandomTestPage extends StatefulWidget {
   const RandomTestPage({super.key});
@@ -12,13 +16,36 @@ class _TestPageState extends State<RandomTestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         backgroundColor: Colors.black38,
         body: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [],
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => HowToPage(
+                            dark: false,
+                            title: '_lU1WqStAHk',
+                            description: RecipeDataDescription(
+                                ingredients: [], instructions: []))));
+                  },
+                  child: Text('Random Make Page')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DescPage(
+                            dark: false,
+                            data: RecipeData(
+                                isNotBookmarked: false,
+                                recipeDescription: RecipeDataDescription(
+                                    ingredients: [], instructions: []),
+                                isAlreadyread: false))));
+                  },
+                  child: Text('Random Desc Page'))
+            ],
           ),
         ));
   }

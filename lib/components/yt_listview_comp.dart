@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/components/yt_videoplayer.dart';
+import 'package:recipe_app/youtube_scraper.dart';
 
 class ListYtComp extends StatefulWidget {
   final double height;
-  final List<String> vidIdList;
-  ListYtComp({Key? key, required this.vidIdList, required this.height})
-      : super(key: key);
+  final String? title;
+  ListYtComp({Key? key, required this.height, this.title}) : super(key: key);
 
   @override
   _ListYtCompState createState() => _ListYtCompState();
@@ -14,13 +14,33 @@ class ListYtComp extends StatefulWidget {
 class _ListYtCompState extends State<ListYtComp> {
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-        physics: PageScrollPhysics(),
-        itemCount: widget.vidIdList.length,
-        itemBuilder: (context, index) => YtPlayerComp(
-              width: MediaQuery.of(context).size.width,
+    return FutureBuilder(
+        future: getListYoutubeVideoId(widget.title ?? 'BhGZkdODoDM'),
+        builder: (context, AsyncSnapshot<List<String?>> snapshot) {
+          if (snapshot.hasData) {
+            return PageView.builder(
+                physics: PageScrollPhysics(),
+                itemCount: snapshot.data?.length ?? 0,
+                itemBuilder: (context, index) => YtPlayerComp(
+                      width: MediaQuery.of(context).size.width,
+                      height: widget.height,
+                      idListItem: snapshot.data?[index] ?? '',
+                    ));
+          } else if (snapshot.hasError) {
+            return SizedBox(
               height: widget.height,
-              idListItem: widget.vidIdList[index],
-            ));
+              child: const Center(
+                child: Text('Something Gone Wrong'),
+              ),
+            );
+          } else {
+            return SizedBox(
+              height: widget.height,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        });
   }
 }

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/components/yt_listview_comp.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/globals.dart';
 
 class HowToPage extends StatelessWidget {
   final RecipeDataDescription description;
   final bool? dark;
-  const HowToPage({super.key, required this.dark, required this.description});
+  final String? title;
+  const HowToPage(
+      {super.key,
+      required this.dark,
+      required this.description,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -235,6 +241,13 @@ class HowToPage extends StatelessWidget {
                           color: mySettings.maincolor),
                     ),
                   ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    child: ListYtComp(
+                        title: title,
+                        height: MediaQuery.of(context).size.height * 0.25),
+                  ),
+                  const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -328,26 +341,44 @@ class HowToPage extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: !dark! ? Colors.black45 : Colors.white38,
-                borderRadius:
-                    const BorderRadius.only(bottomRight: Radius.circular(15.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: 50,
+                  color: Colors.black54,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Icon(
-                Icons.close,
-                color: !dark! ? Colors.white : Colors.black,
-                size: 32,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: !dark! ? Colors.black45 : Colors.white38,
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Icon(
+                    Icons.close,
+                    color: !dark! ? Colors.white : Colors.black,
+                    size: 32,
+                  ),
+                ),
               ),
-            ),
-          ),
+            ],
+          )
         ]),
       ),
     );
