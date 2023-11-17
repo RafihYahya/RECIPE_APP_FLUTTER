@@ -30,7 +30,6 @@ class _YtPlayerCompState extends State<YtPlayerComp> {
     return SizedBox(
         width: widget.width,
         height: widget.height,
-        child: YoutubePlayerScaffold(
-            builder: (context, player) => player, controller: controller));
+        child: YoutubePlayer(controller: controller));
   }
 }

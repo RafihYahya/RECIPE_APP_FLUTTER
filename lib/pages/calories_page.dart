@@ -23,6 +23,9 @@ class _CaloriePageState extends State<CaloriePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Center(
+                      child: Text('Coming Soon'),
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
