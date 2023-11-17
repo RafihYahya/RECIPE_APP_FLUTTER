@@ -31,11 +31,6 @@ class _YtPlayerCompState extends State<YtPlayerComp> {
         width: widget.width,
         height: widget.height,
         child: YoutubePlayerScaffold(
-            builder: (context, player) => const Column(
-                  children: [
-                    Text('Youtube Player'),
-                  ],
-                ),
-            controller: controller));
+            builder: (context, player) => player, controller: controller));
   }
 }

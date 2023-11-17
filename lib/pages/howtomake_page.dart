@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/components/yt_listview_comp.dart';
@@ -16,6 +18,9 @@ class HowToPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String osVersion = Platform.operatingSystemVersion;
+    bool isApi20 = int.parse(osVersion.split('.')[0]) >= 20;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: !dark! ? Colors.white : const Color(0xFF252525),
@@ -242,12 +247,14 @@ class HowToPage extends StatelessWidget {
                           color: mySettings.maincolor),
                     ),
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: ListYtComp(
-                        title: title,
-                        height: MediaQuery.of(context).size.height * 0.3),
-                  ).animate().fade(),
+                  isApi20
+                      ? SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          child: ListYtComp(
+                              title: title,
+                              height: MediaQuery.of(context).size.height * 0.3),
+                        ).animate().fade()
+                      : SizedBox(),
                   const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

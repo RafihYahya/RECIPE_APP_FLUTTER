@@ -9,10 +9,10 @@ class ListYtComp extends StatefulWidget {
   const ListYtComp({super.key, required this.height, this.title});
 
   @override
-  _ListYtCompState createState() => _ListYtCompState();
+  ListYtCompState createState() => ListYtCompState();
 }
 
-class _ListYtCompState extends State<ListYtComp> {
+class ListYtCompState extends State<ListYtComp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
