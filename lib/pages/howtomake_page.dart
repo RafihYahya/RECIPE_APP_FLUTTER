@@ -18,9 +18,6 @@ class HowToPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String osVersion = Platform.operatingSystemVersion;
-    bool isApi20 = int.parse(osVersion.split('.')[0]) >= 20;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: !dark! ? Colors.white : const Color(0xFF252525),
@@ -247,14 +244,12 @@ class HowToPage extends StatelessWidget {
                           color: mySettings.maincolor),
                     ),
                   ),
-                  isApi20
-                      ? SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          child: ListYtComp(
-                              title: title,
-                              height: MediaQuery.of(context).size.height * 0.3),
-                        ).animate().fade()
-                      : SizedBox(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    child: ListYtComp(
+                        title: title,
+                        height: MediaQuery.of(context).size.height * 0.35),
+                  ).animate().fade(),
                   const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

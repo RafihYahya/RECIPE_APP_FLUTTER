@@ -25,7 +25,7 @@ class _YtPlayerCompState extends State<YtPlayerComp> {
     final controller = YoutubePlayerController.fromVideoId(
       videoId: widget.idListItem ?? 'a0X0YA6ZfW4',
       autoPlay: false,
-      params: const YoutubePlayerParams(showFullscreenButton: true),
+      params: const YoutubePlayerParams(showFullscreenButton: false),
     );
     return SizedBox(
         width: widget.width,
