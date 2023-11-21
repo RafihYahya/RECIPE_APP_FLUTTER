@@ -247,7 +247,7 @@ class HowToPage extends StatelessWidget {
                     child: ListYtComp(
                         title: title,
                         height: MediaQuery.of(context).size.height * 0.35),
-                  ).animate().fade(),
+                  ),
                   const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
@@ -269,7 +269,7 @@ class HowToPage extends StatelessWidget {
                                       index2 % 2 == 0
                                           ? Padding(
                                               padding: const EdgeInsets.only(
-                                                  right: 8.0),
+                                                  right: 6.0),
                                               child: Text(index2.toString(),
                                                   style: TextStyle(
                                                       fontSize: 24,
@@ -314,7 +314,7 @@ class HowToPage extends StatelessWidget {
                                       index2 % 2 == 1
                                           ? Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 12.0),
+                                                  left: 10.0),
                                               child: Text(
                                                 index2.toString(),
                                                 style: TextStyle(
@@ -382,6 +382,6 @@ class HowToPage extends StatelessWidget {
           )
         ]),
       ),
-    );
+    ).animate().fade(duration: const Duration(milliseconds: 300));
   }
 }

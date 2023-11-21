@@ -107,6 +107,7 @@ class _SearchPageState extends State<SearchPage> {
                   duration: const Duration(seconds: 1),
                   child: SearchForm(
                     searchCallback: fetchAndUpdateFunction,
+                    dark: widget.dark,
                   ),
                 ),
               ),

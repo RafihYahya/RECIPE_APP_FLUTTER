@@ -3,6 +3,7 @@ import 'package:recipe_app/data/recipe_data.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/pages/desc_page.dart';
 import 'package:recipe_app/pages/howtomake_page.dart';
+import 'package:recipe_app/pages/loading_page.dart';
 
 class RandomTestPage extends StatefulWidget {
   const RandomTestPage({super.key});
@@ -44,7 +45,14 @@ class _TestPageState extends State<RandomTestPage> {
                                     ingredients: [], instructions: []),
                                 isAlreadyread: false))));
                   },
-                  child: const Text('Random Desc Page'))
+                  child: const Text('Random Desc Page')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            LoadingPage(callbackindex: () {})));
+                  },
+                  child: const Text('loading'))
             ],
           ),
         ));

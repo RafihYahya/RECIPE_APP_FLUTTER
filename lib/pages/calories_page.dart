@@ -20,12 +20,15 @@ class _CaloriePageState extends State<CaloriePage> {
           children: [
             Stack(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: const Center(
+                    child: Text('Coming Soon',style: TextStyle(fontSize: 38.0),),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Center(
-                      child: Text('Coming Soon'),
-                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();

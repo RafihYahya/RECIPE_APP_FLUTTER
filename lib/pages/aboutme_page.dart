@@ -47,42 +47,30 @@ class AboutMePage extends StatelessWidget {
       ),
       drawer: MyDrawer(
           callbackindex: callbackindex, dark: dark, callback2: callback2),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-              !dark!
-                  ? const Color.fromARGB(255, 221, 221, 221)
-                  : const Color.fromARGB(255, 39, 39, 39),
-              !dark!
-                  ? const Color.fromARGB(255, 221, 221, 221)
-                  : const Color.fromARGB(255, 39, 39, 39),
-              !dark!
-                  ? mySettings.secondaryMaincolor!
-                  : mySettings.secondaryDarkMaincolor!,
-            ])),
+        
         child: const Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'My Name is RafihYahya',
+                'Made By RafihYahya',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 24,
               ),
-              Text(
-                'Thats It',
-                style: TextStyle(fontSize: 18),
+              Center(
+                child: Text(
+                  'Thank You, for any issue, please contact me at:',
+                  style: TextStyle(fontSize: 14),
+                ),
               ),
               Text(
-                'Thats All You Need To Know',
-                style: TextStyle(fontSize: 18),
+                'rafihyahya@gmail.com',
+                style: TextStyle(fontSize: 16),
               ),
             ],
           ),

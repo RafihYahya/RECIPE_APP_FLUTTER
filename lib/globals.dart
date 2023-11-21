@@ -19,6 +19,8 @@ Map<String, Color> shadeColors = {
   'alternativeGreen': const Color(0xFF23A036),
   'alternativeNewGreen': const Color(0xFF4CAF50),
   'alternativeLightGreen': const Color(0xFF80FF84),
+  'alternativeVeryLightGreen': const Color.fromARGB(255, 170, 255, 173),
+  'alternativeVeryDarkGreen': const Color.fromARGB(255, 0, 36, 0),
 };
 EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: const Color(0xFF04B400),
@@ -29,7 +31,7 @@ EnvironementSettings mySettings = EnvironementSettings(
     drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
     darkMainColor: const Color.fromARGB(255, 33, 104, 31),
-    loadingColor: shadeColors['alternativeNewGreen']!,
+    loadingColor: shadeColors['alternativeVeryDarkGreen']!,
     firstTime: true,
     maxNumberOfRequests: 100,
     maxNumberOfRequestsSmoll: 25,

@@ -3,8 +3,9 @@ import 'package:recipe_app/globals.dart';
 //import 'package:recipe_app/async_utils_functions.dart';
 
 class SearchForm extends StatefulWidget {
+  final bool? dark;
   final Function searchCallback;
-  const SearchForm({super.key, required this.searchCallback});
+  const SearchForm({super.key, required this.searchCallback,this.dark});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -27,6 +28,7 @@ class _SearchFormState extends State<SearchForm> {
             height: 100,
             child: TextField(
               controller: myController,
+              style: TextStyle(color:widget.dark! ? Colors.white:Colors.black ),
             ),
           ),
         ),

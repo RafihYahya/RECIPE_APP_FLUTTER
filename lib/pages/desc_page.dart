@@ -191,7 +191,7 @@ class _DescPageState extends State<DescPage> {
               ],
             )
           ],
-        ).animate().fade(),
+        ).animate().fade(duration: const Duration(milliseconds: 300)),
       ),
     );
   }
