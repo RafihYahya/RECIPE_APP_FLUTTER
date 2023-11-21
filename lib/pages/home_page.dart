@@ -84,8 +84,12 @@ class _HomePageState extends State<HomePage> {
                             child: Text(
                               constCategoryBetterFormatting2[index]
                                   .toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 28.0, fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 28.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: widget.dark!
+                                      ? Colors.white
+                                      : Colors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
