@@ -304,9 +304,11 @@ class HowToPage extends StatelessWidget {
                                             padding: const EdgeInsets.all(20.0),
                                             child: Text(
                                               description.instructions[index2],
-                                              style: const TextStyle(
-                                                fontSize: 18.0,
-                                              ),
+                                              style: TextStyle(
+                                                  fontSize: 18.0,
+                                                  color: !dark!
+                                                      ? Colors.black
+                                                      : Colors.white),
                                             ),
                                           ),
                                         ),
