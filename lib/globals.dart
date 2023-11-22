@@ -22,16 +22,23 @@ Map<String, Color> shadeColors = {
   'alternativeVeryLightGreen': const Color.fromARGB(255, 170, 255, 173),
   'alternativeVeryDarkGreen': const Color.fromARGB(255, 0, 36, 0),
 };
+Map<String, Color> shadeOtherColors = {
+  'orangeMain': const Color(0xFFED7D31),
+  'orangeAltMain': const Color(0xFFF97B22),
+  'orangeAltDarkMain': const Color.fromARGB(255, 155, 77, 22),
+  'loadingOrange': const Color(0xFFFECDA6),
+  'loadingDarkOrange': const Color.fromARGB(255, 80, 35, 0),
+};
 EnvironementSettings mySettings = EnvironementSettings(
     //maincolor: const Color(0xFF04B400),
     //maincolor: Color.fromARGB(255, 50, 219, 47),
-    maincolor: shadeColors['alternativeNewGreen']!,
-    secondaryMaincolor: const Color.fromARGB(255, 127, 207, 126),
-    secondaryDarkMaincolor: const Color.fromARGB(255, 32, 53, 32),
+    maincolor: shadeOtherColors['orangeAltMain']!,
+    secondaryMaincolor: shadeOtherColors['orangeMain']!,//const Color.fromARGB(255, 127, 207, 126),
+    secondaryDarkMaincolor: shadeOtherColors['orangeAltDarkMain']!,//const Color.fromARGB(255, 32, 53, 32),
     drawerColor: Colors.white,
     //darkMainColor: const Color.fromARGB(255, 0, 116, 10),
-    darkMainColor: const Color.fromARGB(255, 33, 104, 31),
-    loadingColor: shadeColors['alternativeVeryDarkGreen']!,
+    darkMainColor: shadeOtherColors['orangeAltDarkMain']!,//const Color.fromARGB(255, 33, 104, 31),
+    loadingColor: shadeOtherColors['loadingDarkOrange']!,
     firstTime: true,
     maxNumberOfRequests: 100,
     maxNumberOfRequestsSmoll: 25,

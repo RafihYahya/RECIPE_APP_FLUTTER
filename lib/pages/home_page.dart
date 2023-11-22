@@ -80,13 +80,13 @@ class _HomePageState extends State<HomePage> {
                           flex: 1,
                           child: Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(12.0, 10.0, 0, 0),
+                                const EdgeInsets.fromLTRB(10.0, 16.0, 0, 0),
                             child: Text(
                               constCategoryBetterFormatting2[index]
                                   .toUpperCase(),
                               style: TextStyle(
-                                  fontSize: 28.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w500,
                                   color: widget.dark!
                                       ? Colors.white
                                       : Colors.black),

@@ -34,7 +34,7 @@ class _LoadingPageState extends State<LoadingPage> {
           Text(
             'WELCOME TO RECIPA',
             style: TextStyle(
-                fontSize: 24.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white),
           ),
