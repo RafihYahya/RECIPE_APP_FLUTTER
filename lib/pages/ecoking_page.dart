@@ -80,12 +80,13 @@ class _EcoKingPageState extends State<EcoKingPage> {
           backgroundColor:
               widget.dark! ? mySettings.darkMainColor : mySettings.maincolor,
           actions: [
-            IconButton(
+            // For Future Versions
+            /* IconButton(
               onPressed: () {},
               icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
-            ),
+            ), */
             IconButton(
               onPressed: () {
                 widget.callback2();

@@ -34,21 +34,19 @@ class _LoadingPageState extends State<LoadingPage> {
           Text(
             'WELCOME TO RECIPA',
             style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
           ),
           Text(
             'Please Wait Few Seconds...',
             style: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w500,
-            ),
+                fontSize: 14.0,
+                fontWeight: FontWeight.w500,
+                color: Colors.white),
           ),
         ],
       )),
-    ).animate().fade(
-        delay: const Duration(seconds: 3),
-        duration: const Duration(seconds: 1));
+    ).animate().fade();
   }
 }

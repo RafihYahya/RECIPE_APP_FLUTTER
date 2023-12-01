@@ -45,7 +45,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       'Home Page',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: !widget.dark! ? Colors.black : Colors.white),
                     ),
@@ -75,7 +75,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       'BookMark Page',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: !widget.dark! ? Colors.black : Colors.white),
                     ),
@@ -105,7 +105,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       'Search Page',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: !widget.dark! ? Colors.black : Colors.white),
                     ),
@@ -135,7 +135,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       'EcoKing Page',
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: !widget.dark! ? Colors.black : Colors.white),
                     ),
@@ -169,7 +169,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   title: Text(
                     'About Us',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: !widget.dark! ? Colors.black : Colors.white),
                   ),

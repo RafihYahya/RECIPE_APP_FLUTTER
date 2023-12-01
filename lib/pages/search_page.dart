@@ -64,12 +64,12 @@ class _SearchPageState extends State<SearchPage> {
           backgroundColor:
               widget.dark! ? mySettings.darkMainColor : mySettings.maincolor,
           actions: [
-            IconButton(
+            /* IconButton(
               onPressed: () {},
               icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
-            ),
+            ), */
             IconButton(
               onPressed: () {
                 widget.callback2();
@@ -107,6 +107,7 @@ class _SearchPageState extends State<SearchPage> {
                   duration: const Duration(seconds: 1),
                   child: SearchForm(
                     searchCallback: fetchAndUpdateFunction,
+                    dark: widget.dark,
                   ),
                 ),
               ),

@@ -13,6 +13,7 @@ import 'package:recipe_app/pages/loading_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:recipe_app/pages/search_page.dart';
+import 'package:recipe_app/pages/test_page.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -72,6 +73,7 @@ class _RecipeAppState extends State<RecipeApp> {
       ),
       AboutMePage(
           callback2: themeswitcher, callbackindex: routesSwitcher, dark: dark),
+      const RandomTestPage(),
     ];
     return MaterialApp(
       theme: ThemeData(

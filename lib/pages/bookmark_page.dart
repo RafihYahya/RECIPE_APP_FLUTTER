@@ -54,12 +54,12 @@ class _BookMarkPageState extends State<BookMarkPage> {
           backgroundColor:
               widget.dark! ? mySettings.darkMainColor : mySettings.maincolor,
           actions: [
-            IconButton(
+            /* IconButton(
               onPressed: () {},
               icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
-            ),
+            ), */
             IconButton(
               onPressed: () {
                 widget.callback2();

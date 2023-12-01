@@ -42,6 +42,8 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_animate: ^4.2.0+1
   flutter_launcher_icons: ^0.13.1
+  youtube_scrape_api: ^0.0.4
+  youtube_player_iframe: ^4.0.4
   
 flutter_launcher_icons:
   #  image_path: "assets/images/icon-128x128.png"

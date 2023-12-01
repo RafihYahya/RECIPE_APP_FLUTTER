@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:recipe_app/components/yt_listview_comp.dart';
 import 'package:recipe_app/data/recipe_descrip.dart';
 import 'package:recipe_app/globals.dart';
 
 class HowToPage extends StatelessWidget {
   final RecipeDataDescription description;
   final bool? dark;
-  const HowToPage({super.key, required this.dark, required this.description});
+  final String? title;
+  const HowToPage(
+      {super.key,
+      required this.dark,
+      required this.description,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -235,6 +242,13 @@ class HowToPage extends StatelessWidget {
                           color: mySettings.maincolor),
                     ),
                   ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    child: ListYtComp(
+                        title: title,
+                        height: MediaQuery.of(context).size.height * 0.35),
+                  ),
+                  const SizedBox(height: 25),
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -255,7 +269,7 @@ class HowToPage extends StatelessWidget {
                                       index2 % 2 == 0
                                           ? Padding(
                                               padding: const EdgeInsets.only(
-                                                  right: 8.0),
+                                                  right: 6.0),
                                               child: Text(index2.toString(),
                                                   style: TextStyle(
                                                       fontSize: 24,
@@ -290,9 +304,11 @@ class HowToPage extends StatelessWidget {
                                             padding: const EdgeInsets.all(20.0),
                                             child: Text(
                                               description.instructions[index2],
-                                              style: const TextStyle(
-                                                fontSize: 18.0,
-                                              ),
+                                              style: TextStyle(
+                                                  fontSize: 18.0,
+                                                  color: !dark!
+                                                      ? Colors.black
+                                                      : Colors.white),
                                             ),
                                           ),
                                         ),
@@ -300,7 +316,7 @@ class HowToPage extends StatelessWidget {
                                       index2 % 2 == 1
                                           ? Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 12.0),
+                                                  left: 10.0),
                                               child: Text(
                                                 index2.toString(),
                                                 style: TextStyle(
@@ -328,28 +344,46 @@ class HowToPage extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: !dark! ? Colors.black45 : Colors.white38,
-                borderRadius:
-                    const BorderRadius.only(bottomRight: Radius.circular(15.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: 50,
+                  color: Colors.black54,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Icon(
-                Icons.close,
-                color: !dark! ? Colors.white : Colors.black,
-                size: 32,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: !dark! ? Colors.black45 : Colors.white38,
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Icon(
+                    Icons.close,
+                    color: !dark! ? Colors.white : Colors.black,
+                    size: 32,
+                  ),
+                ),
               ),
-            ),
-          ),
+            ],
+          )
         ]),
       ),
-    );
+    ).animate().fade(duration: const Duration(milliseconds: 300));
   }
 }

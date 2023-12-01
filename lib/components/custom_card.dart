@@ -42,7 +42,7 @@ class CustomCardMainP extends StatelessWidget {
                           child: Text((data.title ?? 'No Title'),
                               textAlign: TextAlign.start,
                               style: const TextStyle(
-                                  fontSize: 28.0,
+                                  fontSize: 24.0,
                                   color: Colors.white,
                                   height: 1.0)),
                         ),

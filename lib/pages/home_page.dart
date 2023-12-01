@@ -40,12 +40,12 @@ class _HomePageState extends State<HomePage> {
           backgroundColor:
               widget.dark! ? mySettings.darkMainColor : mySettings.maincolor,
           actions: [
-            IconButton(
+            /* IconButton(
               onPressed: () {},
               icon: const Icon(Icons.add),
               color: Colors.black,
               iconSize: 28.0,
-            ),
+            ), */
             IconButton(
               onPressed: () {
                 widget.callback2();
@@ -80,12 +80,16 @@ class _HomePageState extends State<HomePage> {
                           flex: 1,
                           child: Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(12.0, 10.0, 0, 0),
+                                const EdgeInsets.fromLTRB(10.0, 16.0, 0, 0),
                             child: Text(
                               constCategoryBetterFormatting2[index]
                                   .toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 28.0, fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: widget.dark!
+                                      ? Colors.white
+                                      : Colors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
