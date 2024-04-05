@@ -5,7 +5,7 @@ import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/data/bookmarked_data.dart';
 import 'package:recipe_app/data/bookmarked_recipe_data.dart';
 import 'package:recipe_app/globals.dart';
-import 'package:recipe_app/pages/aboutMe_page.dart';
+import 'package:recipe_app/pages/aboutme_page.dart';
 import 'package:recipe_app/pages/bookmark_page.dart';
 import 'package:recipe_app/pages/ecoking_page.dart';
 import 'package:recipe_app/pages/home_page.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:recipe_app/async_utils_functions.dart';
 import 'package:recipe_app/components/drawer_component.dart';
-import 'package:recipe_app/components/ecoking_submit_form.dart';
+import 'package:recipe_app/components/ecoKing_submit_form.dart';
 import 'package:recipe_app/components/search_card.dart';
 import 'package:recipe_app/components/search_empty_card.dart';
 import 'package:recipe_app/data/bk_data.dart';
